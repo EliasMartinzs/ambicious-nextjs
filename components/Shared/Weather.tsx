@@ -4,9 +4,10 @@ import { fetchWeatherApi } from '@/lib/utils';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import useGeolocation from 'react-hook-geolocation';
+import { WeatherType } from '@/types';
 
 export default function Weather() {
-  const [weather, setWeather] = useState();
+  const [weather, setWeather] = useState<WeatherType>();
   const geolocation = useGeolocation({
     enableHighAccuracy: true,
   });
@@ -20,7 +21,6 @@ export default function Weather() {
     fetchApi(geolocation.latitude, geolocation.longitude);
   }, [geolocation]);
 
-  console.log(geolocation);
   return (
     <div className="w-full h-full flex flex-col xl:flex-row">
       <div className="w-full p-5 xl:p-0 xl:w-1/2 flex-center flex-col gap-y-2">

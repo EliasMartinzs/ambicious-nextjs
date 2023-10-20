@@ -33,7 +33,7 @@ export default function CentralImage() {
   };
 
   //@ts-ignore
-  let src: string = themeImages[theme];
+  let src: string = themeImages[theme] || '/themes/wanella.webp';
 
   return (
     <section className="w-full h-32 relative overflow-hidden">
