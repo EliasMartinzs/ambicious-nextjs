@@ -3,7 +3,6 @@ import BackImage from '@/components/Shared/BackImage';
 import Calendary from '@/components/Shared/Calendary';
 import Clock from '@/components/Shared/Clock';
 import Navigation from '@/components/Shared/Navigation';
-import Plan from '@/components/Shared/Plan';
 import Separator from '@/components/Shared/Separator';
 import Weather from '@/components/Shared/Weather';
 import Weeks from '@/components/Weeks';
