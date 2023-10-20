@@ -20,7 +20,7 @@ export default function page() {
       </div>
       <section className="main-grid">
         <div className="clock-grid">
-          <Clock />
+          {/* <Clock /> */}
           <br />
           <Calendary />
         </div>
