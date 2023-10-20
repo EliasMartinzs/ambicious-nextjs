@@ -8,7 +8,6 @@ import Weather from '@/components/Shared/Weather';
 import Weeks from '@/components/Weeks';
 import Inspirations from '@/components/cards/Inspirations';
 import MenuOptions from '@/components/config/MenuOptions';
-import { UserButton } from '@clerk/nextjs';
 
 export default function page() {
   return (
@@ -22,7 +21,6 @@ export default function page() {
       <section className="main-grid">
         <div className="clock-grid">
           {/* <Clock /> */}
-          <UserButton afterSignOutUrl="/" />
           <br />
           <Calendary />
         </div>

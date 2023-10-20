@@ -1,4 +1,3 @@
-import { ClerkProvider } from '@clerk/nextjs';
 import '../globals.css';
 import { Inter } from 'next/font/google';
 import { ReduxProvider } from '../(root)/ReduxProvider';
@@ -15,14 +14,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider
-      publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
-    >
-      <ReduxProvider>
-        <html lang="en">
-          <body>{children}</body>
-        </html>
-      </ReduxProvider>
-    </ClerkProvider>
+    <ReduxProvider>
+      <html lang="en">
+        <body>{children}</body>
+      </html>
+    </ReduxProvider>
   );
 }

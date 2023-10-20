@@ -9,13 +9,13 @@ import {
 import { MoreVertical } from 'lucide-react';
 import ThemeSwitch from './ThemeSwitcher';
 
-import { SignOutButton, auth } from '@clerk/nextjs';
+// import { SignOutButton, auth } from '@clerk/nextjs';
 import { fetchUser } from '@/lib/actions/user.action';
 import Image from 'next/image';
 
 export default async function MenuOptions() {
-  const { userId } = auth();
-  const user = await fetchUser({ userId });
+  // const { userId } = auth();
+  // const user = await fetchUser({ userId });
 
   return (
     <Sheet>
@@ -29,16 +29,16 @@ export default async function MenuOptions() {
           </SheetTitle>
           <SheetDescription className="w-full gap-y-5 flex-start flex-col">
             <div className="w-full flex-start gap-x-4">
-              <Image
+              {/* <Image
                 src={user?.image || ''}
                 width={70}
                 height={70}
                 alt={user?.name || ''}
                 className="object-cover object-center saturate-200 rounded-full"
-              />
+              /> */}
               <div className="flex flex-col items-start justify-center">
-                <h3 className="capitalize">{user?.username}</h3>
-                <SignOutButton>Sair</SignOutButton>
+                {/* <h3 className="capitalize">{user?.username}</h3> */}
+                {/* <SignOutButton>Sair</SignOutButton> */}
               </div>
             </div>
             <ThemeSwitch />
