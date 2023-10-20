@@ -10,7 +10,7 @@ export default async function Inspirations() {
   const { phrases } = inspiration;
 
   return (
-    <div className="mt-10 max-sm:hidden">
+    <div className="max-sm:hidden">
       <h3 className="w-full text-xl font-medium flex-center text-center">
         Inspirações
       </h3>

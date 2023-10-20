@@ -1,11 +1,8 @@
 'use client';
 import Image from 'next/image';
-import MenuOptions from './config/MenuOptions';
 import { useEffect, useState } from 'react';
-import { useTheme } from 'next-themes';
 
-export default function CentralImage() {
-  const { resolvedTheme } = useTheme();
+export default function BackImage() {
   const [theme, setTheme] = useState<any>('');
 
   useEffect(() => {
@@ -25,9 +22,8 @@ export default function CentralImage() {
 
   //@ts-ignore
   let src: string = themeImages[theme] || '/themes/wanella.webp';
-
   return (
-    <section className="w-full h-32 relative overflow-hidden">
+    <div className="w-full h-full relative">
       <Image
         src={src}
         alt="mystical"
@@ -36,7 +32,6 @@ export default function CentralImage() {
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
         priority
       />
-      <div className="absolute inset-y-0 right-0 m-5"></div>
-    </section>
+    </div>
   );
 }

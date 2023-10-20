@@ -5,6 +5,7 @@ import { Montserrat } from 'next/font/google';
 import { ReduxProvider } from './ReduxProvider';
 import { ToastContainer } from 'react-toastify';
 import { ClerkProvider } from '@clerk/nextjs';
+import { dark } from '@clerk/themes';
 
 const montserrat = Montserrat({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -24,6 +25,9 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider
+      appearance={{
+        baseTheme: dark,
+      }}
       publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
     >
       <ReduxProvider>
