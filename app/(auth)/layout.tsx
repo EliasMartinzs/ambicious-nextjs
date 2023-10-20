@@ -1,4 +1,4 @@
-import { ClerkProvider } from '@clerk/nextjs';
+// import { ClerkProvider } from '@clerk/nextjs';
 import '../globals.css';
 import { Inter } from 'next/font/google';
 import { ReduxProvider } from '../(root)/ReduxProvider';
@@ -16,11 +16,11 @@ export default function RootLayout({
 }) {
   return (
     <ReduxProvider>
-      <ClerkProvider publishableKey="pk_test_ZW5vdWdoLWNvbGxpZS05Ny5jbGVyay5hY2NvdW50cy5kZXYk">
-        <html lang="en">
-          <body>{children}</body>
-        </html>
-      </ClerkProvider>
+      {/* <ClerkProvider publishableKey="pk_test_ZW5vdWdoLWNvbGxpZS05Ny5jbGVyay5hY2NvdW50cy5kZXYk"> */}
+      <html lang="en">
+        <body>{children}</body>
+      </html>
+      {/* </ClerkProvider> */}
     </ReduxProvider>
   );
 }
