@@ -12,8 +12,6 @@ type Props = {
 export default function User({ classname, user }: Props) {
   const router = useRouter();
 
-  console.log(user);
-
   return (
     <div className={cn(classname)}>
       {/* <Image

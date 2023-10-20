@@ -55,9 +55,7 @@ export async function getTask() {
     const task = await Task.find();
 
     return task;
-  } catch (error) {
-    console.log('task not found');
-  }
+  } catch (error) {}
 }
 
 export async function checkedTask({
@@ -87,7 +85,5 @@ export async function deleteTask({ author, path }: ParamsDeleteTask) {
     if (path === '/') {
       revalidatePath('/');
     }
-  } catch (error) {
-    console.log('failed to delete task');
-  }
+  } catch (error) {}
 }
