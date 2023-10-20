@@ -24,9 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <ReduxProvider>
-      <ClerkProvider
-        publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
-      >
+      <ClerkProvider publishableKey="pk_test_ZW5vdWdoLWNvbGxpZS05Ny5jbGVyay5hY2NvdW50cy5kZXYk">
         <html lang="en">
           <body>
             <Providers>
