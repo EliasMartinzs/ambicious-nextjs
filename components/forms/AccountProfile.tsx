@@ -57,6 +57,8 @@ export default function AccountProfile({ user, btnTitle }: Props) {
       path: pathname,
     });
 
+    router.push('/');
+
     if (pathname === '/') {
       router.back();
     }
