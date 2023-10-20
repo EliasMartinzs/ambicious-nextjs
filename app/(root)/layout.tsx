@@ -23,7 +23,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider publishableKey="pk_test_ZW5vdWdoLWNvbGxpZS05Ny5jbGVyay5hY2NvdW50cy5kZXYk">
+    <ClerkProvider
+      publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
+    >
       <ReduxProvider>
         <html lang="en">
           <body>
