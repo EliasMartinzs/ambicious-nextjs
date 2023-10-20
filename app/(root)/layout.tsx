@@ -1,7 +1,7 @@
 import '../globals.css';
 import type { Metadata } from 'next';
 import Providers from './providers';
-// import { ClerkProvider } from '@clerk/nextjs';
+import { ClerkProvider } from '@clerk/nextjs';
 import { Montserrat } from 'next/font/google';
 import { ReduxProvider } from './ReduxProvider';
 import { ToastContainer } from 'react-toastify';
@@ -23,17 +23,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ReduxProvider>
-      {/* <ClerkProvider publishableKey="pk_test_ZW5vdWdoLWNvbGxpZS05Ny5jbGVyay5hY2NvdW50cy5kZXYk"> */}
-      <html lang="en">
-        <body>
-          <Providers>
-            <main className={montserrat.className}>{children}</main>
-            <ToastContainer />
-          </Providers>
-        </body>
-      </html>
-      {/* </ClerkProvider> */}
-    </ReduxProvider>
+    <ClerkProvider publishableKey="pk_test_ZW5vdWdoLWNvbGxpZS05Ny5jbGVyay5hY2NvdW50cy5kZXYk">
+      <ReduxProvider>
+        <html lang="en">
+          <body>
+            <Providers>
+              <main className={montserrat.className}>{children}</main>
+              <ToastContainer />
+            </Providers>
+          </body>
+        </html>
+      </ReduxProvider>
+    </ClerkProvider>
   );
 }
