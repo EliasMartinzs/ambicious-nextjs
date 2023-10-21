@@ -9,13 +9,14 @@ import Weeks from '@/components/Weeks';
 import Inspirations from '@/components/cards/Inspirations';
 import MenuOptions from '@/components/config/MenuOptions';
 import Pomorodo from '@/pomodoro/Pomodoro';
+import { PomodoroSpecs } from '@/pomodoro/PomodoroSpecs';
 
 export default function page() {
   return (
     <main className="w-full overflow-hidden">
       <CentralImage />
       <h3 className="text-2xl font-bold paddings mt-5">Planejamento</h3>
-      <Separator />
+      <Separator pad />
       <Inspirations />
       <div className="absolute top-5 right-5">
         <MenuOptions />
@@ -41,10 +42,13 @@ export default function page() {
           <BackImage />
         </div>
       </section>
-      <section>
-        <h3 className="text-2xl font-bold paddings mt-5">Stay Focused</h3>
+      <section className="paddings">
+        <h3 className="text-2xl font-bold mt-5">Stay Focused</h3>
         <Separator />
-        <Pomorodo />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-start">
+          <PomodoroSpecs />
+          <Pomorodo />
+        </div>
       </section>
     </main>
   );

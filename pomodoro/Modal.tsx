@@ -84,7 +84,7 @@ const Modal = ({ isSettingsOn, setIsSettingsOn, setPomodoro }: Props) => {
               className="flex flex-col justify-betweenr items-center"
               onSubmit={handleSubmit}
             >
-              <div className="flex gap-x-2">
+              <div className="flex items-end justify-center gap-x-2">
                 <ModalInput
                   label={'Pomodoro'}
                   name={'pomodoroTime'}

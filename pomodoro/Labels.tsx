@@ -25,13 +25,13 @@ const Labels = ({
   }
 
   return (
-    <div className="">
+    <div className="bg-black/50 rounded-full">
       <ul className="bg-pmd-blue-900 flex justify-between items-center rounded-full p-3 mb-6">
         {controllers.map((controller, index) => (
           <li
             key={index}
             className={`p-3 text-pmd-blue-300 font-semibold rounded-full text-xs flex-1 text-center whitespace-nowrap cursor-pointer ${
-              selectedControl === index && 'active'
+              selectedControl === index && 'bg-primary-500 font-bold'
             }`}
             onClick={() => handleSelectedControl(index)}
           >

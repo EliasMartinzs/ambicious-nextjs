@@ -1,6 +1,8 @@
-export default function Separator() {
+import { cn } from '@/lib/utils';
+
+export default function Separator({ pad }: { pad?: boolean }) {
   return (
-    <div className="paddings my-10">
+    <div className={cn('my-10', pad ? 'paddings' : null)}>
       <div className="w-full h-[1px] bg-slate-300/40" />
     </div>
   );
