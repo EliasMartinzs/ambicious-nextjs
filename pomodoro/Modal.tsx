@@ -12,7 +12,7 @@ type Props = {
 };
 
 const Modal = ({ isSettingsOn, setIsSettingsOn, setPomodoro }: Props) => {
-  const { formData, setFormData } = useContext(FormDataContext);
+  const { formData, setFormData } = useContext<any>(FormDataContext);
   const modalRef = useRef();
   function handleSubmit(e: any) {
     e.preventDefault();
@@ -34,6 +34,7 @@ const Modal = ({ isSettingsOn, setIsSettingsOn, setPomodoro }: Props) => {
   }
 
   function handleOutsideClick(e: any) {
+    //@ts-ignore
     if (modalRef.current && !modalRef.current.contains(e.target)) {
       setIsSettingsOn(false);
     }
@@ -51,6 +52,7 @@ const Modal = ({ isSettingsOn, setIsSettingsOn, setPomodoro }: Props) => {
       {isSettingsOn && (
         <div
           className={`block modal absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-background  rounded-2xl text-pmd-blue-800 p-5 shadow-2xl`}
+          //@ts-ignore
           ref={modalRef}
         >
           <div className="flex pb-6 justify-between items-center">
@@ -87,6 +89,7 @@ const Modal = ({ isSettingsOn, setIsSettingsOn, setPomodoro }: Props) => {
                   label={'Pomodoro'}
                   name={'pomodoroTime'}
                   defaultValue={formData.pomodoroTime}
+                  //@ts-ignore
                   setFormData={setFormData}
                   onChange={handleInputChange}
                 />
@@ -94,6 +97,7 @@ const Modal = ({ isSettingsOn, setIsSettingsOn, setPomodoro }: Props) => {
                   label={'Pausa pequena'}
                   name={'shortBreakTime'}
                   defaultValue={formData.shortBreakTime}
+                  //@ts-ignore
                   setFormData={setFormData}
                   onChange={handleInputChange}
                 />
@@ -101,6 +105,7 @@ const Modal = ({ isSettingsOn, setIsSettingsOn, setPomodoro }: Props) => {
                   label={'Pausa Longa'}
                   name={'longBreakTime'}
                   defaultValue={formData.longBreakTime}
+                  //@ts-ignore
                   setFormData={setFormData}
                   onChange={handleInputChange}
                 />

@@ -24,10 +24,6 @@ const Pomorodo = () => {
   const { minutes, seconds } = useCalculateTime({ pomodoro, selectedControl });
   const [isSettingsOn, setIsSettingsOn] = useState(false);
 
-  //   document.title = `${controllers[selectedControl].label} - ${
-  //     minutes < 9 ? "0" : ""
-  //   }${minutes}:${seconds < 9 ? "0" : ""}${seconds}`;
-
   return (
     <main className="relative flex flex-col justify-center items-center">
       <Labels
@@ -41,7 +37,6 @@ const Pomorodo = () => {
           <div className="flex flex-col justify-center items-center font-semibold relative">
             <CircularProgressbarWithChildren
               strokeWidth={2}
-              trailColor="transparent"
               value={getRemainingTimePercentage()}
               styles={buildStyles({
                 trailColor: 'transparent',

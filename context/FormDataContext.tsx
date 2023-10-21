@@ -1,15 +1,11 @@
-"use client";
+'use client';
 
-import { stages } from "@/constants/constants";
-import { createContext } from "react";
-import { useState } from "react";
+import { stages } from '@/constants/constants';
+import { createContext } from 'react';
+import { useState } from 'react';
 
 type TodoContextType = {
-  formData: {
-    pomodoroTime: number;
-    shortBreakTime: number;
-    longBreakTime: number;
-  };
+  formData: any;
   setFormData: (e: any) => void;
 };
 
