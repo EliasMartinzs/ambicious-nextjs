@@ -25,7 +25,7 @@ const Labels = ({
   }
 
   return (
-    <div>
+    <div className="">
       <ul className="bg-pmd-blue-900 flex justify-between items-center rounded-full p-3 mb-6">
         {controllers.map((controller, index) => (
           <li

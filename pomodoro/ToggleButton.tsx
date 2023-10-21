@@ -1,4 +1,4 @@
-"use client";
+'use client';
 type Props = {
   pomodoro: any;
   setPomodoro: any;
@@ -19,7 +19,7 @@ const ToggleButton = ({ pomodoro, setPomodoro }: Props) => {
       onClick={togglePausePlay}
       className="text-base uppercase tracking-[0.5rem]"
     >
-      {pomodoro.isPaused ? "Başlat" : "Durdur"}
+      {pomodoro.isPaused ? 'Começar' : 'Parar'}
     </button>
   );
 };

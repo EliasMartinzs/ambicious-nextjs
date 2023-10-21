@@ -29,23 +29,23 @@ const Pomorodo = () => {
   //   }${minutes}:${seconds < 9 ? "0" : ""}${seconds}`;
 
   return (
-    <main className="">
+    <main className="relative flex flex-col justify-center items-center">
       <Labels
         resetTimerValues={resetTimerValues}
         selectedControl={selectedControl}
         setSelectedControl={setSelectedControl}
         setPomodoro={setPomodoro}
       />
-      <div>
-        <div>
-          <div>
+      <div className="tw-timer-container">
+        <div className="tw-timer">
+          <div className="flex flex-col justify-center items-center font-semibold relative">
             <CircularProgressbarWithChildren
               strokeWidth={2}
               trailColor="transparent"
               value={getRemainingTimePercentage()}
               styles={buildStyles({
                 trailColor: 'transparent',
-                pathColor: '#f87070',
+                pathColor: 'primary-500',
               })}
             >
               <TimeDisplay

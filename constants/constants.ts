@@ -1,7 +1,7 @@
 export const controllers = [
-  { label: "pomodoro", value: "pomodoroTime" },
-  { label: "short break", value: "shortBreakTime" },
-  { label: "long break", value: "longBreakTime" },
+  { label: 'Pomodoro', value: 'pomodoroTime' },
+  { label: 'Pausa pequena', value: 'shortBreakTime' },
+  { label: 'Pausa longa', value: 'longBreakTime' },
 ];
 
 export const stages = {

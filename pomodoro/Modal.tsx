@@ -1,8 +1,9 @@
-"use client";
-import React, { useContext, useEffect, useRef } from "react";
-import { stages } from "../constants/constants";
-import ModalInput from "./ModalInput";
-import { FormDataContext } from "../context/FormDataContext";
+'use client';
+import React, { useContext, useEffect, useRef } from 'react';
+import { stages } from '../constants/constants';
+import ModalInput from './ModalInput';
+import { FormDataContext } from '../context/FormDataContext';
+import { Button } from '@/components/ui/button';
 
 type Props = {
   isSettingsOn: any;
@@ -39,21 +40,21 @@ const Modal = ({ isSettingsOn, setIsSettingsOn, setPomodoro }: Props) => {
   }
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleOutsideClick);
+    document.addEventListener('mousedown', handleOutsideClick);
 
     return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener('mousedown', handleOutsideClick);
     };
   }, []);
   return (
     <>
       {isSettingsOn && (
         <div
-          className={`block modal absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white w-[20rem] md:w-[28rem] rounded-2xl text-pmd-blue-800 px-6 pt-6 pb-12`}
+          className={`block modal absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-background  rounded-2xl text-pmd-blue-800 p-5 shadow-2xl`}
           ref={modalRef}
         >
-          <div className=" flex pb-6 border-b justify-between items-center">
-            <h2 className="font-bold text-xl">Settings</h2>
+          <div className="flex pb-6 justify-between items-center">
+            <h2 className="font-bold text-xl">Personalizar</h2>
             <button onClick={() => setIsSettingsOn(false)}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -72,39 +73,44 @@ const Modal = ({ isSettingsOn, setIsSettingsOn, setPomodoro }: Props) => {
             </button>
           </div>
 
-          <div>
+          <div className="flex flex-col gap-y-3">
             <h3 className="uppercase tracking-wider font-bold text-sm py-3">
-              Time (minutes)
+              Tempo (minutos)
             </h3>
 
-            <form className="inputs flex" onSubmit={handleSubmit}>
-              <ModalInput
-                label={"pomodoro"}
-                name={"pomodoroTime"}
-                defaultValue={formData.pomodoroTime}
-                setFormData={setFormData}
-                onChange={handleInputChange}
-              />
-              <ModalInput
-                label={"short break"}
-                name={"shortBreakTime"}
-                defaultValue={formData.shortBreakTime}
-                setFormData={setFormData}
-                onChange={handleInputChange}
-              />
-              <ModalInput
-                label={"long break"}
-                name={"longBreakTime"}
-                defaultValue={formData.longBreakTime}
-                setFormData={setFormData}
-                onChange={handleInputChange}
-              />
-              <button
+            <form
+              className="flex flex-col justify-betweenr items-center"
+              onSubmit={handleSubmit}
+            >
+              <div className="flex gap-x-2">
+                <ModalInput
+                  label={'Pomodoro'}
+                  name={'pomodoroTime'}
+                  defaultValue={formData.pomodoroTime}
+                  setFormData={setFormData}
+                  onChange={handleInputChange}
+                />
+                <ModalInput
+                  label={'Pausa pequena'}
+                  name={'shortBreakTime'}
+                  defaultValue={formData.shortBreakTime}
+                  setFormData={setFormData}
+                  onChange={handleInputChange}
+                />
+                <ModalInput
+                  label={'Pausa Longa'}
+                  name={'longBreakTime'}
+                  defaultValue={formData.longBreakTime}
+                  setFormData={setFormData}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <Button
                 type="submit"
-                className="absolute -bottom-5 bg-pmd-red-700 text-white font-semibold text-sm rounded-full px-8 py-3 left-1/2 -translate-x-1/2 hover:bg-pmd-red-600 transition-all cursor-pointer"
+                className="rounded-2xl mt-4 font-bold shadow-xl hover:underline underline-offset-4"
               >
-                Apply
-              </button>
+                Aplicar
+              </Button>
             </form>
           </div>
         </div>

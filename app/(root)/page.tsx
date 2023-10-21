@@ -8,6 +8,7 @@ import Weather from '@/components/Shared/Weather';
 import Weeks from '@/components/Weeks';
 import Inspirations from '@/components/cards/Inspirations';
 import MenuOptions from '@/components/config/MenuOptions';
+import Pomorodo from '@/pomodoro/Pomodoro';
 
 export default function page() {
   return (
@@ -43,6 +44,7 @@ export default function page() {
       <section>
         <h3 className="text-2xl font-bold paddings mt-5">Stay Focused</h3>
         <Separator />
+        <Pomorodo />
       </section>
     </main>
   );

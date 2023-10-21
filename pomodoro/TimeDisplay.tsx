@@ -1,4 +1,4 @@
-import useCalculateTime from "../hooks/useCalculateTime";
+import useCalculateTime from '../hooks/useCalculateTime';
 
 type Props = {
   pomodoro: any;
@@ -10,8 +10,8 @@ const TimeDisplay = ({ pomodoro, selectedControl }: Props) => {
 
   return (
     <>
-      {minutes < 9 ? "0" : ""}
-      {minutes}:{seconds < 9 ? "0" : ""}
+      {minutes < 9 ? '0' : ''}
+      {minutes}:{seconds < 9 ? '0' : ''}
       {seconds}
     </>
   );
