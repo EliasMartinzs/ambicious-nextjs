@@ -11,6 +11,7 @@ const userSchema = new mongoose.Schema({
       type: Array,
     },
   ],
+  courses: [{ type: Array }],
   onboarded: {
     type: Boolean,
     default: false,

@@ -43,3 +43,5 @@ export const weekly = [
     title: 'Sexta',
   },
 ] as const;
+
+export const tools = ['Cursos', 'Livros', 'Projetos'] as const;

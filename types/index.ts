@@ -68,4 +68,12 @@ type WeatherType = {
   };
 };
 
-export type { WeeksPaylodType, TaskType, UserType, WeatherType };
+type Course = {
+  _id: string;
+  title: string;
+  review: string;
+  avaliation: number;
+  createdAt: any;
+};
+
+export type { WeeksPaylodType, TaskType, UserType, WeatherType, Course };

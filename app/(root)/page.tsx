@@ -4,6 +4,7 @@ import Calendary from '@/components/Shared/Calendary';
 import Clock from '@/components/Shared/Clock';
 import Navigation from '@/components/Shared/Navigation';
 import Separator from '@/components/Shared/Separator';
+import Tools from '@/components/Shared/Tools';
 import Weather from '@/components/Shared/Weather';
 import Weeks from '@/components/Weeks';
 import Inspirations from '@/components/cards/Inspirations';
@@ -49,6 +50,11 @@ export default function page() {
           <PomodoroSpecs />
           <Pomorodo />
         </div>
+      </section>
+      <section>
+        <h3 className="paddings text-2xl font-bold mt-5">Ferramentas</h3>
+        <Separator pad={true} />
+        <Tools />
       </section>
     </main>
   );
