@@ -5,7 +5,7 @@ import { Trash2 } from 'lucide-react';
 import StyledCheckbox from '../Shared/StyledCheckbox';
 import AddTask from '../Shared/AddTask';
 import { cn } from '@/lib/utils';
-import DeleteTask from '../Shared/DeleteTask';
+import DeleteTask from '../crud/DeleteTask';
 
 export default async function Monday({ dayOfWeek }: { dayOfWeek: string }) {
   const { userId } = auth();

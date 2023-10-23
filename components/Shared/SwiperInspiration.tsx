@@ -16,7 +16,7 @@ export default function SwiperInspiration({ phrases }: { phrases: any[] }) {
       >
         {Array.isArray(phrases)
           ? phrases.map(phrase => (
-              <SwiperSlide key={phrase.text} className="text-sm paddings">
+              <SwiperSlide key={phrase.text || ''} className="text-sm paddings">
                 <blockquote className="mt-6 border-l-2 border-r-2 border-primary-500 pl-6 italic">
                   <span className="text-xl">"</span>
                   {phrase.text}

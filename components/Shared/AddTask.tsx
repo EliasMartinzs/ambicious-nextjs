@@ -12,16 +12,9 @@ import {
 import { Input } from '@/components/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Plus } from 'lucide-react';
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import z from 'zod';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '../ui/form';
+
 import { createTasks } from '@/lib/actions/task.action';
 import Toast from './Toast';
 
@@ -34,26 +27,32 @@ const taskSchema = z.object({
     .max(50),
 });
 
+type ValidationSchema = z.infer<typeof taskSchema>;
+
 type DayCardProps = {
   dayOfWeek: string;
   author: string | undefined;
 };
 
 export default function AddTask({ dayOfWeek, author }: DayCardProps) {
-  const form = useForm<z.infer<typeof taskSchema>>({
+  const {
+    register,
+    reset,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ValidationSchema>({
     resolver: zodResolver(taskSchema),
-    defaultValues: {
-      task: '',
-    },
   });
 
-  const sumbitTask = async (values: z.infer<typeof taskSchema>) => {
+  const onSubmit: SubmitHandler<ValidationSchema> = async values => {
     await createTasks({
       author: author,
       path: '/',
       text: values.task,
       day: dayOfWeek,
     });
+
+    reset();
   };
 
   return (
@@ -71,24 +70,20 @@ export default function AddTask({ dayOfWeek, author }: DayCardProps) {
           <DialogTitle>Adicionar Tarefas</DialogTitle>
         </DialogHeader>
 
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(sumbitTask)} className="space-y-8">
-            <FormField
-              control={form.control}
-              name="task"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="">Tarefas</FormLabel>
-                  <FormControl>
-                    <Input placeholder="....." {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <Toast dialog="Tarefa Adicionada." textButton="Salvar" />
-          </form>
-        </Form>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <p className="font-extralight py-2">Titulo</p>
+          <Input
+            type="text"
+            placeholder="Ex: Javascript begginer"
+            className="border-b rounded-2xl border-slate-400/20 text-slate-400/70"
+            {...register('task')}
+          />
+          <Toast
+            dialog="Tarefa Adicionada."
+            classname="bg-primary-500 hover:bg-primary-600 rounded-2xl mt-3"
+            textButton="Salvar"
+          />
+        </form>
       </DialogContent>
     </Dialog>
   );
