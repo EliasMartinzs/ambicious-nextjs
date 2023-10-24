@@ -14,13 +14,13 @@ export default function User({ classname, user }: Props) {
 
   return (
     <div className={cn(classname)}>
-      {/* <Image
+      <Image
         src={userInfo.image}
         width={70}
         height={70}
         alt={userInfo.fullname}
         className="object-cover object-center saturate-200 rounded-full"
-      /> */}
+      />
       <div className="flex flex-col items-start justify-center">
         <h3></h3>
         <SignOutButton signOutCallback={() => router.push('/')}>

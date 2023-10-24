@@ -10,6 +10,8 @@ export default function Weather() {
   const [weather, setWeather] = useState<WeatherType>();
   const geolocation = useGeolocation({
     enableHighAccuracy: true,
+    maximumAge: 15000,
+    timeout: 12000,
   });
 
   useEffect(() => {
@@ -47,7 +49,7 @@ export default function Weather() {
         </div>
       </div>
       <div className="w-full xl:w-1/2 h-full flex-center">
-        <div className="w-full border-primary-500 shadow-lg">
+        <div className="w-full border-primary-500">
           <h4 className="font-black text-lg">Detalhes do Tempo</h4>
           <div className="flex flex-col gap-y-2 font-bold mt-4 text-sm">
             <div className="flex-between w-full">

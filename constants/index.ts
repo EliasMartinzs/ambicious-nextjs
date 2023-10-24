@@ -45,3 +45,10 @@ export const weekly = [
 ] as const;
 
 export const tools = ['Cursos', 'Livros', 'Projetos'] as const;
+
+export const categoriesProblems = [
+  'array',
+  'string',
+  'hash table',
+  'dynamic programming',
+];

@@ -98,3 +98,11 @@
     @apply bg-pmd-red-700 text-pmd-blue-800;
   }
 }
+
+.cl-userButtonBox {
+  @apply flex flex-col-reverse;
+}
+
+.cl-userButtonOuterIdentifier {
+  @apply text-lg text-slate-300/60;
+}

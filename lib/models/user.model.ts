@@ -12,6 +12,7 @@ const userSchema = new mongoose.Schema({
     },
   ],
   courses: [{ type: Array }],
+  books: [{ type: Array }],
   onboarded: {
     type: Boolean,
     default: false,

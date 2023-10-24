@@ -23,9 +23,8 @@ const ThemeSwitch = () => {
   if (!mounted) return null;
 
   return (
-    <div className="w-full flex flex-col items-start justify-center">
-      <h3 className="text-lg font-black">Temas</h3>
-      <div className="flex flex-col gap-y-2 mt-3">
+    <div className="w-full flex flex-col px-5">
+      <div className="flex flex-col gap-y-2 mt-3 px-2">
         {themes.map(them => {
           const isActive =
             theme === them
@@ -35,7 +34,7 @@ const ThemeSwitch = () => {
             <p
               key={them}
               className={cn(
-                'font-light capitalize w-full cursor-pointer',
+                'font-light capitalize w-full cursor-pointer text-sm',
                 isActive
               )}
               onClick={() => switchTheme(them)}

@@ -7,6 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import { ClerkProvider } from '@clerk/nextjs';
 import { dark } from '@clerk/themes';
 import FormDataProvider from '@/context/FormDataContext';
+import ProSidebar from '@/components/config/Sidebar';
 
 const montserrat = Montserrat({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -36,8 +37,13 @@ export default function RootLayout({
           <html lang="en">
             <body>
               <Providers>
-                <main className={montserrat.className}>{children}</main>
-                <ToastContainer />
+                <main className={montserrat.className}>
+                  {children}
+                  <ToastContainer />
+                  <div className="absolute top-2 right-2">
+                    <ProSidebar />
+                  </div>
+                </main>
               </Providers>
             </body>
           </html>

@@ -19,9 +19,6 @@ export default function page() {
       <h3 className="text-2xl font-bold paddings mt-5">Planejamento</h3>
       <Separator pad />
       <Inspirations />
-      <div className="absolute top-5 right-5">
-        <MenuOptions />
-      </div>
       <section className="main-grid">
         <div className="clock-grid">
           <Clock />

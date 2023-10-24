@@ -31,12 +31,10 @@ export default function Clock() {
       </div>
       <div
         key={currentMinute}
-        className="w-44 md:w-32 h-52 flex-center bg-primary-500 border-r border-slate-300/10 text-6xl"
+        className="w-44 md:w-32 h-52 flex-center bg-primary-500 border-r border-slate-300/10 text-6xl relative"
       >
         {currentMinute <= 9 ? `0${currentMinute}` : currentMinute}
-        <span className="absolute bottom-1 right-2 text-small">
-          {day[currentDay]}
-        </span>
+        <span className="text-xs absolute bottom-0">{day[currentDay]}</span>
       </div>
     </div>
   );

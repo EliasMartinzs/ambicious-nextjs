@@ -1,7 +1,7 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import Course from '../models/couser.models';
+import Course from '../models/couse.models';
 import User from '../models/user.model';
 import { connectToDB } from '../mongodb';
 
