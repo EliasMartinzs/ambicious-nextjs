@@ -7,22 +7,21 @@ import Link from 'next/link';
 export default async function Projects({ user }: { user: any }) {
   const question = await getQuestions();
   return (
-    <div className="">
-      <div className="flex-between w-full pr-5">
-        <h3 className="font-bold text-lg md:text-xl">Estudos</h3>
+    <>
+      <div className="flex-between w-full max-sm:px-10">
+        <h3 className="font-bold text-lg md:text-xl">Projetos</h3>
         <AddQuestion user={user} />
       </div>
       <ul className="flex gap-x-5 my-5">
         {categoriesProblems.map(category => (
           <li
             key={category.value}
-            className="capitalize border border-primary-500 shadow-inner hover:bg-primary-500 transition-colors text-foreground px-3 py-2 rounded-full hover:font-black cursor-pointer hover:shadow-2xl"
+            className="capitalize max-sm:text-xs max-sm:items-center max-sm:flex text-center md:border border-primary-500 shadow-inner hover:bg-primary-500 transition-colors text-foreground px-3 py-2 md:rounded-full hover:font-black cursor-pointer hover:shadow-2xl"
           >
             {category.label}
           </li>
         ))}
       </ul>
-
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 pr-10 mt-10">
         {question.map(quest => (
           <div
@@ -42,6 +41,6 @@ export default async function Projects({ user }: { user: any }) {
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
 }

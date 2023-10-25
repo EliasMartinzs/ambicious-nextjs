@@ -25,6 +25,14 @@ const questionSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  description: {
+    type: String,
+    required: true,
+  },
+  explanation: {
+    type: String,
+    required: true,
+  },
 });
 
 const Question =

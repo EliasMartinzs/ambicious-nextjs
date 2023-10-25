@@ -12,6 +12,8 @@ type QuestionType = {
   output: string;
   code: string;
   difficulty: string;
+  description: string;
+  explanation: string;
 };
 
 export const createQuestion = async ({
@@ -22,6 +24,8 @@ export const createQuestion = async ({
   output,
   question,
   difficulty,
+  description,
+  explanation,
 }: QuestionType) => {
   try {
     connectToDB();
@@ -34,6 +38,8 @@ export const createQuestion = async ({
       output,
       question,
       difficulty,
+      description,
+      explanation,
     });
 
     await User.findByIdAndUpdate(author, {

@@ -14,6 +14,7 @@ import {
 import Image from 'next/image';
 import { Button } from '../ui/button';
 import { MenuIcon } from 'lucide-react';
+import Link from 'next/link';
 
 export default function ProSidebar() {
   const [toggled, setToggled] = useState(false);
@@ -78,7 +79,7 @@ export default function ProSidebar() {
               />
             }
           >
-            Planejamento
+            <Link href="/">Planejamento</Link>
           </MenuItem>
           <MenuItem
             className="text-left"

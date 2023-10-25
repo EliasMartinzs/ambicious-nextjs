@@ -15,28 +15,22 @@ import { Input } from '../ui/input';
 import { Textarea } from '../ui/textarea';
 import { Button } from '../ui/button';
 import { categoriesProblems, difficultyProblems } from '@/constants';
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import { FormControl, FormField, FormItem, FormLabel } from '../ui/form';
+
 import { createQuestion } from '@/lib/actions/question.action';
+import Toast from './Toast';
 
 const questionSchema = z.object({
   question: z
     .string()
     .min(2, { message: 'A questao deve conter no minimo 2 caractere' })
     .max(100),
+  description: z.string().min(2).max(1000),
   category: z.string(),
   input: z.string(),
   output: z.string(),
   code: z.string(),
   difficulty: z.string(),
+  explanation: z.string(),
 });
 
 type ValidationSchema = z.infer<typeof questionSchema>;
@@ -61,18 +55,20 @@ export default function AddQuestion({ user }: { user: string }) {
       output: values.output,
       question: values.question,
       difficulty: values.difficulty,
+      description: values.description,
+      explanation: values.explanation,
     });
 
     reset();
   };
 
   return (
-    <div className="">
+    <div>
       <Dialog>
         <DialogTrigger>
           <PlusCircle />
         </DialogTrigger>
-        <DialogContent className="border-none shadow-2xl">
+        <DialogContent className="border-none shadow-2xl max-h-96 overflow-y-auto scroll">
           <DialogHeader>
             <DialogTitle>Insira sua questao abaixo</DialogTitle>
           </DialogHeader>
@@ -85,7 +81,20 @@ export default function AddQuestion({ user }: { user: string }) {
               className="border-b rounded-2xl border-slate-400/20 text-slate-400/70"
               {...register('question')}
             />
-
+            <p className="font-extralight py-2">Descricao</p>
+            <Input
+              type="text"
+              placeholder="Ex: Questao"
+              className="border-b rounded-2xl border-slate-400/20 text-slate-400/70"
+              {...register('description')}
+            />
+            <p className="font-extralight py-2">Explicacao</p>
+            <Input
+              type="text"
+              placeholder="Ex: Questao"
+              className="border-b rounded-2xl border-slate-400/20 text-slate-400/70"
+              {...register('explanation')}
+            />
             <select
               defaultValue=""
               className="block w-full my-5 focus:ring-slate-900 hover:bg-background bg-background text-foreground"
@@ -108,7 +117,6 @@ export default function AddQuestion({ user }: { user: string }) {
                 </option>
               ))}
             </select>
-
             <select
               defaultValue=""
               className="block w-full my-5 focus:ring-slate-900 hover:bg-background bg-background text-foreground"
@@ -139,7 +147,6 @@ export default function AddQuestion({ user }: { user: string }) {
               {...register('input')}
             />
             <p className="font-extralight py-2">Saida</p>
-
             <Input
               type="text"
               placeholder="Ex: Saida"
@@ -153,7 +160,11 @@ export default function AddQuestion({ user }: { user: string }) {
               className="border-b rounded-2xl border-slate-400/20 text-slate-400/70"
               {...register('code')}
             />
-            <Button type="submit">Salvar</Button>
+            <Toast
+              dialog="Question Adicionada."
+              classname="bg-primary-500 hover:bg-primary-600 rounded-2xl mt-3"
+              textButton="Salvar"
+            />
           </form>
         </DialogContent>
       </Dialog>
