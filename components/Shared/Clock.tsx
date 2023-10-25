@@ -1,6 +1,7 @@
 'use client';
+
 import { day } from '@/constants';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Clock() {
   const [currentMinute, setCurrentMinute] = useState(new Date().getMinutes());
@@ -22,7 +23,7 @@ export default function Clock() {
   }, [currentMinute]);
 
   return (
-    <div className="flex flex-row clock gap-[2px]">
+    <div className="flex flex-row clock gap-[2px] py-2">
       <div
         key={currentHours}
         className="w-44 md:w-32 h-52 flex-center bg-primary-500 border-slate-300/10 text-6xl"

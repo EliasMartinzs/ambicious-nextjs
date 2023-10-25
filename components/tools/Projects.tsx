@@ -8,10 +8,11 @@ export default async function Projects({ user }: { user: any }) {
   const question = await getQuestions();
   return (
     <>
-      <div className="flex-between w-full max-sm:px-10">
+      <div className="flex gap-x-5 items-center">
         <h3 className="font-bold text-lg md:text-xl">Projetos</h3>
         <AddQuestion user={user} />
       </div>
+
       <ul className="flex gap-x-5 my-5">
         {categoriesProblems.map(category => (
           <li

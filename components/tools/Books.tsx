@@ -14,7 +14,7 @@ export default async function Books({ user }: { user: any }) {
 
   return (
     <div className="w-full flex flex-col">
-      <div className="flex-between w-full max-sm:px-10">
+      <div className="flex gap-x-5 items-center">
         <h3 className="font-bold text-lg md:text-xl">Meus Livros</h3>
         <AddBook user={user} />
       </div>

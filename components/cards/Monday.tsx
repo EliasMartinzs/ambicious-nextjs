@@ -1,7 +1,6 @@
 import { fetchUser } from '@/lib/actions/user.action';
 import { auth } from '@clerk/nextjs';
 import { getTask } from '@/lib/actions/task.action';
-import { Trash2 } from 'lucide-react';
 import StyledCheckbox from '../Shared/StyledCheckbox';
 import AddTask from '../Shared/AddTask';
 import { cn } from '@/lib/utils';
