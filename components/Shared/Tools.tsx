@@ -47,33 +47,10 @@ export default async function Tools() {
             <Books user={user?._id.toString()} />
           </TabsContent>
           <TabsContent value="projetos">
-            <Projects />
+            <Projects user={user?._id.toString()} />
           </TabsContent>
         </div>
       </Tabs>
     </div>
   );
 }
-
-// <div className="w-full max-h-48 md:w-[15%] md:pl-5 flex flex-row md:flex-col max-md:items-center max-md:justify-center md:bg-primary-500 gap-3 font-semibold transition-all py-5 md:rounded-tr-2xl md:rounded-br-3xl shadow-3xl">
-// {tools.map(tool => (
-//   <Button
-//     key={tool}
-//     onClick={() => handleItemClick(tool)}
-//     className={cn(
-//       'cursor-pointer capitalize',
-//       tool === selectedItem
-//         ? 'bg-background max-sm:bg-primary-500 max-sm:text-background text-primary-500 font-black p-2 max-md:rounded-full md:rounded-tl-full md:rounded-bl-full shadow-inner'
-//         : ''
-//     )}
-//   >
-//     {tool}
-//   </Button>
-// ))}
-// </div>
-
-// <div className="w-full md:w-[85%]">
-// {selectedItem === 'Cursos' && <Courses user={user?.toString()} />}
-// {selectedItem === 'Livros' && <Books />}
-// {selectedItem === 'Projetos' && <Projects />}
-// </div>

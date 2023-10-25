@@ -47,8 +47,35 @@ export const weekly = [
 export const tools = ['Cursos', 'Livros', 'Projetos'] as const;
 
 export const categoriesProblems = [
-  'array',
-  'string',
-  'hash table',
-  'dynamic programming',
+  {
+    label: 'Array',
+    value: 'array',
+  },
+  {
+    label: 'String',
+    value: 'string',
+  },
+  {
+    label: 'Hash Table',
+    value: 'hash table',
+  },
+  {
+    label: 'Dynamic Programming',
+    value: 'dynamic programming',
+  },
+];
+
+export const difficultyProblems = [
+  {
+    label: 'Facil',
+    value: 'facil',
+  },
+  {
+    label: 'Medio',
+    value: 'medio',
+  },
+  {
+    label: 'Dificil',
+    value: 'dificil',
+  },
 ];

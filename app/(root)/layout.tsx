@@ -8,6 +8,7 @@ import { ClerkProvider } from '@clerk/nextjs';
 import { dark } from '@clerk/themes';
 import FormDataProvider from '@/context/FormDataContext';
 import ProSidebar from '@/components/config/Sidebar';
+import CentralImage from '@/components/CentralImage';
 
 const montserrat = Montserrat({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -38,6 +39,7 @@ export default function RootLayout({
             <body>
               <Providers>
                 <main className={montserrat.className}>
+                  <CentralImage />
                   {children}
                   <ToastContainer />
                   <div className="absolute top-2 right-2">

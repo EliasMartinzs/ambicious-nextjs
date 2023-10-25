@@ -1,37 +1,43 @@
 import { categoriesProblems } from '@/constants';
 import React from 'react';
 import AddQuestion from '../Shared/AddQuestion';
+import { getQuestions } from '@/lib/actions/question.action';
+import Link from 'next/link';
 
-export default function Projects() {
+export default async function Projects({ user }: { user: any }) {
+  const question = await getQuestions();
   return (
     <div className="">
       <div className="flex-between w-full pr-5">
         <h3 className="font-bold text-lg md:text-xl">Estudos</h3>
-        <AddQuestion />
+        <AddQuestion user={user} />
       </div>
       <ul className="flex gap-x-5 my-5">
         {categoriesProblems.map(category => (
           <li
-            key={category}
+            key={category.value}
             className="capitalize border border-primary-500 shadow-inner hover:bg-primary-500 transition-colors text-foreground px-3 py-2 rounded-full hover:font-black cursor-pointer hover:shadow-2xl"
           >
-            {category}
+            {category.label}
           </li>
         ))}
       </ul>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 pr-10">
-        {[1, 2, 3, 4, 5, 6].map(item => (
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 pr-10 mt-10">
+        {question.map(quest => (
           <div
-            key={item}
-            className="flex-start flex-col border-b border-primary-400 relative"
+            key={quest}
+            className="flex-start flex-col border-b border-primary-400 relative p-5"
           >
-            <h4 className="font-black text-primary-300 cursor-pointer">
-              The sum
-            </h4>
-            <span className="flex-between w-full font-extralight text-sm">
-              <p>Easy</p>
-              <p>Array</p>
+            <Link
+              href={`/problems/${quest._id.toString()}`}
+              className="font-black text-primary-300 cursor-pointer"
+            >
+              {quest.question}
+            </Link>
+            <span className="flex-between w-full text-sm capitalize font-medium mt-2">
+              <p>{quest.difficulty}</p>
+              <p>{quest.category}</p>
             </span>
           </div>
         ))}

@@ -46,7 +46,6 @@ export default function AddCourse({ user }: { user: string }) {
     register,
     reset,
     handleSubmit,
-
     formState: { errors },
   } = useForm<ValidationSchema>({
     resolver: zodResolver(courseSchema),

@@ -15,7 +15,6 @@ import { PomodoroSpecs } from '@/pomodoro/PomodoroSpecs';
 export default function page() {
   return (
     <main className="w-full overflow-hidden">
-      <CentralImage />
       <h3 className="text-2xl font-bold paddings mt-5">Planejamento</h3>
       <Separator pad />
       <Inspirations />
