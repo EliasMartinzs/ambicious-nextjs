@@ -118,14 +118,10 @@ export default function AccountProfile({ user, btnTitle }: Props) {
           render={({ field }) => (
             <FormItem className="flex items-start flex-col gap-3 w-full">
               <FormLabel className="text-base-semibold text-light-2">
-                Name
+                Nome
               </FormLabel>
               <FormControl className="flex-1 text-base-semibold text-gray-200">
-                <Input
-                  type="text"
-                  className="account-form_input no-focus"
-                  {...field}
-                />
+                <Input type="text" className="input" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -138,14 +134,10 @@ export default function AccountProfile({ user, btnTitle }: Props) {
           render={({ field }) => (
             <FormItem className="flex items-start flex-col gap-3 w-full">
               <FormLabel className="text-base-semibold text-light-2">
-                UserName
+                Sobrenome
               </FormLabel>
               <FormControl className="flex-1 text-base-semibold text-gray-200">
-                <Input
-                  type="text"
-                  className="account-form_input no-focus"
-                  {...field}
-                />
+                <Input type="text" className="input" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -161,11 +153,7 @@ export default function AccountProfile({ user, btnTitle }: Props) {
                 Bio
               </FormLabel>
               <FormControl className="flex-1 text-base-semibold text-gray-200">
-                <Textarea
-                  rows={10}
-                  className="account-form_input no-focus"
-                  {...field}
-                />
+                <Textarea rows={10} className="input" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -203,7 +191,7 @@ export default function AccountProfile({ user, btnTitle }: Props) {
                   type="file"
                   accept="image/*"
                   placeholder="Upload a photo"
-                  className="account-form_image-input"
+                  className="input"
                   onChange={e => handleImage(e, field.onChange)}
                 />
               </FormControl>
@@ -212,7 +200,10 @@ export default function AccountProfile({ user, btnTitle }: Props) {
           )}
         />
 
-        <Button variant="secondary" type="submit" className="bg-primary-500">
+        <Button
+          type="submit"
+          className="bg-primary-500 rounded-full shadow-sm font-medium hover:font-black hover:bg-primary-600 hover:shadow-inner transition-colors"
+        >
           Submit
         </Button>
       </form>

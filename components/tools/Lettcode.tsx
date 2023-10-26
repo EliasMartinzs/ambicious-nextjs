@@ -6,15 +6,14 @@ import Link from 'next/link';
 import DeleteProject from '../crud/DeleteProject';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 import { Button } from '../ui/button';
-import { cn } from '@/lib/utils';
 
-export default async function Projects({ user }: { user: any }) {
+export default async function Leetcode({ user }: { user: any }) {
   const question = await getQuestions();
 
   return (
     <>
       <div className="flex gap-x-5 items-center">
-        <h3 className="font-bold text-lg md:text-xl">Projetos</h3>
+        <h3 className="font-bold text-lg md:text-xl">Leetcode</h3>
         <AddQuestion user={user} />
       </div>
 

@@ -106,3 +106,7 @@
 .cl-userButtonOuterIdentifier {
   @apply text-lg text-slate-300/60;
 }
+
+.input {
+  @apply border-b rounded-2xl border-slate-400/20 text-slate-400/70;
+}

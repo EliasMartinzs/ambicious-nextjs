@@ -1,10 +1,10 @@
 import Books from '../tools/Books';
-import Projects from '../tools/Projects';
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Courses from '../tools/Courses';
 import { auth } from '@clerk/nextjs';
 import { fetchUser } from '@/lib/actions/user.action';
+import Leetcode from '../tools/Lettcode';
 
 export default async function Tools() {
   const { userId } = auth();
@@ -34,7 +34,7 @@ export default async function Tools() {
               value="projetos"
               className="md:rounded-tl-full py-2 font-bold"
             >
-              Projetos
+              Leetcode
             </TabsTrigger>
           </div>
         </TabsList>
@@ -47,7 +47,7 @@ export default async function Tools() {
             <Books user={user?._id.toString()} />
           </TabsContent>
           <TabsContent value="projetos">
-            <Projects user={user?._id.toString()} />
+            <Leetcode user={user?._id.toString()} />
           </TabsContent>
         </div>
       </Tabs>
