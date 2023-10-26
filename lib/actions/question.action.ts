@@ -1,5 +1,6 @@
 'use server';
 
+import { revalidatePath } from 'next/cache';
 import Question from '../models/question.models';
 import User from '../models/user.model';
 import { connectToDB } from '../mongodb';
@@ -14,6 +15,7 @@ type QuestionType = {
   difficulty: string;
   description: string;
   explanation: string;
+  path: string;
 };
 
 export const createQuestion = async ({
@@ -26,6 +28,7 @@ export const createQuestion = async ({
   difficulty,
   description,
   explanation,
+  path,
 }: QuestionType) => {
   try {
     connectToDB();
@@ -45,6 +48,8 @@ export const createQuestion = async ({
     await User.findByIdAndUpdate(author, {
       $push: { questions: createdQuestion },
     });
+
+    revalidatePath(path);
   } catch (error: any) {
     throw new Error(`failed to create question ${error}`);
   }
@@ -71,5 +76,23 @@ export const getQuestionsById = async (id: string) => {
     return getQuestionByID;
   } catch (error: any) {
     throw new Error(`failed to fetch questions by id ${error}`);
+  }
+};
+
+export const deleteQuestion = async ({
+  author,
+  path,
+}: {
+  author: string;
+  path: string;
+}) => {
+  try {
+    connectToDB();
+
+    await Question.deleteOne({ _id: author });
+
+    revalidatePath(path);
+  } catch (error: any) {
+    throw new Error(`failed to delete question ${error}`);
   }
 };

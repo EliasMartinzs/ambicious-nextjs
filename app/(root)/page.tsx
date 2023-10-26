@@ -8,7 +8,6 @@ import Tools from '@/components/Shared/Tools';
 import Weather from '@/components/Shared/Weather';
 import Weeks from '@/components/Weeks';
 import Inspirations from '@/components/cards/Inspirations';
-import MenuOptions from '@/components/config/MenuOptions';
 import Pomorodo from '@/pomodoro/Pomodoro';
 import { PomodoroSpecs } from '@/pomodoro/PomodoroSpecs';
 
@@ -18,7 +17,7 @@ export default function page() {
       <h3 className="text-2xl font-bold paddings mt-5">Planejamento</h3>
       <Separator pad />
       <Inspirations />
-      <section className="main-grid">
+      <section className="main-grid pt-5">
         <div className="clock-grid">
           <Clock />
           <br />

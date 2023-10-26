@@ -7,7 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import { ClerkProvider } from '@clerk/nextjs';
 import { dark } from '@clerk/themes';
 import FormDataProvider from '@/context/FormDataContext';
-import ProSidebar from '@/components/config/Sidebar';
+import ProSidebar from '@/components/config/ProSidebar';
 import CentralImage from '@/components/CentralImage';
 
 const montserrat = Montserrat({
@@ -42,7 +42,7 @@ export default function RootLayout({
                   <CentralImage />
                   {children}
                   <ToastContainer />
-                  <div className="fixed top-2 right-2">
+                  <div className="fixed inset-y-0 right-0 p-5">
                     <ProSidebar />
                   </div>
                 </main>

@@ -57,6 +57,7 @@ export default function AddQuestion({ user }: { user: string }) {
       difficulty: values.difficulty,
       description: values.description,
       explanation: values.explanation,
+      path: '/',
     });
 
     reset();

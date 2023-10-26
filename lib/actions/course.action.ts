@@ -50,3 +50,21 @@ export const getCourses = async () => {
     throw new Error(`error find course ${error}`);
   }
 };
+
+export const deleteCourse = async ({
+  author,
+  path,
+}: {
+  author: string;
+  path: string;
+}) => {
+  try {
+    connectToDB();
+
+    await Course.deleteOne({ _id: author });
+
+    revalidatePath(path);
+  } catch (error: any) {
+    throw new Error(`failed to delete course ${error}`);
+  }
+};

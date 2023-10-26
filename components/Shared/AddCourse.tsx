@@ -28,15 +28,8 @@ const courseSchema = z.object({
     .max(50),
   avaliation: z
     .string()
-    .min(1, { message: 'A avaliacao tem que conter um numero 1 ate 5' })
-    .max(3),
-  review: z
-    .string()
-    .min(2, {
-      message: 'Review do curso deve conter no minimo 2 caracteres',
-    })
-    .max(350),
-  thumbs: z.string(),
+    .max(3, { message: 'A avaliação deve ser entre 1 e 5, ou 3.3 etc' }),
+  review: z.string(),
 });
 
 type ValidationSchema = z.infer<typeof courseSchema>;
@@ -83,22 +76,22 @@ export default function AddCourse({ user }: { user: string }) {
             className="border-b rounded-2xl border-slate-400/20 text-slate-400/70"
             {...register('title')}
           />
-          <p className="font-extralight py-2 mt-2">Avaliacao</p>
+          <p className="font-extralight py-2">Avaliação</p>
           <Input
-            type="text"
-            placeholder="Ex: 3.3"
+            type="number"
+            placeholder="Ex: Javascript begginer"
             className="border-b rounded-2xl border-slate-400/20 text-slate-400/70"
             {...register('avaliation')}
           />
-          <p className="font-extralight py-2 mt-2">Review</p>
+          <p className="font-extralight py-2">Revisão</p>
           <Input
             type="text"
-            placeholder="Ex: muito bom mas..."
+            placeholder="Ex: Javascript begginer"
             className="border-b rounded-2xl border-slate-400/20 text-slate-400/70"
             {...register('review')}
           />
           <Toast
-            dialog="Curso Adicionada."
+            dialog="hklashfkjlashfjklahjkfhajkflas Adicionada."
             classname="bg-primary-500 hover:bg-primary-600 rounded-2xl mt-3"
             textButton="Salvar"
           />

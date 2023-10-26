@@ -13,7 +13,7 @@ export default async function Tools() {
   return (
     <div className="py-10 mb-10">
       <Tabs
-        defaultValue="projetos"
+        defaultValue="cursos"
         className="w-full flex flex-col md:flex-row gap-10"
       >
         <TabsList className="w-full md:w-[15%]">

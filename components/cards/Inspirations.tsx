@@ -10,11 +10,11 @@ export default async function Inspirations() {
   const { phrases } = inspiration;
 
   return (
-    <div className="max-sm:hidden">
+    <>
       <h3 className="w-full text-xl font-medium flex-center text-center">
         Inspirações
       </h3>
       <SwiperInspiration phrases={phrases} />
-    </div>
+    </>
   );
 }

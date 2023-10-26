@@ -48,6 +48,10 @@ export const tools = ['Cursos', 'Livros', 'Projetos'] as const;
 
 export const categoriesProblems = [
   {
+    label: 'Todos',
+    value: 'todos',
+  },
+  {
     label: 'Array',
     value: 'array',
   },

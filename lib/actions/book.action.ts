@@ -50,3 +50,21 @@ export const getBooks = async () => {
     throw new Error(`failed to fecth books ${error}`);
   }
 };
+
+export const deleteBook = async ({
+  author,
+  path,
+}: {
+  author: string;
+  path: string;
+}) => {
+  try {
+    connectToDB();
+
+    await Book.deleteOne({ _id: author });
+
+    revalidatePath(path);
+  } catch (error: any) {
+    throw new Error(`failed to delete book ${error}`);
+  }
+};

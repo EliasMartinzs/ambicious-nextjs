@@ -1,7 +1,7 @@
 'use client';
 
 import { deleteTask } from '@/lib/actions/task.action';
-import { Trash, X } from 'lucide-react';
+import { X } from 'lucide-react';
 
 export default function DeleteTask({ author }: { author: string }) {
   const removeTask = async () => {

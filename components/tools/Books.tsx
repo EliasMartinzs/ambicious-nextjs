@@ -2,6 +2,7 @@ import { getBooks } from '@/lib/actions/book.action';
 import AddBook from '../Shared/AddBook';
 import { Rating, ThinStar } from '@smastrom/react-rating';
 import Image from 'next/image';
+import DeleteBook from '../crud/DeleteBook';
 
 const myStyles = {
   itemShapes: ThinStar,
@@ -29,7 +30,10 @@ export default async function Books({ user }: { user: any }) {
                 src={book.thumbs}
               />
             </div>
-            <h1 className="text-lg font-medium">{book.title}</h1>
+            <span className="text-lg font-medium flex-between">
+              <p>{book.title}</p>
+              <DeleteBook author={book._id.toString()} />
+            </span>
             <Rating
               style={{ maxWidth: 80 }}
               value={book.avaliation}
