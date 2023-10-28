@@ -5,6 +5,7 @@ import Courses from '../tools/Courses';
 import { auth } from '@clerk/nextjs';
 import { fetchUser } from '@/lib/actions/user.action';
 import Leetcode from '../tools/Lettcode';
+import Metas from '../tools/Metas';
 
 export default async function Tools() {
   const { userId } = auth();
@@ -32,9 +33,15 @@ export default async function Tools() {
             </TabsTrigger>
             <TabsTrigger
               value="projetos"
-              className="md:rounded-tl-full py-2 font-bold"
+              className="md:rounded-tl-full md:rounded-bl-full py-2 font-bold"
             >
               Leetcode
+            </TabsTrigger>
+            <TabsTrigger
+              value="metas"
+              className="md:rounded-tl-full py-2 font-bold"
+            >
+              Metas
             </TabsTrigger>
           </div>
         </TabsList>
@@ -48,6 +55,9 @@ export default async function Tools() {
           </TabsContent>
           <TabsContent value="projetos">
             <Leetcode user={user?._id.toString()} />
+          </TabsContent>
+          <TabsContent value="metas">
+            <Metas />
           </TabsContent>
         </div>
       </Tabs>
