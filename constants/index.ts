@@ -1,4 +1,6 @@
-import { Airplay } from 'lucide-react';
+type CategoryFields = {
+  [key: string]: { fieldName: string }[];
+};
 
 export const themes = [
   'wanella',
@@ -88,83 +90,79 @@ export const difficultyProblems = [
 
 export const categoriesMeta = [
   {
-    title: 'Saúde',
-    description: [
-      {
-        title: 'Perder Peso',
-        subTitle: 'Saúde e Bem-estar',
-        icon: './metas/biceps.png',
-      },
-      {
-        title: 'Treino Anual',
-        subTitle: 'Saúde e Bem-estar',
-        icon: './metas/exercise.png',
-      },
-      {
-        title: 'Atingir % de Gordura',
-        subTitle: 'Saúde e Bem-estar',
-        icon: './metas/percentage.png',
-      },
-    ],
+    title: 'Perder Peso',
+    subTitle: 'Saúde e Bem-estar',
+    icon: '/metas/loseweight.svg',
   },
   {
-    title: 'Finanças',
-    description: [
-      {
-        title: 'Renda Extra',
-        subTitle: 'Liberdade Financeira',
-        icon: './metas/money.png',
-      },
-      {
-        title: 'Faturamento Anual',
-        subTitle: 'Liberdade Financeira',
-        icon: './metas/money.png',
-      },
-      {
-        title: 'Reserva de Emergencia',
-        subTitle: 'Liberdade Financeira',
-        icon: './metas/money.png',
-      },
-      {
-        title: 'Guardar Dinheiro',
-        subTitle: 'Liberdade Financeira',
-        icon: './metas/money.png',
-      },
-    ],
+    title: 'Treino Anual',
+    subTitle: 'Saúde e Bem-estar',
+    icon: '/metas/exerciseyear.svg',
   },
   {
-    title: 'Intelectual',
-    description: [
-      {
-        title: 'Leitura Anual',
-        subTitle: 'Conhecimento',
-        icon: './metas/book.png',
-      },
-      {
-        title: 'Leitura Mensal',
-        subTitle: 'Conhecimento',
-        icon: './metas/book.png',
-      },
-      {
-        title: 'Aprender Novos Idiomas',
-        subTitle: 'Conhecimento',
-        icon: './metas/book.png',
-      },
-    ],
+    title: 'Atingir % de Gordura',
+    subTitle: 'Saúde e Bem-estar',
+    icon: '/metas/percent.svg',
+  },
+
+  {
+    title: 'Renda Extra',
+    subTitle: 'Liberdade Financeira',
+    icon: '/metas/money.svg',
   },
   {
-    title: 'Profissional',
-    description: [
-      {
-        title: 'Concluir Curso',
-        subTitle: 'Conhecimento',
-        icon: './metas/profissional.png',
-      },
-      {
-        title: 'Ser Promovido',
-        subTitle: 'Liberdade financeira',
-        icon: './metas/profissional.png',
-      },
-    ],
+    title: 'Faturamento Anual',
+    subTitle: 'Liberdade Financeira',
+    icon: '/metas/totalmoney.svg',
+  },
+  {
+    title: 'Reserva de Emergencia',
+    subTitle: 'Liberdade Financeira',
+    icon: '/metas/reserveemergency.svg',
+  },
+  {
+    title: 'Guardar Dinheiro',
+    subTitle: 'Liberdade Financeira',
+    icon: '/metas/savemoney.svg',
+  },
+
+  {
+    title: 'Leitura Anual',
+    subTitle: 'Conhecimento',
+    icon: '/metas/bookmonth.svg',
+  },
+  {
+    title: 'Leitura Mensal',
+    subTitle: 'Conhecimento',
+    icon: '/metas/bookyear.svg',
+  },
+  {
+    title: 'Aprender Novos Idiomas',
+    subTitle: 'Conhecimento',
+    icon: '/metas/language.svg',
+  },
+
+  {
+    title: 'Concluir Curso',
+    subTitle: 'Conhecimento',
+    icon: '/metas/course.svg',
+  },
+  {
+    title: 'Ser Promovido',
+    subTitle: 'Liberdade financeira',
+    icon: '/metas/promoted.svg',
   },
 ] as const;
+
+export const categoryFields: CategoryFields = {
+  'Perder Peso': [
+    { fieldName: 'Peso Atual' },
+    { fieldName: 'Peso que deseja perder' },
+    { fieldName: 'Peso desejado' },
+  ],
+  'Treino Anual': [
+    { fieldName: 'Treino' },
+    { fieldName: 'Peso que deseja perder' },
+    { fieldName: 'Peso desejado' },
+  ],
+};

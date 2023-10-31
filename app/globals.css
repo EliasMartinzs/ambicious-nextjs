@@ -110,3 +110,7 @@
 .input {
   @apply border-b rounded-2xl border-slate-400/20 text-slate-400/70;
 }
+
+.steps-button {
+  @apply rounded-2xl bg-primary-500 font-bold hover:bg-primary-700 mt-5 hover:font-black;
+}
