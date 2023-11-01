@@ -6,18 +6,22 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import StepByStep from '../steps/StepByStep';
+import { CircleDashed, PlusCircle } from 'lucide-react';
 
-export default function AddMeta() {
+export default function AddMeta({ author }: { author: string | undefined }) {
   return (
     <Dialog>
-      <DialogTrigger>Open</DialogTrigger>
-      <DialogContent className="max-w-2xl border-none shadow-inner bg-primary-500">
+      <DialogTrigger>
+        <PlusCircle />
+      </DialogTrigger>
+      <DialogContent className="max-w-2xl border-primary-700 shadow-3xl">
         <DialogHeader>
-          <DialogTitle>Criação de meta</DialogTitle>
+          <DialogTitle className="text-center w-full font-black text-lg">
+            Criação de Meta
+          </DialogTitle>
         </DialogHeader>
-
-        <div className="">
-          <StepByStep />
+        <div>
+          <StepByStep author={author} />
         </div>
       </DialogContent>
     </Dialog>

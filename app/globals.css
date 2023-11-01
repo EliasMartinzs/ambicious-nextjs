@@ -118,3 +118,9 @@
 .steps-button {
   @apply rounded-2xl bg-primary-500 font-bold hover:bg-primary-700 mt-5 hover:font-black;
 }
+
+.shadow-3xl {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}

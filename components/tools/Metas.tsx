@@ -1,71 +1,78 @@
-'use client';
-import { useForm } from 'react-hook-form';
+import { auth } from '@clerk/nextjs';
 import AddMeta from '../Shared/AddMeta';
-import Progressbar from '../Shared/Progressbar';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { MetaValidation } from '@/lib/validations/user';
-import z from 'zod';
+import { fetchUser } from '@/lib/actions/user.action';
+import { fetchMeta } from '@/lib/actions/meta.action';
 
-type Validation = z.infer<typeof MetaValidation>;
+import DeleteMeta from '../crud/DeleteMeta';
 
-export default function Metas() {
-  const { getValues } = useForm<Validation>({
-    resolver: zodResolver(MetaValidation),
-  });
+export default async function Metas() {
+  const { userId } = auth();
+  const author = await fetchUser({ userId });
+  const metas = await fetchMeta();
 
-  // const { category, descriptio, meta } = getValues();
+  console.log(metas);
 
-  // const metaInfo = {
-  //   category: category,
-  //   meta: meta,
-  //   description: descriptio,
-  // };
+  function formatDate(dataString: string) {
+    const data = new Date(dataString);
+    const day = data.getDate();
+    const month = data.getMonth() + 1;
+    const year = data.getFullYear();
 
-  console.log(getValues('category'));
+    const dayFormatado = day < 10 ? `0${day}` : day;
+    const monthFormatado = month < 10 ? `0${month}` : month;
+
+    return `${dayFormatado}/${monthFormatado}/${year}`;
+  }
 
   return (
-    <div className="w-full">
+    <div className="w-full pr-2 md:pr-5 lg:pr-10 xl:pr-14 2xl:pr-20">
       <div className="flex gap-x-5 items-center">
         <div className="flex items-center gap-x-3">
           <h3 className="font-bold text-lg md:text-xl">Metas</h3>
-          <AddMeta />
+          <AddMeta author={author?._id.toString()} />
         </div>
       </div>
-      <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        <div className="w-full border border-primary-500/70 p-5 rounded-2xl">
-          <h3 className="font-bold text-xl text-center py-2">Treino Anual</h3>
+      <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {metas &&
+          metas.map(meta => (
+            <div
+              key={meta?.meta}
+              className="w-full border border-primary-500 shadow-3xl p-5 rounded-xl relative"
+            >
+              <h3 className="font-bold text-xl text-center py-2">
+                {meta?.meta}
+              </h3>
 
-          <div className="w-full flex flex-col gap-y-3">
-            <span className="flex flex-col">
-              <p className="font-semibold text-lg py-1">Qual o seu objetivo?</p>
-              <p className="px-3 font-light">Shape ate o final do ano</p>
-            </span>
-            <span className="flex flex-col">
-              <p className="font-semibold text-lg py-1">Progresso</p>
-              <span className="flex gap-x-5">
-                <Progressbar progress={80} /> 80%
-              </span>
-            </span>
-            <span className="flex flex-col">
-              <p className="font-semibold text-lg py-1">
-                Por que essa meta é importante?
-              </p>
-              <p className="px-3 font-light">Saúde e Bem-estar</p>
-            </span>
-            <span className="flex flex-col">
-              <p className="font-semibold text-lg py-1">
-                Inicio e data limite?
-              </p>
-              <p className="px-3 font-light">
-                November 15th, 2020–November 19th, 2020
-              </p>
-            </span>
-            <span className="flex flex-col">
-              <p className="font-semibold text-lg py-1">Categoria</p>
-              <p className="px-3 font-light">Exercicio</p>
-            </span>
-          </div>
-        </div>
+              <div className="w-full flex flex-col gap-y-3">
+                <span className="flex flex-col">
+                  <p className="font-semibold text-lg py-1">
+                    Qual o seu objetivo?
+                  </p>
+                  <p className="px-3 font-light">{meta?.category}</p>
+                </span>
+                <span className="flex flex-col">
+                  <p className="font-semibold text-lg py-1">
+                    Por que essa meta é importante?
+                  </p>
+                  <p className="px-3 font-light">{meta?.description}</p>
+                </span>
+                <span className="flex flex-col">
+                  <p className="font-semibold text-lg py-1">
+                    Inicio e data limite?
+                  </p>
+                  <p className="px-3 flex gap-x-3 font-light">
+                    {formatDate(meta?.dateFrom)} - {formatDate(meta?.dateTo)}
+                  </p>
+                </span>
+                <span className="flex flex-col">
+                  <p className="font-semibold text-lg py-1">Categoria</p>
+                  <p className="px-3 font-light">{meta?.category}</p>
+                </span>
+              </div>
+
+              <DeleteMeta author={meta?._id.toString()} />
+            </div>
+          ))}
       </div>
     </div>
   );

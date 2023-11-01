@@ -5,6 +5,7 @@ import Step1 from './Step1';
 import Step2 from './Step2';
 import { addDays } from 'date-fns';
 import { DateRange } from 'react-day-picker';
+import { createMeta } from '@/lib/actions/meta.action';
 
 export type MetaInfoProps = {
   category?: string;
@@ -13,7 +14,7 @@ export type MetaInfoProps = {
   date?: DateRange | undefined;
 };
 
-const StepByStep = () => {
+const StepByStep = ({ author }: { author: string | undefined }) => {
   const [currentStep, setCurrentStep] = useState(1);
   const month = new Date().getMonth();
   const [metaInfo, setMetaInfo] = useState<MetaInfoProps>({
@@ -42,11 +43,7 @@ const StepByStep = () => {
         />
       )}
       {currentStep === 2 && (
-        <Step2
-          onNext={handleNext}
-          metaInfo={metaInfo}
-          setMetaInfo={setMetaInfo}
-        />
+        <Step2 metaInfo={metaInfo} setMetaInfo={setMetaInfo} author={author} />
       )}
     </>
   );
