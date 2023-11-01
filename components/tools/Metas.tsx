@@ -1,7 +1,28 @@
+'use client';
+import { useForm } from 'react-hook-form';
 import AddMeta from '../Shared/AddMeta';
 import Progressbar from '../Shared/Progressbar';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { MetaValidation } from '@/lib/validations/user';
+import z from 'zod';
+
+type Validation = z.infer<typeof MetaValidation>;
 
 export default function Metas() {
+  const { getValues } = useForm<Validation>({
+    resolver: zodResolver(MetaValidation),
+  });
+
+  // const { category, descriptio, meta } = getValues();
+
+  // const metaInfo = {
+  //   category: category,
+  //   meta: meta,
+  //   description: descriptio,
+  // };
+
+  console.log(getValues('category'));
+
   return (
     <div className="w-full">
       <div className="flex gap-x-5 items-center">

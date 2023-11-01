@@ -1,11 +1,9 @@
 'use client';
 
 import * as React from 'react';
-import { addDays, format } from 'date-fns';
+import { format } from 'date-fns';
 import { Calendar as CalendarIcon } from 'lucide-react';
 import { DateRange } from 'react-day-picker';
-import * as z from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
 
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -17,21 +15,17 @@ import {
 } from '@/components/ui/popover';
 import { ptBR } from 'date-fns/locale';
 
-const FormSchema = z.object({
-  dob: z.date({
-    required_error: 'A date of birth is required.',
-  }),
-});
+type DatePickerProps = {
+  date: DateRange | undefined;
+  setDate: React.Dispatch<React.SetStateAction<DateRange | undefined>>;
+  className?: React.HTMLAttributes<HTMLDivElement>;
+};
 
 export function DatePickerWithRange({
+  date,
+  setDate,
   className,
-}: React.HTMLAttributes<HTMLDivElement>) {
-  const month = new Date().getMonth();
-  const [date, setDate] = React.useState<DateRange | undefined>({
-    from: new Date(2023, month + 1, 20),
-    to: addDays(new Date(2023, month + 1, 20), 20),
-  });
-
+}: DatePickerProps) {
   return (
     <div className={cn('grid gap-2', className)}>
       <Popover>
@@ -40,7 +34,7 @@ export function DatePickerWithRange({
             id="date"
             variant={'ghost'}
             className={cn(
-              'w-[300px] justify-start text-left font-normal',
+              'w-full justify-start text-left font-normal',
               !date && 'text-muted-foreground'
             )}
           >
@@ -60,7 +54,7 @@ export function DatePickerWithRange({
           </Button>
         </PopoverTrigger>
         <PopoverContent
-          className="w-auto p-0 bg-background border-none"
+          className="w-auto p-0 m-0 border-none bg-primary-500 shadow-2xl"
           align="start"
         >
           <Calendar

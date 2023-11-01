@@ -11,7 +11,7 @@ export default function AddMeta() {
   return (
     <Dialog>
       <DialogTrigger>Open</DialogTrigger>
-      <DialogContent className="border-none shadow-2xl bg-black/50">
+      <DialogContent className="border-none shadow-inner bg-primary-500">
         <DialogHeader>
           <DialogTitle>Criação de meta</DialogTitle>
         </DialogHeader>

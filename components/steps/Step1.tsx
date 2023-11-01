@@ -3,63 +3,92 @@ import Image from 'next/image';
 import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
 import { Dispatch, SetStateAction, useState } from 'react';
+import { MetaValidation } from '@/lib/validations/user';
+import z from 'zod';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Input } from '../ui/input';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '../ui/select';
+import { ca } from 'date-fns/locale';
+import { FormControl } from '../ui/form';
+import { sub } from 'date-fns';
+import { Subtitles } from 'lucide-react';
 
 type Props = {
   onNext: () => void;
-  category: string;
-  setCategory: Dispatch<SetStateAction<string>>;
+  setCategory: Dispatch<SetStateAction<{ title: string }>>;
 };
 
-const Step1 = ({ onNext, category, setCategory }: Props) => {
-  const [noCategory, setNoCategory] = useState('');
+type Validation = z.infer<typeof MetaValidation>;
 
-  const nextStep = () => {
-    category
-      ? onNext()
-      : setNoCategory('Por favor selecione uma categoria !!!');
+const Step1 = ({ onNext, setCategory }: Props) => {
+  const {
+    register,
+    handleSubmit,
+    getValues,
+    setValue,
+    formState: { errors },
+  } = useForm<Validation>();
+
+  const onSubmit: SubmitHandler<Validation> = data => {
+    onNext();
   };
 
   return (
-    <>
-      <div className="w-full flex-center gap-x-3 pt-3">
-        <span className="w-8 h-1 rounded-full bg-primary-500 shadow-2xl" />
-        <span className="w-8 h-1 rounded-full bg-white" />
-        <span className="w-8 h-1 rounded-full bg-white" />
-      </div>
-      <h4 className="font-black text-primary-500 py-8">
-        Selecione uma categoria
-      </h4>
-      <div className="w-full grid grid-cols-2 gap-3 transition-colors">
-        {categoriesMeta.map(cat => (
-          <Button
-            variant={'ghost'}
-            className={cn(
-              'flex-between w-full text-start hover:bg-black/30 px-5 py-7 hover:rounded-xl',
-              cat.title === category && 'border rounded-2xl border-primary-500'
-            )}
-            onClick={() => setCategory(cat.title)}
+    <form onSubmit={handleSubmit(onSubmit)} className="flex-between w-full">
+      <select
+        defaultValue=""
+        className="bg-transparent p-2 border-b"
+        {...register('category', { required: true })}
+        // onChange={e =>
+        //   setCategory({
+        //     title: e.target.value,
+        //   })
+        // }
+        onChange={e =>
+          setValue('category', e.target.value, {
+            shouldValidate: true,
+            shouldDirty: true,
+          })
+        }
+      >
+        <option value="" disabled className="font-black py-2">
+          Selecione a categoria
+        </option>
+        {categoriesMeta.map(category => (
+          <option
+            key={category.title}
+            value={category.title}
+            className="bg-primary-500 border-b font-black my-5"
           >
-            <span>{cat.title}</span>
-            <span className="bg-primary-500 w-[35px] h-[35px] rounded-xl flex-center">
-              <Image
-                src={cat.icon}
-                width={20}
-                height={20}
-                alt={cat.title}
-                className=""
-              />
-            </span>
-          </Button>
+            {category.title}
+          </option>
         ))}
-      </div>
-
-      <div className="w-full flex-between">
-        <Button className="steps-button" onClick={nextStep}>
-          Próximo
-        </Button>
-        {noCategory}
-      </div>
-    </>
+      </select>
+      {/* <button
+        type="button"
+        onClick={() =>
+          setValue('category', 'category', {
+            shouldValidate: true,
+            shouldDirty: true,
+          })
+        }
+      >
+        heheheh
+      </button> */}
+      <Button
+        className="border-b font-bold hover:bg-white hover:font-black hover:shadow-2xl hover:text-primary-600"
+        type="submit"
+      >
+        Proxímo
+      </Button>
+    </form>
   );
 };
 

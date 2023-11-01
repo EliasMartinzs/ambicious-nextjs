@@ -6,3 +6,14 @@ export const UserValidation = z.object({
   username: z.string().min(3).max(30),
   bio: z.string().min(3).max(1000),
 });
+
+export const MetaValidation = z.object({
+  category: z.string(),
+  meta: z
+    .string()
+    .min(3, { message: 'O seu objetivo deve conter no minimo 3 caracteres!' }),
+  descriptio: z
+    .string()
+    .min(3, { message: 'A descrição deve conter no minimo 3 caracteres!' })
+    .max(200, { message: 'A descrição deve conter no maximo 3 caracteres!' }),
+});

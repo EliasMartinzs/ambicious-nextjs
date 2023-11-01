@@ -153,16 +153,3 @@ export const categoriesMeta = [
     icon: '/metas/promoted.svg',
   },
 ] as const;
-
-export const categoryFields: CategoryFields = {
-  'Perder Peso': [
-    { fieldName: 'Peso Atual' },
-    { fieldName: 'Peso que deseja perder' },
-    { fieldName: 'Peso desejado' },
-  ],
-  'Treino Anual': [
-    { fieldName: 'Treino' },
-    { fieldName: 'Peso que deseja perder' },
-    { fieldName: 'Peso desejado' },
-  ],
-};

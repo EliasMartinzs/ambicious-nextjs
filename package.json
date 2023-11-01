@@ -12,6 +12,7 @@
     "@clerk/clerk-sdk-node": "^4.12.15",
     "@clerk/nextjs": "^4.25.4",
     "@clerk/themes": "^1.7.8",
+    "@hookform/error-message": "^2.0.1",
     "@hookform/resolvers": "^3.3.2",
     "@nextui-org/react": "^2.1.13",
     "@prisma/client": "^5.4.2",

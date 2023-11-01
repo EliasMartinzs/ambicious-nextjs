@@ -108,7 +108,11 @@
 }
 
 .input {
-  @apply border-b rounded-2xl border-slate-400/20 text-slate-400/70;
+  @apply border-b rounded-xl border-slate-400/20 text-slate-400/70 focus:border focus:border-primary-500;
+}
+
+.input-2 {
+  @apply bg-transparent text-white border-b border-white outline-none focus:border-r focus:border-white mt-2 transition-all;
 }
 
 .steps-button {
