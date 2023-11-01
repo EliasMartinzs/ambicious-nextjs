@@ -1,69 +1,78 @@
-import { DateRange } from 'react-day-picker';
 import { Dispatch, SetStateAction } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+
 import { MetaValidation } from '@/lib/validations/user';
 import * as z from 'zod';
-import { Input } from '../ui/input';
-import { Textarea } from '../ui/textarea';
+
 import { Button } from '../ui/button';
 import { Label } from '../ui/label';
 import { DatePickerWithRange } from '../config/DatePickerWithRange';
+import { MetaInfoProps } from './StepByStep';
 
 type Props = {
   onNext: () => void;
-  date: DateRange | undefined;
-  setDate: Dispatch<SetStateAction<DateRange | undefined>>;
-  category: {
-    title: string;
-  };
+  metaInfo: MetaInfoProps;
+  setMetaInfo: Dispatch<SetStateAction<MetaInfoProps>>;
 };
 
 type Validation = z.infer<typeof MetaValidation>;
 
-const Step2 = ({ onNext, date, setDate, category }: Props) => {
+const Step2 = ({ onNext, metaInfo, setMetaInfo }: Props) => {
   const {
     register,
     handleSubmit,
-    setValue,
+    control,
     formState: { errors },
   } = useForm<Validation>();
   const onSubmit: SubmitHandler<Validation> = data => {};
 
+  const onChangeMeta = (field: string, value: string) => {
+    setMetaInfo(prevState => ({
+      ...prevState,
+      [field]: value,
+    }));
+  };
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Label>Qual o seu objetivo?</Label>
-      <Input
-        className="input-2"
-        {...register('meta', {
-          required: true,
-        })}
-        placeholder={category.title}
-        onChange={e =>
-          setValue('meta', e.target.value, {
-            shouldValidate: true,
-            shouldDirty: true,
-          })
-        }
-      />
-      {errors.category && errors.category.type === 'required' && (
-        <span>This is required</span>
-      )}
-      <br />
-      <Label>Nota?</Label>
-      <Input
-        className="input-2"
-        {...register('descriptio', { required: true })}
-        placeholder={`Ex: Como posso conseguir isso ${category.title}`}
-        onChange={e =>
-          setValue('descriptio', e.target.value, {
-            shouldValidate: true,
-            shouldDirty: true,
-          })
-        }
-      />
-      <br />
-      <DatePickerWithRange date={date} setDate={setDate} />
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-y-5">
+      <span className="flex flex-col">
+        <Label>Qual o seu objetivo?</Label>
+        <Controller
+          name="meta"
+          control={control}
+          rules={{ required: 'Este campo é obrigatório' }}
+          render={({ field }) => (
+            <input
+              {...field}
+              placeholder={metaInfo.category}
+              onChange={e => onChangeMeta('meta', e.target.value)}
+              className="input-2 p-4"
+            />
+          )}
+        />
+        {errors.meta && <p>{errors.meta.message}</p>}
+      </span>
+      <span className="flex flex-col">
+        <Label>Por que essa meta é importante?</Label>
+        <Controller
+          name="descriptio"
+          control={control}
+          rules={{ required: 'Este campo é obrigatório' }}
+          render={({ field }) => (
+            <input
+              {...field}
+              placeholder={metaInfo.category}
+              onChange={e => onChangeMeta('description', e.target.value)}
+              className="input-2 p-4"
+            />
+          )}
+        />
+        {errors.meta && <p>{errors.meta.message}</p>}
+      </span>
+      <span className="flex flex-col">
+        <Label>Escolha a data de inicio e fim de sua meta!</Label>
+        <DatePickerWithRange metaInfo={metaInfo} setMetaInfo={setMetaInfo} />
+      </span>
       <Button
         className="border-b font-bold hover:bg-white hover:font-black hover:shadow-2xl hover:text-primary-600 mt-5"
         type="submit"

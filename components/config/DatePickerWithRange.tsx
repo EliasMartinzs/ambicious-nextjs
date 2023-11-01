@@ -1,6 +1,5 @@
 'use client';
 
-import * as React from 'react';
 import { format } from 'date-fns';
 import { Calendar as CalendarIcon } from 'lucide-react';
 import { DateRange } from 'react-day-picker';
@@ -14,18 +13,30 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 import { ptBR } from 'date-fns/locale';
+import { MetaInfoProps } from '../steps/StepByStep';
+import { Dispatch, SetStateAction } from 'react';
 
 type DatePickerProps = {
-  date: DateRange | undefined;
-  setDate: React.Dispatch<React.SetStateAction<DateRange | undefined>>;
+  metaInfo: MetaInfoProps;
+  setMetaInfo: Dispatch<SetStateAction<MetaInfoProps>>;
   className?: React.HTMLAttributes<HTMLDivElement>;
 };
 
 export function DatePickerWithRange({
-  date,
-  setDate,
+  metaInfo,
+  setMetaInfo,
   className,
 }: DatePickerProps) {
+  const onSelectDate = (e: DateRange | undefined) => {
+    setMetaInfo(prevState => ({
+      ...prevState,
+      date: {
+        from: e?.from,
+        to: e?.to,
+      },
+    }));
+  };
+
   return (
     <div className={cn('grid gap-2', className)}>
       <Popover>
@@ -35,18 +46,18 @@ export function DatePickerWithRange({
             variant={'ghost'}
             className={cn(
               'w-full justify-start text-left font-normal',
-              !date && 'text-muted-foreground'
+              !metaInfo?.date && 'text-muted-foreground'
             )}
           >
             <CalendarIcon className="mr-2 h-4 w-4" />
-            {date?.from ? (
-              date.to ? (
+            {metaInfo?.date?.from ? (
+              metaInfo?.date.to ? (
                 <>
-                  {format(date.from, 'LLL dd, y')} -{' '}
-                  {format(date.to, 'LLL dd, y')}
+                  {format(metaInfo?.date.from, 'LLL dd, y')} -{' '}
+                  {format(metaInfo?.date.to, 'LLL dd, y')}
                 </>
               ) : (
-                format(date.from, 'LLL dd, y')
+                format(metaInfo?.date.from, 'LLL dd, y')
               )
             ) : (
               <span>Escolha uma data</span>
@@ -61,9 +72,9 @@ export function DatePickerWithRange({
             initialFocus
             mode="range"
             locale={ptBR}
-            defaultMonth={date?.from}
-            selected={date}
-            onSelect={setDate}
+            defaultMonth={metaInfo?.date?.from}
+            selected={metaInfo?.date}
+            onSelect={e => onSelectDate(e)}
             numberOfMonths={2}
           />
         </PopoverContent>

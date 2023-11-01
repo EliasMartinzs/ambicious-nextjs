@@ -1,30 +1,29 @@
 'use client';
 
-import { ChangeEvent, useState } from 'react';
+import { useState } from 'react';
 import Step1 from './Step1';
 import Step2 from './Step2';
-import Step3 from './Step3';
 import { addDays } from 'date-fns';
 import { DateRange } from 'react-day-picker';
-import { useForm } from 'react-hook-form';
-import z from 'zod';
-import { MetaValidation } from '@/lib/validations/user';
-import { zodResolver } from '@hookform/resolvers/zod';
 
-type Validation = z.infer<typeof MetaValidation>;
+export type MetaInfoProps = {
+  category?: string;
+  meta?: string;
+  description?: string;
+  date?: DateRange | undefined;
+};
 
 const StepByStep = () => {
   const [currentStep, setCurrentStep] = useState(1);
-  const [categories, setCategories] = useState<{
-    title: string;
-  }>({
-    title: '',
-  });
-
   const month = new Date().getMonth();
-  const [date, setDate] = useState<DateRange | undefined>({
-    from: new Date(2023, month + 1, 20),
-    to: addDays(new Date(2023, month + 1, 20), 20),
+  const [metaInfo, setMetaInfo] = useState<MetaInfoProps>({
+    category: '',
+    description: '',
+    meta: '',
+    date: {
+      from: new Date(2023, month + 1, 20),
+      to: addDays(new Date(2023, month + 1, 20), 20),
+    },
   });
 
   const handleNext = () => {
@@ -36,14 +35,17 @@ const StepByStep = () => {
   return (
     <>
       {currentStep === 1 && (
-        <Step1 onNext={handleNext} setCategory={setCategories} />
+        <Step1
+          onNext={handleNext}
+          metaInfo={metaInfo}
+          setMetaInfo={setMetaInfo}
+        />
       )}
       {currentStep === 2 && (
         <Step2
           onNext={handleNext}
-          date={date}
-          setDate={setDate}
-          category={categories}
+          metaInfo={metaInfo}
+          setMetaInfo={setMetaInfo}
         />
       )}
     </>
