@@ -8,12 +8,14 @@ export default function Calendary() {
   const [date, setDate] = useState<Date | undefined>(new Date());
 
   return (
-    <Calendar
-      mode="single"
-      selected={date}
-      onSelect={setDate}
-      className="border-none capitalize p-0"
-      locale={ptBR}
-    />
+    <div className="max-sm:my-10">
+      <Calendar
+        mode="single"
+        selected={date}
+        onSelect={setDate}
+        className="border-none capitalize p-0 lg:mt-10"
+        locale={ptBR}
+      />
+    </div>
   );
 }

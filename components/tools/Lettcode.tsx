@@ -12,13 +12,13 @@ export default async function Leetcode({ user }: { user: any }) {
 
   return (
     <>
-      <div className="flex gap-x-5 items-center">
+      <div className="flex gap-x-5 items-center max-sm:justify-center max-sm:my-5">
         <h3 className="font-bold text-lg md:text-xl">Leetcode</h3>
         <AddQuestion user={user} />
       </div>
 
       <Tabs defaultValue="array">
-        <TabsList className="w-full flex items-center justify-start px-0 mt-5">
+        <TabsList className="w-full flex items-center justify-start px-0 mt-5 max-sm:grid grid-cols-3">
           {categoriesProblems.map((cat, idx) => (
             <TabsTrigger value={cat.value} key={cat.value}>
               <Button className="border-b border-primary-500">

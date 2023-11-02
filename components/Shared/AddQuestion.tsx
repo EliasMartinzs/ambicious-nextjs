@@ -8,12 +8,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { PlusCircle } from 'lucide-react';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { FilePlus } from 'lucide-react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '../ui/input';
 import { Textarea } from '../ui/textarea';
-import { Button } from '../ui/button';
 import { categoriesProblems, difficultyProblems } from '@/constants';
 
 import { createQuestion } from '@/lib/actions/question.action';
@@ -67,7 +66,7 @@ export default function AddQuestion({ user }: { user: string }) {
     <div>
       <Dialog>
         <DialogTrigger>
-          <PlusCircle />
+          <FilePlus />
         </DialogTrigger>
         <DialogContent className="border-none shadow-2xl max-h-96 overflow-y-auto scroll">
           <DialogHeader>

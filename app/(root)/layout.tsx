@@ -9,6 +9,7 @@ import { dark } from '@clerk/themes';
 import FormDataProvider from '@/context/FormDataContext';
 import ProSidebar from '@/components/config/ProSidebar';
 import CentralImage from '@/components/CentralImage';
+import Footer from '@/components/Footer';
 
 const montserrat = Montserrat({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -45,6 +46,7 @@ export default function RootLayout({
                   <div className="fixed inset-y-0 right-0 p-5">
                     <ProSidebar />
                   </div>
+                  <Footer />
                 </main>
               </Providers>
             </body>

@@ -15,6 +15,7 @@ import { Button } from '../ui/button';
 import { MenuIcon, X } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import Navigation from '../Shared/Navigation';
 
 export default function ProSidebar() {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -40,29 +41,9 @@ export default function ProSidebar() {
             <SignInButton />
           </SignedOut>
         </div>
-
-        <div className="flex flex-col gap-y-5">
-          <Link href="/" className="flex gap-x-2 items-center text-sm">
-            <Image
-              alt="planning"
-              width={30}
-              height={30}
-              src="/sidebar/planning.png"
-            />
-            Planejamento
-          </Link>
-          <Link href="/" className="flex gap-x-2 items-center text-sm">
-            <Image
-              alt="planning"
-              width={30}
-              height={30}
-              src="/sidebar/gym2.png"
-            />
-            Academia
-          </Link>
-        </div>
-
         <ThemeSwitch />
+
+        <Navigation />
       </div>
       <main className="flex absolute inset-y-0 right-0 z-50 p-5">
         <Button onClick={() => setShowSidebar(!showSidebar)}>

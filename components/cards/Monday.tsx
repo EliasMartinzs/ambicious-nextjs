@@ -14,7 +14,7 @@ export default async function Monday({ dayOfWeek }: { dayOfWeek: string }) {
   const mondayTask = tasks?.filter(task => task.dayOfWeek === dayOfWeek);
 
   return (
-    <div className="h-52 max-h-64 overflow-y-auto scroll pb-3 text-foreground shadow-inner">
+    <div className="w-full h-52 max-h-64 overflow-y-auto scroll pb-3 text-foreground shadow-inner">
       <div className="px-2 py-1 flex-between border-b border-primary-500 shadow-2xl">
         <h3 className="font-medium">{dayOfWeek}</h3>
         <AddTask author={user?._id.toString()} dayOfWeek={dayOfWeek} />

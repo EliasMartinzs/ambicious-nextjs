@@ -14,8 +14,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { PlusCircleIcon } from 'lucide-react';
-import { createCourse } from '@/lib/actions/course.action';
+import { FilePlus } from 'lucide-react';
 import { Input } from '../ui/input';
 import Toast from './Toast';
 import { ChangeEvent, useState } from 'react';
@@ -106,7 +105,7 @@ export default function AddBook({ user }: { user: string }) {
     <Dialog>
       <DialogTrigger asChild>
         <Button>
-          <PlusCircleIcon />
+          <FilePlus />
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] border-none shadow-2xl">

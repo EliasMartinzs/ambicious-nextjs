@@ -4,9 +4,7 @@ import * as z from 'zod';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-
 import { Button } from '@/components/ui/button';
-
 import {
   Dialog,
   DialogContent,
@@ -14,7 +12,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { PlusCircleIcon } from 'lucide-react';
+import { FilePlus } from 'lucide-react';
 import { createCourse } from '@/lib/actions/course.action';
 import { Input } from '../ui/input';
 import Toast from './Toast';
@@ -60,12 +58,14 @@ export default function AddCourse({ user }: { user: string }) {
     <Dialog>
       <DialogTrigger asChild>
         <Button>
-          <PlusCircleIcon />
+          <FilePlus />
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] border-none shadow-2xl">
+      <DialogContent className="sm:max-w-[425px] border-t border-t-primary-700 shadow-3xl">
         <DialogHeader>
-          <DialogTitle>Adicionar Cursos</DialogTitle>
+          <DialogTitle className="text-center underline underline-offset-8">
+            Adicionar Cursos
+          </DialogTitle>
         </DialogHeader>
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
@@ -73,26 +73,26 @@ export default function AddCourse({ user }: { user: string }) {
           <Input
             type="text"
             placeholder="Ex: Javascript begginer"
-            className="border-b rounded-2xl border-slate-400/20 text-slate-400/70"
+            className="input-2"
             {...register('title')}
           />
           <p className="font-extralight py-2">Avaliação</p>
           <Input
             type="number"
             placeholder="Ex: Javascript begginer"
-            className="border-b rounded-2xl border-slate-400/20 text-slate-400/70"
+            className="input-2"
             {...register('avaliation')}
           />
           <p className="font-extralight py-2">Revisão</p>
           <Input
             type="text"
             placeholder="Ex: Javascript begginer"
-            className="border-b rounded-2xl border-slate-400/20 text-slate-400/70"
+            className="input-2"
             {...register('review')}
           />
           <Toast
-            dialog="hklashfkjlashfjklahjkfhajkflas Adicionada."
-            classname="bg-primary-500 hover:bg-primary-600 rounded-2xl mt-3"
+            dialog="Curso Adicionado."
+            classname="bg-primary-500 hover:bg-primary-600 rounded-2xl mt-5"
             textButton="Salvar"
           />
         </form>

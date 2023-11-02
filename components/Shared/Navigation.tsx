@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function Navigation() {
   return (
     <section className="max-sm:-mt-20">
-      <h3 className="text-lg font-medium text-center">Navegação</h3>
+      <h3 className="text-lg font-bold">Navegação</h3>
       <ul className="mt-3 text-sm font-medium flex flex-row xl:flex-col gap-2">
         <li className="flex gap-x-3">
           <GraduationCap className="text-primary-500 w-6 h-6" />

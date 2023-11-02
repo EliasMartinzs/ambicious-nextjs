@@ -25,7 +25,7 @@ const ThemeSwitch = () => {
   return (
     <div className="flex flex-col">
       <h3 className="text-lg font-bold">Temas</h3>
-      <div className="flex flex-col gap-y-2 mt-3">
+      <div className="flex flex-col gap-y-2 mt-3 text-sm font-medium">
         {themes.map(them => {
           const isActive =
             theme === them

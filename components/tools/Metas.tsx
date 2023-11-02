@@ -25,12 +25,10 @@ export default async function Metas() {
   }
 
   return (
-    <div className="w-full pr-2 md:pr-5 lg:pr-10 xl:pr-14 2xl:pr-20">
-      <div className="flex gap-x-5 items-center">
-        <div className="flex items-center gap-x-3">
-          <h3 className="font-bold text-lg md:text-xl">Metas</h3>
-          <AddMeta author={author?._id.toString()} />
-        </div>
+    <div className="w-full h-full flex flex-col">
+      <div className="flex gap-x-5 items-center max-sm:justify-center max-sm:my-5">
+        <h3 className="font-bold text-lg md:text-xl">Metas</h3>
+        <AddMeta author={author?._id.toString()} />
       </div>
       <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {metas &&

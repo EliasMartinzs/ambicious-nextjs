@@ -6,13 +6,13 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import StepByStep from '../steps/StepByStep';
-import { CircleDashed, PlusCircle } from 'lucide-react';
+import { FilePlus } from 'lucide-react';
 
 export default function AddMeta({ author }: { author: string | undefined }) {
   return (
     <Dialog>
       <DialogTrigger>
-        <PlusCircle />
+        <FilePlus />
       </DialogTrigger>
       <DialogContent className="max-w-2xl border-primary-700 shadow-3xl">
         <DialogHeader>

@@ -14,8 +14,8 @@ export default async function Books({ user }: { user: any }) {
   const books = await getBooks();
 
   return (
-    <div className="w-full flex flex-col">
-      <div className="flex gap-x-5 items-center">
+    <div className="w-full h-full flex flex-col">
+      <div className="flex gap-x-5 items-center max-sm:justify-center max-sm:my-5">
         <h3 className="font-bold text-lg md:text-xl">Meus Livros</h3>
         <AddBook user={user} />
       </div>

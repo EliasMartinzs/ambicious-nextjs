@@ -17,8 +17,8 @@ export default async function Courses({ user }: { user: any }) {
   const courses = await getCourses();
 
   return (
-    <div className="w-full flex flex-col">
-      <div className="flex gap-x-5 items-center">
+    <div className="w-full h-full flex flex-col">
+      <div className="flex gap-x-5 items-center max-sm:justify-center max-sm:my-5">
         <h3 className="font-bold text-lg md:text-xl">Meu Aprendizado</h3>
         <AddCourse user={user} />
       </div>
