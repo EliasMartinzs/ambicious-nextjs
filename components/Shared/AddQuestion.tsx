@@ -68,7 +68,7 @@ export default function AddQuestion({ user }: { user: string }) {
         <DialogTrigger>
           <FilePlus />
         </DialogTrigger>
-        <DialogContent className="border-none shadow-2xl max-h-96 overflow-y-auto scroll">
+        <DialogContent className="border-t-8 border-t-primary-700 shadow-3xl max-h-96 overflow-y-auto scroll">
           <DialogHeader>
             <DialogTitle>Insira sua questao abaixo</DialogTitle>
           </DialogHeader>
@@ -78,21 +78,21 @@ export default function AddQuestion({ user }: { user: string }) {
             <Input
               type="text"
               placeholder="Ex: Questao"
-              className="border-b rounded-2xl border-slate-400/20 text-slate-400/70"
+              className="input-2"
               {...register('question')}
             />
             <p className="font-extralight py-2">Descricao</p>
             <Input
               type="text"
               placeholder="Ex: Questao"
-              className="border-b rounded-2xl border-slate-400/20 text-slate-400/70"
+              className="input-2"
               {...register('description')}
             />
             <p className="font-extralight py-2">Explicacao</p>
             <Input
               type="text"
               placeholder="Ex: Questao"
-              className="border-b rounded-2xl border-slate-400/20 text-slate-400/70"
+              className="input-2"
               {...register('explanation')}
             />
             <select
@@ -143,25 +143,25 @@ export default function AddQuestion({ user }: { user: string }) {
             <Input
               type="text"
               placeholder="Ex: Entrada da questao"
-              className="border-b rounded-2xl border-slate-400/20 text-slate-400/70"
+              className="input-2"
               {...register('input')}
             />
             <p className="font-extralight py-2">Saida</p>
             <Input
               type="text"
               placeholder="Ex: Saida"
-              className="border-b rounded-2xl border-slate-400/20 text-slate-400/70"
+              className="input-2"
               {...register('output')}
             />
             <p className="font-extralight py-2">Codigo</p>
             <Textarea
               cols={30}
               placeholder="Ex: Codigo"
-              className="border-b rounded-2xl border-slate-400/20 text-slate-400/70"
+              className="input-2 rounded-2xl"
               {...register('code')}
             />
             <Toast
-              dialog="Question Adicionada."
+              dialog="Questão Adicionada"
               classname="bg-primary-500 hover:bg-primary-600 rounded-2xl mt-3"
               textButton="Salvar"
             />

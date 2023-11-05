@@ -33,6 +33,7 @@ export default function RootLayout({
         baseTheme: dark,
       }}
       publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
+      afterSignInUrl="/onboarding"
     >
       <ReduxProvider>
         <FormDataProvider>

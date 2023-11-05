@@ -20,28 +20,32 @@ export default async function Books({ user }: { user: any }) {
         <AddBook user={user} />
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mt-5 gap-10">
-        {books.map(book => (
-          <div className="w-full">
-            <div className="w-full h-52 relative mb-2">
-              <Image
-                alt={book.title}
-                fill
-                className="object-contain object-center"
-                src={book.thumbs}
+        {books.length === 0 ? (
+          <small>Nenhum livro adicionado</small>
+        ) : (
+          books.map(book => (
+            <div className="w-full">
+              <div className="w-full h-52 relative mb-2">
+                <Image
+                  alt={book.title}
+                  fill
+                  className="object-contain object-center"
+                  src={book.thumbs}
+                />
+              </div>
+              <span className="text-lg font-medium flex-between">
+                <p>{book.title}</p>
+                <DeleteBook author={book._id.toString()} />
+              </span>
+              <Rating
+                style={{ maxWidth: 80 }}
+                value={book.avaliation}
+                itemStyles={myStyles}
+                readOnly
               />
             </div>
-            <span className="text-lg font-medium flex-between">
-              <p>{book.title}</p>
-              <DeleteBook author={book._id.toString()} />
-            </span>
-            <Rating
-              style={{ maxWidth: 80 }}
-              value={book.avaliation}
-              itemStyles={myStyles}
-              readOnly
-            />
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </div>
   );

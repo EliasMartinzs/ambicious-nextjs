@@ -10,10 +10,8 @@ import {
   UserButton,
   useAuth,
 } from '@clerk/nextjs';
-import Image from 'next/image';
 import { Button } from '../ui/button';
 import { MenuIcon, X } from 'lucide-react';
-import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import Navigation from '../Shared/Navigation';
 
@@ -41,6 +39,7 @@ export default function ProSidebar() {
             <SignInButton />
           </SignedOut>
         </div>
+
         <ThemeSwitch />
 
         <Navigation />

@@ -23,19 +23,23 @@ export default async function Courses({ user }: { user: any }) {
         <AddCourse user={user} />
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 mt-5 gap-10">
-        {courses.map(course => (
-          <div className="w-full relative">
-            <h1 className="text-lg font-medium">{course.title}</h1>
-            <small className="py-2">{course?.review}</small>
-            <Rating
-              style={{ maxWidth: 80 }}
-              value={course.avaliation}
-              itemStyles={myStyles}
-              readOnly
-            />
-            <DeleteCourse author={course._id.toString()} />
-          </div>
-        ))}
+        {courses.length === 0 ? (
+          <small>Nenhum curso adicionado</small>
+        ) : (
+          courses.map(course => (
+            <div className="w-full relative">
+              <h1 className="text-lg font-medium">{course.title}</h1>
+              <small className="py-2">{course?.review}</small>
+              <Rating
+                style={{ maxWidth: 80 }}
+                value={course.avaliation}
+                itemStyles={myStyles}
+                readOnly
+              />
+              <DeleteCourse author={course._id.toString()} />
+            </div>
+          ))
+        )}
       </div>
     </div>
   );

@@ -61,7 +61,7 @@ export default function AddCourse({ user }: { user: string }) {
           <FilePlus />
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] border-t border-t-primary-700 shadow-3xl">
+      <DialogContent className="sm:max-w-[425px] border-t-8 border-t-primary-700 shadow-3xl">
         <DialogHeader>
           <DialogTitle className="text-center underline underline-offset-8">
             Adicionar Cursos

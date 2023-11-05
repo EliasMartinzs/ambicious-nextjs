@@ -14,7 +14,7 @@ export default function AddMeta({ author }: { author: string | undefined }) {
       <DialogTrigger>
         <FilePlus />
       </DialogTrigger>
-      <DialogContent className="max-w-2xl border-primary-700 shadow-3xl">
+      <DialogContent className="max-w-2xl border-t-8 border-t-primary-700 shadow-3xl">
         <DialogHeader>
           <DialogTitle className="text-center w-full font-black text-lg">
             Criação de Meta

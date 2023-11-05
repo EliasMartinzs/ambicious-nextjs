@@ -31,7 +31,10 @@ export default async function Metas() {
         <AddMeta author={author?._id.toString()} />
       </div>
       <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {metas &&
+        {metas.length === 0 ? (
+          <small>Nenhuma meta adicionada</small>
+        ) : (
+          metas &&
           metas.map(meta => (
             <div
               key={meta?.meta}
@@ -70,7 +73,8 @@ export default async function Metas() {
 
               <DeleteMeta author={meta?._id.toString()} />
             </div>
-          ))}
+          ))
+        )}
       </div>
     </div>
   );

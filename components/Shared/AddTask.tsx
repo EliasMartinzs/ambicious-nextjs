@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -75,7 +74,7 @@ export default function AddTask({ dayOfWeek, author }: DayCardProps) {
           <Input
             type="text"
             placeholder="Ex: Javascript begginer"
-            className="border-b rounded-2xl border-slate-400/20 text-slate-400/70"
+            className="input-2"
             {...register('task')}
           />
           <Toast

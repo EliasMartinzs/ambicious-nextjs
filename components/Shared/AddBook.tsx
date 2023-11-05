@@ -108,7 +108,7 @@ export default function AddBook({ user }: { user: string }) {
           <FilePlus />
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] border-none shadow-2xl">
+      <DialogContent className="sm:max-w-[425px] border-t-8 border-t-primary-700 shadow-3xl">
         <DialogHeader>
           <DialogTitle>Adicionar Cursos</DialogTitle>
         </DialogHeader>
@@ -118,14 +118,14 @@ export default function AddBook({ user }: { user: string }) {
           <Input
             type="text"
             placeholder="Ex: Javascript begginer"
-            className="border-b rounded-2xl border-slate-400/20 text-slate-400/70"
+            className="input-2"
             {...register('title')}
           />
           <p className="font-extralight py-2 mt-2">Avaliacao</p>
           <Input
             type="text"
             placeholder="Ex: 3.3"
-            className="border-b rounded-2xl border-slate-400/20 text-slate-400/70"
+            className="input-2"
             {...register('avaliation')}
           />
           <p className="font-extralight py-2 mt-2">Escolha a capa do livro</p>
