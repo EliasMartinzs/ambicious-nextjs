@@ -27,7 +27,7 @@ export default function ProSidebar() {
       />
       <div
         className={cn(
-          'top-0 right-0 flex gap-y-5 flex-col  max-md:w-1/2 p-5 md:p-10 w-72 shadow-2xl bg-background text-white fixed h-full ease-in-out duration-300 z-50',
+          'top-0 right-0 flex gap-y-5 flex-col max-md:w-1/2 p-5 md:p-10 w-72 shadow-2xl bg-background text-white fixed h-full ease-in-out duration-300 z-50',
           showSidebar ? 'translate-x-0' : 'translate-x-full'
         )}
       >

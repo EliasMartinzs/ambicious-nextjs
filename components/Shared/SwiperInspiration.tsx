@@ -19,7 +19,7 @@ export default function SwiperInspiration({ phrases }: { phrases: any[] }) {
       >
         {Array.isArray(phrases)
           ? phrases.map(phrase => (
-              <blockquote className="mt-6 border-l-2 border-r-2 border-primary-500 pl-6 italic px-2 mx-auto">
+              <blockquote className="mt-6 border-l-2 border-r-2 border-primary-500 pl-6 italic px-2 mx-auto paragraph">
                 <span className="text-xl">"</span>
                 {phrase.text}
                 <span className="text-xl">"</span>

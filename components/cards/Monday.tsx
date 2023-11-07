@@ -16,12 +16,12 @@ export default async function Monday({ dayOfWeek }: { dayOfWeek: string }) {
   return (
     <div className="w-full h-52 max-h-64 overflow-y-auto scroll pb-3 text-foreground shadow-inner">
       <div className="px-2 py-1 flex-between border-b border-primary-500 shadow-2xl">
-        <h3 className="font-medium">{dayOfWeek}</h3>
+        <h3 className="font-medium paragraph">{dayOfWeek}</h3>
         <AddTask author={user?._id.toString()} dayOfWeek={dayOfWeek} />
       </div>
 
       {mondayTask && mondayTask.length === 0 ? (
-        <p className="px-2 font-extralight my-4 text-small">
+        <p className="px-5 font-extralight my-4 text-sm">
           Nenhuma tarefa adicionada
         </p>
       ) : (
@@ -29,7 +29,7 @@ export default async function Monday({ dayOfWeek }: { dayOfWeek: string }) {
         mondayTask.map(task => (
           <div
             key={task._id}
-            className="w-full mt-5 px-3 flex-between gap-y-3 text-xs"
+            className="w-full mt-5 px-3 flex-between gap-y-3 text-sm"
           >
             <span className="flex-center gap-x-2">
               <StyledCheckbox
@@ -38,7 +38,7 @@ export default async function Monday({ dayOfWeek }: { dayOfWeek: string }) {
               />
               <p
                 className={cn(
-                  'capitalize font-medium',
+                  'capitalize font-medium text-base',
                   task?.isSelected ? 'line-through' : 'list-none'
                 )}
               >

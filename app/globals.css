@@ -37,7 +37,15 @@
 }
 
 .paddings {
-  @apply px-1 md:px-5 lg:px-10 xl:px-14 2xl:px-20;
+  @apply px-2 md:px-5 lg:px-10 xl:px-14 2xl:px-20;
+}
+
+.title {
+  @apply text-lg md:text-2xl;
+}
+
+.paragraph {
+  @apply text-sm md:text-base;
 }
 
 .scroll::-webkit-scrollbar {
@@ -129,4 +137,8 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 0, 0, 0.5);
+}
+
+.react-select-3-input {
+  @apply text-sm text-start w-full h-10 border-none;
 }

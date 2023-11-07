@@ -7,13 +7,17 @@ import Tools from '@/components/Shared/Tools';
 import Weather from '@/components/Shared/Weather';
 import Weeks from '@/components/Weeks';
 import Inspirations from '@/components/cards/Inspirations';
+import FlashcardSpec from '@/components/flashcards/FlashcardSpec';
+import Flashcards from '@/components/flashcards/Flashcards';
 import Pomorodo from '@/pomodoro/Pomodoro';
 import { PomodoroSpecs } from '@/pomodoro/PomodoroSpecs';
 
 export default function page() {
   return (
     <main className="w-full overflow-hidden">
-      <h3 className="text-2xl font-bold paddings mt-5">Planejamento</h3>
+      <h3 className="title font-bold paddings mt-5" id="plan">
+        Planejamento
+      </h3>
       <Separator pad />
       <Inspirations />
       <section className="flex max-sm:flex-col max-sm:items-center paddings gap-x-20 pt-5">
@@ -30,11 +34,23 @@ export default function page() {
         </div>
       </section>
       <section className="paddings mt-10 xl:mt-20">
-        <h3 className="text-2xl font-bold mt-5">Stay Focused</h3>
+        <h3 className="title font-bold mt-5">Stay Focused</h3>
         <Separator />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-start">
-          <PomodoroSpecs />
-          <Pomorodo />
+          <div className="order-2 md:order-1 max-sm:my-10">
+            <Pomorodo />
+          </div>
+          <div className="order-1 md:order-2">
+            <PomodoroSpecs />
+          </div>
+        </div>
+        <div className="w-full mt-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-start">
+            <FlashcardSpec />
+            <div className="max-sm:my-10">
+              <Flashcards />
+            </div>
+          </div>
         </div>
       </section>
       <section className="mt-10 xl:mt-20">

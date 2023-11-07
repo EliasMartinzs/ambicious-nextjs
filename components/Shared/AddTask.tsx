@@ -57,10 +57,7 @@ export default function AddTask({ dayOfWeek, author }: DayCardProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button
-          variant="default"
-          className="hover:bg-primary-300/50 p-0 w-5 h-5"
-        >
+        <Button variant="default" className="p-0 w-5 h-5">
           <Plus />
         </Button>
       </DialogTrigger>

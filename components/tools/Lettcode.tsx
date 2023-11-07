@@ -28,36 +28,38 @@ export default async function Leetcode({ user }: { user: any }) {
           ))}
         </TabsList>
 
-        {categoriesProblems.map(cat => (
-          <TabsContent value={cat.value} key={cat.value}>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 pr-10 mt-10">
-              {question.length === 0 ? (
-                <small>Não contem nenhuma questão sobre {cat.value}</small>
-              ) : (
-                question
-                  .filter(quest => quest.category === cat.value)
-                  .map(quest => (
-                    <div
-                      key={quest}
-                      className="flex-start flex-col border-b border-primary-400 relative p-5"
-                    >
-                      <Link
-                        href={`/problems/${quest._id.toString()}`}
-                        className="font-black text-primary-300 cursor-pointer flex-between items-center"
+        <div className="max-sm:pt-10">
+          {categoriesProblems.map(cat => (
+            <TabsContent value={cat.value} key={cat.value}>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 pr-10 mt-10">
+                {question.length === 0 ? (
+                  <small>Não contem nenhuma questão sobre {cat.value}</small>
+                ) : (
+                  question
+                    .filter(quest => quest.category === cat.value)
+                    .map(quest => (
+                      <div
+                        key={quest}
+                        className="flex-start flex-col border-b border-primary-400 relative p-5"
                       >
-                        {quest?.question}
-                      </Link>
-                      <span className="flex-between w-full text-sm capitalize font-medium mt-2">
-                        <p>{quest?.difficulty}</p>
-                        <p>{quest?.category}</p>
-                      </span>
-                      <DeleteProject author={quest._id.toString()} />
-                    </div>
-                  ))
-              )}
-            </div>
-          </TabsContent>
-        ))}
+                        <Link
+                          href={`/problems/${quest._id.toString()}`}
+                          className="font-black text-primary-300 cursor-pointer flex-between items-center"
+                        >
+                          {quest?.question}
+                        </Link>
+                        <span className="flex-between w-full text-sm capitalize font-medium mt-2">
+                          <p>{quest?.difficulty}</p>
+                          <p>{quest?.category}</p>
+                        </span>
+                        <DeleteProject author={quest._id.toString()} />
+                      </div>
+                    ))
+                )}
+              </div>
+            </TabsContent>
+          ))}
+        </div>
 
         <TabsContent value="todos">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 pr-10">

@@ -11,7 +11,7 @@ export default async function Inspirations() {
 
   return (
     <>
-      <h3 className="w-full text-xl font-medium flex-center text-center">
+      <h3 className="w-full title font-medium flex-center text-center">
         Inspirações
       </h3>
       <SwiperInspiration phrases={phrases} />

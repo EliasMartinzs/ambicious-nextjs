@@ -10,8 +10,6 @@ export default async function Metas() {
   const author = await fetchUser({ userId });
   const metas = await fetchMeta();
 
-  console.log(metas);
-
   function formatDate(dataString: string) {
     const data = new Date(dataString);
     const day = data.getDate();

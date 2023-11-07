@@ -29,7 +29,7 @@ export default function Weather() {
         <div className="flex flex-row gap-x-4">
           <p className="text-4xl font-black">
             {weather?.current?.temp_c}
-            <span className="text-base align-top">⚬C</span>
+            <span className="paragraph align-top">⚬C</span>
           </p>
           <Image
             alt="rain"
@@ -39,7 +39,7 @@ export default function Weather() {
           />
         </div>
         <div className="flex flex-col">
-          <span className="flex gap-x-2 font-black text-base xl:text-lg">
+          <span className="flex gap-x-2 font-black paragraph">
             <p>{weather?.location?.name}</p>
             <p>{weather?.location?.region}</p>
           </span>

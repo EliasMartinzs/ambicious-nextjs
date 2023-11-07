@@ -12,7 +12,7 @@ export default async function Tools() {
   const user = await fetchUser({ userId });
 
   return (
-    <div className="md:py-10">
+    <div className="pb-10 md:py-10" id="tools">
       <Tabs defaultValue="cursos" className="w-full flex flex-col md:flex-row">
         <TabsList className="w-full md:w-[20%]">
           <div className="w-full flex flex-row max-sm:justify-center max-sm:items-center md:flex-col bg-primary-500 relative md:rounded-tr-2xl md:rounded-br-2xl md:pl-2">
