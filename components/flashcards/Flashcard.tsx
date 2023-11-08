@@ -1,60 +1,27 @@
-'use client';
-import { useState } from 'react';
-import { Button } from '../ui/button';
-import { Plus, X } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import CreateFlashcard from './CreateFlashcard';
+import { Settings2 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export default function Flashcard() {
-  const [toggleModal, setToggleModal] = useState(false);
   return (
-    <>
-      <Button
-        onClick={() => setToggleModal(!toggleModal)}
-        className="p-0 font-bold title "
-      >
-        Flashcard <Plus />
-      </Button>
-      <div
-        className={cn(
-          toggleModal && 'absolute inset-0 w-full h-full z-50 overflow-hidden'
-        )}
+    <div className={'w-full h-auto flex'}>
+      <span
+        className={'w-2 h-full bg-primary-500 rounded-tr-3xl rounded-br-3xl'}
       />
-      <div
-        className={cn(
-          'inset-0 fixed h-full ease-out duration-300 z-50 bg-white mt-10',
-          toggleModal ? 'translate-y-0' : 'translate-y-full'
-        )}
-      >
+      <div className={'w-full flex-start flex-col gap-y-3 py-7 px-5'}>
+        <h3 className={'title font-medium w-full flex-between'}>
+          <span>Algum Input Do Usuario </span>
+          <Settings2 />
+        </h3>
+        <p className={'paragraph'}>Alguma descricao</p>
+        <p>Categoria</p>
         <Button
-          className="w-full h-10 backdrop-blur-3xl -translate-y-10"
-          onClick={() => setToggleModal(!toggleModal)}
+          className={
+            'border border-primary-500 rounded-full transition-colors hover:bg-primary-500 hover:text-white hover:shadow-xl'
+          }
         >
-          <X />
+          Revisao
         </Button>
-        <div className="w-full h-full text-background">
-          <Tabs defaultValue="create">
-            <TabsList className="flex gap-x-10">
-              <TabsTrigger
-                value="create"
-                className="p-3 text-base data-[state=active]:bg-white data-[state=active]:text-background data-[state=active]:border-b data-[state=active]:font-bold border-black"
-              >
-                Criar Flashcard
-              </TabsTrigger>
-              <TabsTrigger
-                value="views"
-                className="p-3 text-base data-[state=active]:bg-white data-[state=active]:text-background data-[state=active]:border-b data-[state=active]:font-bold border-black"
-              >
-                Meus Flashcards
-              </TabsTrigger>
-            </TabsList>
-            <TabsContent value="create" className="w-full flex-center">
-              <CreateFlashcard />
-            </TabsContent>
-          </Tabs>
-        </div>
       </div>
-    </>
+    </div>
   );
 }

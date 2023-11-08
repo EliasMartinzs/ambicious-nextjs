@@ -48,6 +48,7 @@
     "next-connect": "^1.0.0",
     "next-themes": "^0.2.1",
     "pensador-promise": "^0.3.3",
+    "prettier": "^3.0.3",
     "rc-progress": "^3.5.1",
     "react": "^18",
     "react-circular-progressbar": "^2.1.0",

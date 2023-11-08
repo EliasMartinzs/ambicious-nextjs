@@ -12,6 +12,7 @@ import Colors from './Colors';
 
 const FlashcardSchema = z.object({
   title: z.string(),
+  description: z.string(),
 });
 
 interface CategoryOption {
@@ -35,7 +36,7 @@ export default function CreateFlashCard() {
   const [newCategory, setNewCategory] = useState<string>('');
   const [error, setError] = useState<string>('');
   const [color, setColor] = useState<string>('');
-  1;
+
   const handleAddNewCategory = (e: any) => {
     e.preventDefault();
 
@@ -63,6 +64,7 @@ export default function CreateFlashCard() {
     const data = [
       {
         title: values.title,
+        description: values.description,
         color: color,
         category: selectedCategories.label,
       },
@@ -74,66 +76,73 @@ export default function CreateFlashCard() {
       onSubmit={handleSubmit(onSubmit)}
       className="min-w-[400px] flex-start flex-col"
     >
-      <>
-        <Label className="text-base font-light mt-5">Titulo</Label>
-        <Controller
-          name="title"
-          control={control}
-          render={({ field }) => (
-            <Input
-              required={true}
-              placeholder="Ex: Prova de geografia"
-              className="w-full h-10 bg-white border-b border-slate-600/40 shadow-sm focus:border focus:rounded-lg focus:shadow-sm outline-none placeholder:text-sm placeholder:text-slate-800/60"
-              {...field}
-            />
-          )}
-        />
-      </>
-      <br />
-      <>
-        <Label className="text-base font-light">Selecione uma categoria</Label>
-        <Select
-          isMulti
-          options={options}
-          value={selectedCategories}
-          onChange={handleCategoryChange}
-          isSearchable
-          className="react-select-3-input"
-          placeholder="Selecione ou adicione uma categoria..."
-        />
-        {error && <small className="text-sm text-red-500">{error}</small>}
-      </>
-      <br />
-      <>
-        <Label className="text-base font-light text-start">
-          Criar uma categoria
-        </Label>
-        <div className="relative w-full">
+      <Label className="text-base font-light mt-5">Titulo</Label>
+      <Controller
+        name="title"
+        control={control}
+        render={({ field }) => (
           <Input
-            type="text"
-            value={newCategory}
+            required={true}
+            placeholder="Ex: Prova de geografia"
             className="w-full h-10 bg-white border-b border-slate-600/40 shadow-sm focus:border focus:rounded-lg focus:shadow-sm outline-none placeholder:text-sm placeholder:text-slate-800/60"
-            onChange={e => {
-              setNewCategory(e.target.value);
-              setError('');
-            }}
-            placeholder="Nova categoria"
+            {...field}
           />
-          <button
-            onClick={handleAddNewCategory}
-            className="absolute top-3 right-3"
-          >
-            <Plus className="w-4 h-4" />
-          </button>
-        </div>
-      </>
+        )}
+      />
+      <Label className="text-base font-light mt-5">Descrição</Label>
+      <Controller
+        name="description"
+        control={control}
+        render={({ field }) => (
+          <Input
+            required={true}
+            placeholder="Ex: prova foi chata"
+            className="w-full h-10 bg-white border-b border-slate-600/40 shadow-sm focus:border focus:rounded-lg focus:shadow-sm outline-none placeholder:text-sm placeholder:text-slate-800/60"
+            {...field}
+          />
+        )}
+      />
       <br />
-      <>
-        <Label className="text-base font-light">
-          Selecione uma cor do seu flashcard
-        </Label>
-        <Colors color={color} setColor={setColor} />
-      </>
+      <Label className="text-base font-light">Selecione uma categoria</Label>
+      <Select
+        isMulti
+        options={options}
+        value={selectedCategories}
+        onChange={handleCategoryChange}
+        isSearchable
+        className="react-select-3-input"
+        placeholder="Selecione ou adicione uma categoria..."
+      />
+      {error && <small className="text-sm text-red-500">{error}</small>}
+
+      <br />
+
+      <Label className="text-base font-light text-start">
+        Criar uma categoria
+      </Label>
+      <div className="relative w-full">
+        <Input
+          type="text"
+          value={newCategory}
+          className="w-full h-10 bg-white border-b border-slate-600/40 shadow-sm focus:border focus:rounded-lg focus:shadow-sm outline-none placeholder:text-sm placeholder:text-slate-800/60"
+          onChange={e => {
+            setNewCategory(e.target.value);
+            setError('');
+          }}
+          placeholder="Nova categoria"
+        />
+        <button
+          onClick={handleAddNewCategory}
+          className="absolute top-3 right-3"
+        >
+          <Plus className="w-4 h-4" />
+        </button>
+      </div>
+      <br />
+      <Label className="text-base font-light">
+        Selecione uma cor do seu flashcard
+      </Label>
+      <Colors color={color} setColor={setColor} />
       <br />
       <Button
         type="submit"
