@@ -9,6 +9,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 import { Button } from '../ui/button';
 import Colors from './Colors';
+import { createFlashcard } from '@/lib/actions/flashcard.action';
 
 const FlashcardSchema = z.object({
   title: z.string(),
@@ -22,8 +23,12 @@ interface CategoryOption {
 
 type ValidationSchema = z.infer<typeof FlashcardSchema>;
 
-export default function CreateFlashCard() {
-  const { handleSubmit, control, reset } = useForm<ValidationSchema>({
+export default function CreateFlashCard({
+  user,
+}: {
+  user: string | undefined;
+}) {
+  const { handleSubmit, reset, control } = useForm<ValidationSchema>({
     resolver: zodResolver(FlashcardSchema),
   });
 
@@ -60,15 +65,24 @@ export default function CreateFlashCard() {
     }
   };
 
-  const onSubmit: SubmitHandler<ValidationSchema> = values => {
-    const data = [
-      {
-        title: values.title,
-        description: values.description,
-        color: color,
-        category: selectedCategories.label,
-      },
-    ];
+  const onSubmit: SubmitHandler<ValidationSchema> = async values => {
+    await createFlashcard({
+      title: values.title,
+      description: values.description,
+      color: color,
+      category: selectedCategories.label,
+      author: user,
+    });
+
+    reset({
+      title: '',
+      description: '',
+    });
+
+    setSelectedCategories({
+      value: '',
+      label: '',
+    });
   };
 
   return (
@@ -110,6 +124,7 @@ export default function CreateFlashCard() {
         value={selectedCategories}
         onChange={handleCategoryChange}
         isSearchable
+        required={true}
         className="react-select-3-input"
         placeholder="Selecione ou adicione uma categoria..."
       />
@@ -140,15 +155,17 @@ export default function CreateFlashCard() {
       </div>
       <br />
       <Label className="text-base font-light">
-        Selecione uma cor do seu flashcard
+        Selecione a cor do seu flashcard
       </Label>
       <Colors color={color} setColor={setColor} />
       <br />
       <Button
-        type="submit"
-        className="bg-primary-500 text-white rounded-xl hover:bg-primary-900 transition-colors"
+        type={'submit'}
+        className={
+          'border rounded-full border-primary-500 text-slate-950 hover:bg-primary-500 hover:text-white hover:font-bold'
+        }
       >
-        Salvar
+        Salvar{' '}
       </Button>
     </form>
   );

@@ -1,7 +1,6 @@
 import BackImage from '@/components/Shared/BackImage';
 import Calendary from '@/components/Shared/Calendary';
 import Clock from '@/components/Shared/Clock';
-import Navigation from '@/components/Shared/Navigation';
 import Separator from '@/components/Shared/Separator';
 import Tools from '@/components/Shared/Tools';
 import Weather from '@/components/Shared/Weather';

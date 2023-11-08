@@ -15,6 +15,7 @@ const userSchema = new mongoose.Schema({
   books: [{ type: Array }],
   questions: [{ type: Array }],
   metas: [{ type: Array }],
+  flashcards: [{ type: Array }],
   onboarded: {
     type: Boolean,
     default: false,

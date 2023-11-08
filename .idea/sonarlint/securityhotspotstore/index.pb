@@ -29,3 +29,19 @@ w
 G.idea/sonarlint/issuestore/0/5/05e456ee321c8de56979e0603b5828c77779d760,3/c/3c58226337d361921d82adfbac77c9f546670e5a
 Å
 Q.idea/sonarlint/securityhotspotstore/f/1/f1ad7aecca0e55d73907ecaf1e0177c5a67f0b95,4/3/43b5b797da8d62917bef5641df9cbfc546c73ffc
+N
+lib/models/flashcard.models.ts,3/f/3f9cc384624e182a5deed5e6e5945689fa0e8192
+I
+lib/models/meta.models.ts,e/d/ed7ba9be7ce46078e389e24525ba9b2cb0e356dc
+O
+lib/actions/flashcard.action.ts,c/2/c2c00964b1e3b266abf1b6d1b61abbd056085cb3
+J
+lib/actions/meta.action.ts,7/c/7c0352a06fa7fc704264cf79659e6886732c4170
+H
+lib/models/user.model.ts,4/3/4319ca2a41e4980e52a7a8fe8f866d004e038025
+D
+components/Weeks.tsx,f/a/fa9726e6bd463edc40cecc5e030c289959ad756e
+K
+components/cards/Monday.tsx,c/2/c27a4c6e49f0aef9cc7ab55124f03dab2ac0d71a
+W
+'components/flashcards/FlashcardMenu.tsx,0/7/0789f2de291e91c596127bcb7324bb7ac358abc8

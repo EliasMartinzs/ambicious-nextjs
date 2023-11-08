@@ -24,7 +24,7 @@ export async function createMeta({
   meta,
 }: MetaProps) {
   try {
-    connectToDB();
+    await connectToDB();
 
     const create = await Meta.create({
       category,
@@ -45,7 +45,7 @@ export async function createMeta({
 
 export const fetchMeta = async () => {
   try {
-    connectToDB();
+    await connectToDB();
 
     const meta = await Meta.find();
 
@@ -57,7 +57,7 @@ export const fetchMeta = async () => {
 
 export async function deleteMeta({ author }: { author: string }) {
   try {
-    connectToDB();
+    await connectToDB();
 
     await Meta.deleteOne({ _id: author });
 
