@@ -110,12 +110,13 @@ export default function CreateFlashcard({
       setSelectedCategories(selectedOptions);
     }
   };
+
   const onSubmit: SubmitHandler<ValidationSchema> = async values => {
     await createFlashcard({
       title: values.title,
       description: values.description,
       color: color,
-      category: selectedCategories[0]?.value || selectedCategories.value,
+      category: selectedCategories.value,
       author: user,
     });
 
