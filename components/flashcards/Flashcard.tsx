@@ -1,14 +1,24 @@
+import * as React from 'react';
 import { Dot, Settings, Settings2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { FlashcardType } from '@/types';
 import { cn } from '@/lib/utils';
 
-export default function Flashcard({ flashcard }: { flashcard: FlashcardType }) {
+export default function Flashcard({
+  flashcard,
+  className,
+}: {
+  flashcard: FlashcardType;
+  className?: string;
+}) {
   const { category, color, description, title } = flashcard;
 
   return (
     <div
-      className={`w-full h-auto flex rounded-tr-3xl rounded-br-3xl shadow-inner-2 border-t`}
+      className={cn(
+        `w-full h-auto flex rounded-tr-3xl rounded-br-3xl shadow-inner-2 border-t text-black`,
+        className,
+      )}
     >
       <span className={cn(`w-2 h-full rounded-tl-full`, `bg-[${color}]`)} />
       <div className={'w-full flex-start flex-col gap-y-3 py-2 px-5'}>

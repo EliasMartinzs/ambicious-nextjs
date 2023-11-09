@@ -1,7 +1,3 @@
-type CategoryFields = {
-  [key: string]: { fieldName: string }[];
-};
-
 export const themes = [
   'wanella',
   'abyss',
@@ -10,6 +6,8 @@ export const themes = [
   'ancient',
   'castily',
 ] as const;
+
+export const lightThemes = ['city', 'lightmontain', 'library'] as const;
 
 export const day = [
   'Domingo',

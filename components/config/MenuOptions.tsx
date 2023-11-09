@@ -19,7 +19,7 @@ export default async function MenuOptions() {
 
   return (
     <Sheet>
-      <SheetTrigger className="">
+      <SheetTrigger>
         <MoreVertical className="h-8 w-8 text-foreground bg-[#191a19] rounded-full p-1 shadow-inner" />
       </SheetTrigger>
       <SheetContent className="bg-[#191a19] border-l border-primary-500">

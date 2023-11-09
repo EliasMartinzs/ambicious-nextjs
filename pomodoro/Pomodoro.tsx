@@ -12,6 +12,7 @@ import ToggleButton from './ToggleButton';
 import Modal from './Modal';
 import Labels from './Labels';
 import { Button } from '@/components/ui/button';
+import { useTheme } from 'next-themes';
 
 const Pomorodo = () => {
   const {
@@ -24,6 +25,7 @@ const Pomorodo = () => {
   } = useTimer();
   const { minutes, seconds } = useCalculateTime({ pomodoro, selectedControl });
   const [isSettingsOn, setIsSettingsOn] = useState(false);
+  const { theme } = useTheme();
 
   return (
     <main className="relative flex flex-col justify-center items-center">
@@ -40,8 +42,9 @@ const Pomorodo = () => {
             <CircularProgressbarWithChildren
               strokeWidth={2}
               value={getRemainingTimePercentage()}
+              className="text-red-500 bg-blue-500 fill-orange-500"
               styles={buildStyles({
-                pathColor: '#f1f1f1',
+                pathColor: `#000000`,
                 trailColor: 'transparent',
               })}
             >

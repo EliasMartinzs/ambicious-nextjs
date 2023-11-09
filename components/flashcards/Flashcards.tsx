@@ -11,19 +11,11 @@ export default async function Flashcards() {
   const flashcard = await fecthFlashcard();
 
   return (
-    <>
-      <FlashcardMenu user={user?._id.toString()} flashcard={flashcard} />
-      <div className="h-full flex-center">
-        {Array.isArray(flashcard) ? (
-          <>
-            {flashcard
-              .filter((_, index) => index < 1)
-              .map((card: FlashcardType) => (
-                <Flashcard key={card.title} flashcard={card} />
-              ))}
-          </>
-        ) : null}
+    <div className="w-full h-full text-center">
+      <h3 className="title font-bold">Criar um novo Flashcard</h3>
+      <div className="w-full h-full flex-center">
+        <FlashcardMenu user={user?._id.toString()} flashcard={flashcard} />
       </div>
-    </>
+    </div>
   );
 }

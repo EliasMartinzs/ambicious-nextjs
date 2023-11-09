@@ -3,9 +3,9 @@ import Link from 'next/link';
 
 export default function Navigation() {
   return (
-    <section className="">
+    <section className="text-foreground">
       <h3 className="text-lg font-bold">Navegação</h3>
-      <ul className="mt-3 text-base font-light">
+      <ul className="mt-3 text-base font-medium">
         <li className="flex">
           <Link href="#plan" className="hover:underline underline-offset-4">
             Planejamento

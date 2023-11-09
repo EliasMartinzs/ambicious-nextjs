@@ -39,8 +39,8 @@ const Step1 = ({ onNext, metaInfo, setMetaInfo }: Props) => {
             key={cat.title}
             onClick={() => onChangeMeta('category', cat.title)}
             className={cn(
-              'w-full flex-between gap-x-3 text-start font-bold hover:bg-primary-700 py-7 rounded-full shadow-inner',
-              metaInfo?.category === cat.title && 'bg-primary-700'
+              'w-full flex-between gap-x-3 text-start font-bold hover:bg-primary-700 py-7 rounded-full shadow-inner text-foreground hover:text-background',
+              metaInfo?.category === cat.title && 'bg-primary-700',
             )}
           >
             <span>{cat.title}</span>

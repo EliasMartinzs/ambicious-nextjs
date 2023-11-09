@@ -61,7 +61,7 @@ export default function AddTask({ dayOfWeek, author }: DayCardProps) {
           <Plus />
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] border-none shadow-2xl">
+      <DialogContent className="sm:max-w-[425px] border-none shadow-inner-2">
         <DialogHeader>
           <DialogTitle>Adicionar Tarefas</DialogTitle>
         </DialogHeader>

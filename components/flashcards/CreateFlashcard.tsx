@@ -134,7 +134,7 @@ export default function CreateFlashcard({
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="min-w-[400px] flex-start flex-col max-sm:px-7"
+      className="min-w-[400px] flex-start flex-col max-sm:px-7 text-black"
     >
       <Label className="text-base font-light mt-5">Titulo</Label>
       <Controller

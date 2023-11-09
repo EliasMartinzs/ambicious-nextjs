@@ -10,12 +10,6 @@
   padding: 0;
 }
 
-@layer base {
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-
 .flex-start {
   @apply flex items-start justify-center;
 }
@@ -97,15 +91,15 @@
 }
 
 .cl-userButtonOuterIdentifier {
-  @apply text-lg text-slate-300/60;
+  @apply text-lg text-foreground;
 }
 
 .input {
-  @apply border-b rounded-xl border-slate-400/20 text-slate-400/70 focus:border focus:border-primary-500;
+  @apply border-b rounded-xl border-background text-foreground focus:border focus:border-primary-500;
 }
 
 .input-2 {
-  @apply bg-transparent text-slate-300/70 border-b border-white outline-none focus:border-r focus:border-primary-400 mt-2 transition-all;
+  @apply bg-transparent text-foreground border-b border-background outline-none focus:border-r focus:border-primary-400 mt-2 transition-all;
 }
 
 .steps-button {

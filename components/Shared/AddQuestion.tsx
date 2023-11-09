@@ -68,7 +68,7 @@ export default function AddQuestion({ user }: { user: string }) {
         <DialogTrigger>
           <FilePlus />
         </DialogTrigger>
-        <DialogContent className="border-t-8 border-t-primary-700 shadow-3xl max-h-96 overflow-y-auto scroll">
+        <DialogContent className="border-t-8 border-t-primary-700 shadow-inner-2 max-h-96 overflow-y-auto scroll">
           <DialogHeader>
             <DialogTitle>Insira sua questao abaixo</DialogTitle>
           </DialogHeader>

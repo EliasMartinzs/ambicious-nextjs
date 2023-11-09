@@ -51,7 +51,7 @@ const Modal = ({ isSettingsOn, setIsSettingsOn, setPomodoro }: Props) => {
     <>
       {isSettingsOn && (
         <div
-          className={`block modal absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-background  rounded-2xl text-pmd-blue-800 p-5 shadow-2xl`}
+          className={`block modal absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-background  rounded-2xl text-pmd-blue-800 p-5 border border-foreground`}
           //@ts-ignore
           ref={modalRef}
         >

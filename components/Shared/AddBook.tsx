@@ -53,7 +53,7 @@ export default function AddBook({ user }: { user: string }) {
 
   const handleImage = (
     e: ChangeEvent<HTMLInputElement>,
-    fieldChange: (value: string) => void
+    fieldChange: (value: string) => void,
   ) => {
     e.preventDefault();
 
@@ -108,7 +108,7 @@ export default function AddBook({ user }: { user: string }) {
           <FilePlus />
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] border-t-8 border-t-primary-700 shadow-3xl">
+      <DialogContent className="sm:max-w-[425px] border-t-8 border-t-primary-700 shadow-inner-2">
         <DialogHeader>
           <DialogTitle>Adicionar Cursos</DialogTitle>
         </DialogHeader>

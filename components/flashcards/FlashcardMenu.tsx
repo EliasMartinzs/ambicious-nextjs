@@ -22,9 +22,9 @@ export default function FlashcardMenu({
     <>
       <Button
         onClick={() => setToggleModal(!toggleModal)}
-        className="p-0 font-bold title flex gap-x-5"
+        className="rounded-2xl hover:bg-foreground p-20 transition-colors text-foreground hover:text-background"
       >
-        Criar um novo Flashcard <Plus />
+        <Plus className="w-7 h-7 " />
       </Button>
       <div
         className={cn(
@@ -48,13 +48,13 @@ export default function FlashcardMenu({
             <TabsList className="flex gap-x-10">
               <TabsTrigger
                 value="create"
-                className="p-3 text-base data-[state=active]:bg-white data-[state=active]:text-background data-[state=active]:border-b data-[state=active]:font-bold border-black"
+                className="p-3 text-base text-black data-[state=active]:bg-white data-[state=active]:border-b data-[state=active]:font-bold border-black"
               >
                 Criar Flashcard
               </TabsTrigger>
               <TabsTrigger
                 value="views"
-                className="p-3 text-base data-[state=active]:bg-white data-[state=active]:text-background data-[state=active]:border-b data-[state=active]:font-bold border-black"
+                className="p-3 text-base text-black data-[state=active]:bg-white data-[state=active]:border-b data-[state=active]:font-bold border-black"
               >
                 Meus Flashcards
               </TabsTrigger>
@@ -63,12 +63,12 @@ export default function FlashcardMenu({
               <CreateFlashcard user={user} />
             </TabsContent>
             <TabsContent value="views">
-              <div className="overflow-x-auto paddings pt-5 pb-10">
+              <div className="overflow-x-auto paddings pt-5 pb-10 text-black">
                 {Array.isArray(flashcard) ? (
                   <div className="flex">
                     <Button
                       className={cn(
-                        'flex gap-x-5 border-b border-slate-400 font-medium',
+                        'flex gap-x-5 border-b border-primary-500 font-medium',
                         filteredFlashcards === 'Todos' &&
                           'border-black shadow-sm font-bold border-b-2',
                       )}
@@ -80,7 +80,7 @@ export default function FlashcardMenu({
                       <Button
                         key={card.title}
                         className={cn(
-                          'flex gap-x-5 border-b border-slate-400 shadow-sm font-medium',
+                          'flex gap-x-5 border-b border-primary-500 shadow-sm font-medium',
                           filteredFlashcards === card.category &&
                             'border-black font-bold border-b-2',
                         )}

@@ -23,7 +23,7 @@ export default function Clock() {
   }, [currentMinute]);
 
   return (
-    <div className="flex flex-row clock gap-[2px] py-2">
+    <div className="flex flex-row clock gap-[2px] py-2 text-slate-50">
       <div
         key={currentHours}
         className="w-44 md:w-32 h-52 flex-center bg-primary-500 border-slate-300/10 text-6xl"

@@ -27,7 +27,7 @@ export default function RootLayout({
       <ReduxProvider>
         <FormDataProvider>
           <html lang="en">
-            <body>{children}</body>
+            <body className="bg-background text-foreground">{children}</body>
           </html>
         </FormDataProvider>
       </ReduxProvider>
