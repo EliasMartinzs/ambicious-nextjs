@@ -1,4 +1,4 @@
-import { Settings2 } from 'lucide-react';
+import { Dot, Settings, Settings2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { FlashcardType } from '@/types';
 import { cn } from '@/lib/utils';
@@ -6,27 +6,28 @@ import { cn } from '@/lib/utils';
 export default function Flashcard({ flashcard }: { flashcard: FlashcardType }) {
   const { category, color, description, title } = flashcard;
 
-  console.log(color);
-
   return (
-    <div className={'w-full h-auto flex border rounded-2xl shadow-inner'}>
-      <span
-        className={cn(
-          `w-2 h-full rounded-tr-3xl rounded-br-3xl`,
-          `bg-[${color}]`,
-        )}
-      />
-      <div className={'w-full flex-start flex-col gap-y-3 py-7 px-5'}>
+    <div
+      className={`w-full h-auto flex rounded-tr-3xl rounded-br-3xl shadow-inner-2 border-t`}
+    >
+      <span className={cn(`w-2 h-full rounded-tl-full`, `bg-[${color}]`)} />
+      <div className={'w-full flex-start flex-col gap-y-3 py-2 px-5'}>
         <h3
-          className={'max-sm:text-base text-lg font-medium w-full flex-between'}
+          className={
+            'max-sm:text-base text-lg font-bold w-full flex-between capitalize'
+          }
         >
           <span>{title}</span>
-          <Settings2 />
+          <Settings className="w-4 h-4" />
         </h3>
-        <p className={'text-small'}>{description}</p>
-        <p className={'text-small border-b'}>{category}</p>
+        <p className={'text-small font-extralight'}>{description}</p>
+        <p
+          className={`text-small font-bold text-[${color}] p-2 border-b border-slate-500`}
+        >
+          {category}
+        </p>
         <Button
-          className={`border border-${color}-500 font-semibold hover:text-background hover:font-bold hover:shadow-lg transition-colors rounded-full`}
+          className={`border rounded-full border-slate-500/40 hover:border-black font-black transition-colors`}
         >
           Revisao
         </Button>

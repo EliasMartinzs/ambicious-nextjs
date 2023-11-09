@@ -16,14 +16,15 @@ export default function FlashcardMenu({
   flashcard?: FlashcardType;
 }) {
   const [toggleModal, setToggleModal] = useState(false);
+  const [filteredFlashcards, setFilteredFlashcards] = useState('Todos');
 
   return (
     <>
       <Button
         onClick={() => setToggleModal(!toggleModal)}
-        className="p-0 font-bold title "
+        className="p-0 font-bold title flex gap-x-5"
       >
-        Flashcard <Plus />
+        Criar um novo Flashcard <Plus />
       </Button>
       <div
         className={cn(
@@ -62,25 +63,84 @@ export default function FlashcardMenu({
               <CreateFlashcard user={user} />
             </TabsContent>
             <TabsContent value="views">
-              {Array.isArray(flashcard) && (
-                <>
-                  {flashcard.length === 0 ? (
-                    <div className="w-full flex-center my-20">
-                      <h2 className="title font-semibold">
-                        Até o momento não foi criado nenhum flashcard
-                      </h2>
-                    </div>
-                  ) : (
-                    <>
-                      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5 paddings">
-                        {flashcard.map((card: FlashcardType) => (
-                          <Flashcard key={card.title} flashcard={card} />
-                        ))}
-                      </div>
-                    </>
-                  )}
-                </>
-              )}
+              <div className="overflow-x-auto paddings pt-5 pb-10">
+                {Array.isArray(flashcard) ? (
+                  <div className="flex">
+                    <Button
+                      className={cn(
+                        'flex gap-x-5 border-b border-slate-400 font-medium',
+                        filteredFlashcards === 'Todos' &&
+                          'border-black shadow-sm font-bold border-b-2',
+                      )}
+                      onClick={() => setFilteredFlashcards('Todos')}
+                    >
+                      Todos
+                    </Button>
+                    {flashcard.map((card: FlashcardType) => (
+                      <Button
+                        key={card.title}
+                        className={cn(
+                          'flex gap-x-5 border-b border-slate-400 shadow-sm font-medium',
+                          filteredFlashcards === card.category &&
+                            'border-black font-bold border-b-2',
+                        )}
+                        onClick={() => setFilteredFlashcards(card.category)}
+                      >
+                        {card.category}
+                      </Button>
+                    ))}
+                  </div>
+                ) : (
+                  <>inutil</>
+                )}
+              </div>
+              <div className="w-full flex-center">
+                {filteredFlashcards === 'Todos' ? (
+                  <>
+                    {Array.isArray(flashcard) && (
+                      <>
+                        {flashcard.length === 0 ? (
+                          <div className="w-full flex-center my-20">
+                            <h2 className="title font-semibold">
+                              Até o momento não foi criado nenhum flashcard
+                            </h2>
+                          </div>
+                        ) : (
+                          <>
+                            <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5 paddings">
+                              {flashcard.map((card: FlashcardType) => (
+                                <Flashcard key={card.title} flashcard={card} />
+                              ))}
+                            </div>
+                          </>
+                        )}
+                      </>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    {Array.isArray(flashcard) ? (
+                      <>
+                        {flashcard
+                          .filter(
+                            (card: FlashcardType) =>
+                              card.category === filteredFlashcards,
+                          )
+                          .map((card: FlashcardType) => (
+                            <>
+                              <div
+                                key={card.title}
+                                className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5 paddings"
+                              >
+                                <Flashcard key={card.title} flashcard={card} />
+                              </div>
+                            </>
+                          ))}
+                      </>
+                    ) : null}
+                  </>
+                )}
+              </div>
             </TabsContent>
           </Tabs>
         </div>

@@ -153,11 +153,3 @@ export const categoriesMeta = [
     icon: '/metas/promoted.svg',
   },
 ] as const;
-
-export const colors = [
-  '#000000',
-  '#0000FF',
-  '#FF0000',
-  '#FFFF00',
-  '#FFA500',
-] as const;

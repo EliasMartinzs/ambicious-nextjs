@@ -111,8 +111,6 @@ export default function CreateFlashcard({
     }
   };
 
-  console.log('add');
-
   const onSubmit: SubmitHandler<ValidationSchema> = async values => {
     await createFlashcard({
       title: values.title,
@@ -136,7 +134,7 @@ export default function CreateFlashcard({
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="min-w-[400px] flex-start flex-col"
+      className="min-w-[400px] flex-start flex-col max-sm:px-7"
     >
       <Label className="text-base font-light mt-5">Titulo</Label>
       <Controller
