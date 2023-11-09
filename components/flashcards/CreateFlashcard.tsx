@@ -1,6 +1,7 @@
+'use client';
 import React, { useState } from 'react';
 import Select from 'react-select';
-import { z } from 'zod';
+import { string, z } from 'zod';
 import { Label } from '../ui/label';
 import { Plus } from 'lucide-react';
 import { Input } from '../ui/input';
@@ -18,12 +19,12 @@ const FlashcardSchema = z.object({
 
 interface CategoryOption {
   value: string;
-  label: string;
+  label?: string;
 }
 
 type ValidationSchema = z.infer<typeof FlashcardSchema>;
 
-export default function CreateFlashCard({
+export default function CreateFlashcard({
   user,
 }: {
   user: string | undefined;
@@ -32,7 +33,52 @@ export default function CreateFlashCard({
     resolver: zodResolver(FlashcardSchema),
   });
 
-  const options: CategoryOption[] = [];
+  const options: CategoryOption[] = [
+    {
+      value: 'Matemática',
+      label: 'Matemática',
+    },
+    {
+      value: 'Língua Portuguesa',
+      label: 'Língua Portuguesa',
+    },
+    {
+      value: 'História',
+      label: 'História',
+    },
+    {
+      value: 'Física',
+      label: 'Física',
+    },
+    {
+      value: 'Biologia',
+      label: 'Biologia',
+    },
+    {
+      value: 'Química',
+      label: 'Química',
+    },
+    {
+      value: 'Geografia',
+      label: 'Geografia',
+    },
+    {
+      value: 'Filosofia',
+      label: 'Filosofia',
+    },
+    {
+      value: 'Sociologia',
+      label: 'Sociologia',
+    },
+    {
+      value: 'Línguas estrangeiras',
+      label: 'Línguas estrangeiras',
+    },
+    {
+      value: 'Programação',
+      label: 'Programação',
+    },
+  ];
 
   const [selectedCategories, setSelectedCategories] = useState<CategoryOption>({
     value: '',
@@ -64,13 +110,12 @@ export default function CreateFlashCard({
       setSelectedCategories(selectedOptions);
     }
   };
-
   const onSubmit: SubmitHandler<ValidationSchema> = async values => {
     await createFlashcard({
       title: values.title,
       description: values.description,
       color: color,
-      category: selectedCategories.label,
+      category: selectedCategories[0]?.value || selectedCategories.value,
       author: user,
     });
 
@@ -119,7 +164,6 @@ export default function CreateFlashCard({
       <br />
       <Label className="text-base font-light">Selecione uma categoria</Label>
       <Select
-        isMulti
         options={options}
         value={selectedCategories}
         onChange={handleCategoryChange}
@@ -165,7 +209,7 @@ export default function CreateFlashCard({
           'border rounded-full border-primary-500 text-slate-950 hover:bg-primary-500 hover:text-white hover:font-bold'
         }
       >
-        Salvar{' '}
+        Salvar
       </Button>
     </form>
   );

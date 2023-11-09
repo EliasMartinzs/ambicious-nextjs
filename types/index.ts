@@ -76,4 +76,19 @@ type Course = {
   createdAt: any;
 };
 
-export type { WeeksPaylodType, TaskType, UserType, WeatherType, Course };
+type FlashcardType = {
+  _id: string;
+  title: string;
+  description: string;
+  color: string;
+  category: string;
+};
+
+export type {
+  WeeksPaylodType,
+  TaskType,
+  UserType,
+  WeatherType,
+  Course,
+  FlashcardType,
+};
