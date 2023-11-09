@@ -111,6 +111,8 @@ export default function CreateFlashcard({
     }
   };
 
+  console.log('add');
+
   const onSubmit: SubmitHandler<ValidationSchema> = async values => {
     await createFlashcard({
       title: values.title,
