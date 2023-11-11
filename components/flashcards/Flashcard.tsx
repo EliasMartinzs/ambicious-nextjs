@@ -116,12 +116,6 @@ export default function Flashcard({
                 className={`text-small font-bold text-[${color}] flex-between w-full`}
               >
                 {category}
-
-                <Button
-                  className={`font-black transition-colors text-slate-900 hover:underline underline-offset-4`}
-                >
-                  Revisao
-                </Button>
               </div>
             </div>
           </div>
