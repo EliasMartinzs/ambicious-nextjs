@@ -51,7 +51,7 @@ export default function ProSidebar() {
           {showSidebar ? (
             <X className="w-5 h-5 text-black" />
           ) : (
-            <MenuIcon className="w-7 h-7 text-white" />
+            <MenuIcon className="w-7 h-7 text-foreground" />
           )}
         </Button>
       </main>
