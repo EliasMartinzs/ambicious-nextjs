@@ -22,13 +22,15 @@ export default function ProSidebar() {
     <aside className="">
       <div
         className={cn(
-          showSidebar ? 'absolute inset-0 w-full h-full bg-black/40 z-50' : null
+          showSidebar
+            ? 'absolute inset-0 w-full h-full bg-black/40 z-50'
+            : null,
         )}
       />
       <div
         className={cn(
           'top-0 right-0 flex gap-y-5 flex-col max-md:w-1/2 p-5 md:p-10 w-72 shadow-2xl bg-background text-white fixed h-full ease-in-out duration-300 z-50',
-          showSidebar ? 'translate-x-0' : 'translate-x-full'
+          showSidebar ? 'translate-x-0' : 'translate-x-full',
         )}
       >
         <div className="flex-center pb-5">
@@ -46,7 +48,11 @@ export default function ProSidebar() {
       </div>
       <main className="flex absolute inset-y-0 right-0 z-50 p-5">
         <Button onClick={() => setShowSidebar(!showSidebar)}>
-          {showSidebar ? <X /> : <MenuIcon />}
+          {showSidebar ? (
+            <X className="w-5 h-5 text-black" />
+          ) : (
+            <MenuIcon className="w-7 h-7 text-white" />
+          )}
         </Button>
       </main>
     </aside>

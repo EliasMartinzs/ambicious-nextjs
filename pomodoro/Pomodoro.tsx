@@ -42,7 +42,6 @@ const Pomorodo = () => {
             <CircularProgressbarWithChildren
               strokeWidth={2}
               value={getRemainingTimePercentage()}
-              className="text-red-500 bg-blue-500 fill-orange-500"
               styles={buildStyles({
                 pathColor: `#000000`,
                 trailColor: 'transparent',

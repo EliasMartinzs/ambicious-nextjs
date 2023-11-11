@@ -99,7 +99,7 @@
 }
 
 .input-2 {
-  @apply bg-transparent text-foreground border-b border-background outline-none focus:border-r focus:border-primary-400 mt-2 transition-all;
+  @apply bg-transparent text-foreground border-b border-background outline-none focus:border focus:rounded-xl focus:border-primary-400 mt-2 transition-all;
 }
 
 .steps-button {

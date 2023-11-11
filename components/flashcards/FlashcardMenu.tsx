@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '../ui/button';
 import { Plus, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -7,6 +7,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import CreateFlashcard from './CreateFlashcard';
 import { FlashcardType } from '@/types';
 import Flashcard from './Flashcard';
+import Spinner from '../config/Spinner';
+import { useSelector } from '@/redux/store';
+import { selectorLoading } from '@/redux/slices/selector';
 
 export default function FlashcardMenu({
   user,
@@ -17,6 +20,19 @@ export default function FlashcardMenu({
 }) {
   const [toggleModal, setToggleModal] = useState(false);
   const [filteredFlashcards, setFilteredFlashcards] = useState('Todos');
+  const [uniqueCategories, setUniqueCategories] = useState<string[]>([]);
+
+  const loading = useSelector(selectorLoading);
+
+  useEffect(() => {
+    if (Array.isArray(flashcard)) {
+      const categoriesSet = new Set<string>();
+      flashcard.forEach(card => {
+        categoriesSet.add(card.category);
+      });
+      setUniqueCategories(['Todos', ...Array.from(categoriesSet)]);
+    }
+  }, [flashcard]);
 
   return (
     <>
@@ -48,13 +64,13 @@ export default function FlashcardMenu({
             <TabsList className="flex gap-x-10">
               <TabsTrigger
                 value="create"
-                className="p-3 text-base text-black data-[state=active]:bg-white data-[state=active]:border-b data-[state=active]:font-bold border-black"
+                className="p-3 text-base text-black border-black"
               >
                 Criar Flashcard
               </TabsTrigger>
               <TabsTrigger
                 value="views"
-                className="p-3 text-base text-black data-[state=active]:bg-white data-[state=active]:border-b data-[state=active]:font-bold border-black"
+                className="p-3 text-base text-black border-black"
               >
                 Meus Flashcards
               </TabsTrigger>
@@ -62,46 +78,34 @@ export default function FlashcardMenu({
             <TabsContent value="create" className="w-full flex-center">
               <CreateFlashcard user={user} />
             </TabsContent>
-            <TabsContent value="views">
+            <TabsContent value="views" className="relative">
               <div className="overflow-x-auto paddings pt-5 pb-10 text-black">
-                {Array.isArray(flashcard) ? (
+                {Array.isArray(flashcard) && (
                   <div className="flex">
-                    <Button
-                      className={cn(
-                        'flex gap-x-5 border-b border-primary-500 font-medium',
-                        filteredFlashcards === 'Todos' &&
-                          'border-black shadow-sm font-bold border-b-2',
-                      )}
-                      onClick={() => setFilteredFlashcards('Todos')}
-                    >
-                      Todos
-                    </Button>
-                    {flashcard.map((card: FlashcardType) => (
+                    {uniqueCategories.map(card => (
                       <Button
-                        key={card.title}
+                        key={card}
                         className={cn(
                           'flex gap-x-5 border-b border-primary-500 shadow-sm font-medium',
-                          filteredFlashcards === card.category &&
+                          filteredFlashcards === card &&
                             'border-black font-bold border-b-2',
                         )}
-                        onClick={() => setFilteredFlashcards(card.category)}
+                        onClick={() => setFilteredFlashcards(card)}
                       >
-                        {card.category}
+                        {card}
                       </Button>
                     ))}
                   </div>
-                ) : (
-                  <>inutil</>
                 )}
               </div>
-              <div className="w-full flex-center">
+              <div className="w-full">
                 {filteredFlashcards === 'Todos' ? (
                   <>
                     {Array.isArray(flashcard) && (
                       <>
                         {flashcard.length === 0 ? (
                           <div className="w-full flex-center my-20">
-                            <h2 className="title font-semibold">
+                            <h2 className="title text-center text-black">
                               Até o momento não foi criado nenhum flashcard
                             </h2>
                           </div>
@@ -120,27 +124,21 @@ export default function FlashcardMenu({
                 ) : (
                   <>
                     {Array.isArray(flashcard) ? (
-                      <>
+                      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5 paddings">
                         {flashcard
                           .filter(
                             (card: FlashcardType) =>
                               card.category === filteredFlashcards,
                           )
                           .map((card: FlashcardType) => (
-                            <>
-                              <div
-                                key={card.title}
-                                className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5 paddings"
-                              >
-                                <Flashcard key={card.title} flashcard={card} />
-                              </div>
-                            </>
+                            <Flashcard key={card.title} flashcard={card} />
                           ))}
-                      </>
+                      </div>
                     ) : null}
                   </>
                 )}
               </div>
+              <Spinner color="#fff" loading={loading} />
             </TabsContent>
           </Tabs>
         </div>
