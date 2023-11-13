@@ -18,9 +18,6 @@ export default function BackImage() {
     fortune: '/themes/fortune.webp',
     ancient: '/themes/ancient.webp',
     castily: '/themes/castily.webp',
-    city: '/themes/city.webp',
-    library: '/themes/library.webp',
-    lightmontain: '/themes/lightmontain.webp',
   };
 
   //@ts-ignore

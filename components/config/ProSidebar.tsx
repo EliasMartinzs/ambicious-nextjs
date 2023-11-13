@@ -48,11 +48,7 @@ export default function ProSidebar() {
       </div>
       <main className="flex absolute inset-y-0 right-0 z-50 p-5">
         <Button onClick={() => setShowSidebar(!showSidebar)}>
-          {showSidebar ? (
-            <X className="w-5 h-5 text-black" />
-          ) : (
-            <MenuIcon className="w-7 h-7 text-foreground" />
-          )}
+          {showSidebar ? <X /> : <MenuIcon />}
         </Button>
       </main>
     </aside>

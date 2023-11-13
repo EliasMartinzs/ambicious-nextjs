@@ -11,11 +11,7 @@ export const metadata = {
 
 const inter = Inter({ subsets: ['latin'] });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <ClerkProvider
       appearance={{
@@ -27,7 +23,7 @@ export default function RootLayout({
       <ReduxProvider>
         <FormDataProvider>
           <html lang="en">
-            <body>{children}</body>
+            <body className="bg-background text-foreground">{children}</body>
           </html>
         </FormDataProvider>
       </ReduxProvider>

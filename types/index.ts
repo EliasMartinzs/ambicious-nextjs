@@ -84,6 +84,13 @@ type FlashcardType = {
   category: string;
 };
 
+type TableType = {
+  exercise: string;
+  reps: string;
+  series: string;
+  cardio: string;
+};
+
 export type {
   WeeksPaylodType,
   TaskType,
@@ -91,4 +98,5 @@ export type {
   WeatherType,
   Course,
   FlashcardType,
+  TableType,
 };

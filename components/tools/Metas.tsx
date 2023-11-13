@@ -36,7 +36,7 @@ export default async function Metas() {
           metas.map(meta => (
             <div
               key={meta?.meta}
-              className="w-full border border-primary-500 p-5 rounded-xl relative"
+              className="w-full border border-primary-500 shadow-3xl p-5 rounded-xl relative"
             >
               <h3 className="font-bold text-xl text-center py-2">
                 {meta?.meta}
@@ -69,9 +69,7 @@ export default async function Metas() {
                 </span>
               </div>
 
-              <div className="absolute inset-y-0 right-0 p-5">
-                <DeleteMeta author={meta?._id.toString()} />
-              </div>
+              <DeleteMeta author={meta?._id.toString()} />
             </div>
           ))
         )}
