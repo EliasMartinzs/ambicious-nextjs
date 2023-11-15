@@ -1,3 +1,11 @@
+import * as z from 'zod';
+import { Controller, Resolver, SubmitHandler, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Input } from '../ui/input';
+import { Button } from '../ui/button';
+import { Label } from '../ui/label';
+import { BodyMeasurementsType } from '@/types';
+
 import {
   Table,
   TableBody,
@@ -6,64 +14,53 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { Label } from '../ui/label';
 
-import { Input } from '../ui/input';
-import { useState } from 'react';
-import { Button } from '../ui/button';
-import { BodyMeasurementsType } from '@/types';
 import Interrogration from './Interrogration';
 import { calculateIMC } from '@/lib/utils';
-
-type Basics = {
-  weight: number;
-  height: number;
-  age: number;
-  imc: number;
-};
+import { createBodyBasics } from '@/lib/actions/bodyBasics.action';
 
 type Props = {
   author: string | undefined;
   bodyData: BodyMeasurementsType[];
 };
 
-export default function BodyBasics({ author, bodyData }: Props) {
-  const [measurements, setMeasurements] = useState<Basics>({
-    weight: 90,
-    age: 18,
-    height: 1.75,
-    imc: 0,
+const BasicsSchema = z.object({
+  height: z.string().refine(val => !isNaN(Number(val)) && val.length === 4, {
+    message: 'Por favor, insira uma altura válida ex: 1.80.',
+  }),
+  weight: z.coerce.number(),
+  age: z.coerce.number(),
+});
+
+type BasicsValidation = z.infer<typeof BasicsSchema>;
+
+export default function bodyBasics({ author, bodyData }: Props) {
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<BasicsValidation>({
+    resolver: zodResolver(BasicsSchema),
   });
 
-  const handleHeightBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    if (value.length === 3) {
-      const formattedHeight = `${value[0]}.${value.slice(1)}`;
-      setMeasurements(prevState => ({
-        ...prevState,
-        height: +formattedHeight,
-      }));
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const imc = calculateIMC({
-      height: measurements.height,
-      weight: measurements.weight,
+  const onSubmit: SubmitHandler<BasicsValidation> = async values => {
+    await createBodyBasics({
+      age: values.age,
+      author: author,
+      height: +values.height,
+      weight: values.weight,
+      imc: calculateIMC({
+        height: +values.height,
+        weight: values.weight,
+      }),
     });
-
-    setMeasurements(prevState => ({
-      ...prevState,
-      imc: imc,
-    }));
-
-    console.log(measurements);
   };
 
   return (
-    <div className="flex-center flex-col gap-y-10">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="flex-center flex-col gap-y-10"
+    >
       <Table>
         <TableHeader className="text-slate-700">
           <TableRow>
@@ -87,79 +84,71 @@ export default function BodyBasics({ author, bodyData }: Props) {
         </TableBody>
       </Table>
 
-      <form onSubmit={handleSubmit} className="flex flex-col w-96">
-        <div className="flex-between">
-          <Label>Peso:</Label>
-          <div className="flex-center">
-            <div className="relative w-full">
-              <Input
-                className="input-3 text-lg w-52"
-                placeholder="90"
-                type="number"
-                value={measurements.weight}
-                onChange={e =>
-                  setMeasurements(prevState => ({
-                    ...prevState,
-                    weight: +e.target.value,
-                  }))
-                }
-              />
-              <small className="absolute top-0 right-0 p-5 text-slate-700">
-                kg
-              </small>
-            </div>
-          </div>
-        </div>
-        <div className="flex-between">
+      <div className="w-full flex-center flex-col gap-y-3">
+        <div className="flex-between w-full">
           <Label>Altura:</Label>
-          <div className="flex-center">
-            <div className="relative w-full">
-              <Input
-                className="input-3 text-lg w-52"
-                placeholder="1.75"
-                name="height"
-                value={measurements.height}
-                onChange={e =>
-                  setMeasurements(prevState => ({
-                    ...prevState,
-                    height: +e.target.value,
-                  }))
-                }
-                onBlur={handleHeightBlur}
-              />
-              <small className="absolute top-0 right-0 p-5 text-slate-700">
-                cm
-              </small>
-            </div>
-          </div>
-        </div>
-        <div className="flex-between">
-          <Label>Idade</Label>
-          <div className="flex-center">
-            <div className="relative w-full">
-              <Input
-                className="input-3 text-lg w-52"
-                placeholder="18"
-                type="number"
-                value={measurements.age}
-                onChange={e =>
-                  setMeasurements(prevState => ({
-                    ...prevState,
-                    age: +e.target.value,
-                  }))
-                }
-              />
-            </div>
+          <div className="relative flex-center flex-col text-center">
+            <Controller
+              control={control}
+              name="height"
+              render={({ field }) => (
+                <Input
+                  className="input-3 text-lg w-52"
+                  placeholder="ex: 1.80"
+                  required={true}
+                  type="number"
+                  {...field}
+                />
+              )}
+            />
+            <small className="absolute top-0 right-0 p-5">cm</small>
+            <small>{errors.height && errors.height.message}</small>
           </div>
         </div>
 
-        <Button
-          className="bg-primary-500 mt-5 font-black text-white hover:bg-primary-700 hover:shadow-xl hover:rounded-xl transition-colors"
-          type="submit"
-        >
-          Salvar
-        </Button>
-      </form>
-    </div>
+        <div className="flex-between w-full">
+          <Label>Peso:</Label>
+          <div className="relative flex-center flex-col text-center">
+            <Controller
+              control={control}
+              name="weight"
+              render={({ field }) => (
+                <Input
+                  className="input-3 text-lg w-52"
+                  placeholder="ex: 95"
+                  required={true}
+                  type="number"
+                  {...field}
+                />
+              )}
+            />
+            <small className="absolute top-0 right-0 p-5">kg</small>
+          </div>
+        </div>
+
+        <div className="flex-between w-full">
+          <Label>Idade:</Label>
+          <div className="relative flex-center flex-col text-center">
+            <Controller
+              control={control}
+              name="age"
+              render={({ field }) => (
+                <Input
+                  className="input-3 text-lg w-52"
+                  placeholder="ex: 19"
+                  required={true}
+                  type="number"
+                  {...field}
+                />
+              )}
+            />
+          </div>
+        </div>
+      </div>
+
+      <Button className="bg-primary-500 rounded-lg" type="submit">
+        Salvar
+      </Button>
+    </form>
   );
 }

@@ -19,6 +19,7 @@ const userSchema = new mongoose.Schema({
   exerciseSheet: [{ type: Array }],
   diet: [{ type: Array }],
   bodyMeasurements: [{ type: Array }],
+  bodyBasics: [{ type: Array }],
   onboarded: {
     type: Boolean,
     default: false,

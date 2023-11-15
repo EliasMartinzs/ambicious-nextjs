@@ -42,7 +42,21 @@ export const calculateIMC = ({
 }) => {
   const divide = weight / Math.pow(height, 2);
 
-  const result = divide.toFixed(2);
+  const intervals = [
+    { range: [0, 18.5], label: 'Abaixo do peso' },
+    { range: [18.5, 24.9], label: 'Peso Normal' },
+    { range: [25, 29.9], label: 'Sobrepeso' },
+    { range: [30, Infinity], label: 'Obesidade' },
+  ];
 
-  return +result;
+  const result = intervals.find(
+    interval => divide >= interval.range[0] && divide <= interval.range[1],
+  );
+
+  return result ? { imc: divide, condition: result.label } : '';
 };
+
+const imc = calculateIMC({
+  height: 1.8,
+  weight: 80,
+});

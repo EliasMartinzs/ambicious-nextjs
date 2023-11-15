@@ -24,7 +24,7 @@ export default function Body({ author, bodyData }: Props) {
   const [toggleBody, setToggleBody] = useState('medidas do corpo');
 
   return (
-    <section className="h-screen">
+    <section className="pb-20">
       <h3 className="title font-bold">Corpo</h3>
       <Separator />
       <div className="grid grid-cols-2">
@@ -58,54 +58,3 @@ export default function Body({ author, bodyData }: Props) {
     </section>
   );
 }
-
-// <div className="flex-center flex-col gap-y-10">
-//   <div className="flex-center">
-// <Table className="max-w-[500px]">
-//   <TableHeader className="text-slate-700">
-//     <TableRow>
-//       <TableHead>Pei</TableHead>
-//       <TableHead>Bíc</TableHead>
-//       <TableHead>Bíc</TableHead>
-//       <TableHead>Cox</TableHead>
-//       <TableHead>Cox</TableHead>
-//       <TableHead>Cin</TableHead>
-//       <TableHead>Pan</TableHead>
-//       <TableHead>Data</TableHead>
-//     </TableRow>
-//   </TableHeader>
-//   <TableBody className="text-black">
-//     <TableRow>
-//       <TableHead>110</TableHead>
-//       <TableHead>48</TableHead>
-//       <TableHead>48</TableHead>
-//       <TableHead>95</TableHead>
-//       <TableHead>95</TableHead>
-//       <TableHead>65</TableHead>
-//       <TableHead>32</TableHead>
-//       <TableHead>16/19/23</TableHead>
-//     </TableRow>
-//     <TableRow>
-//       <TableHead>110</TableHead>
-//       <TableHead>48</TableHead>
-//       <TableHead>48</TableHead>
-//       <TableHead>95</TableHead>
-//       <TableHead>95</TableHead>
-//       <TableHead>65</TableHead>
-//       <TableHead>32</TableHead>
-//       <TableHead>16/19/23</TableHead>
-//     </TableRow>
-//     <TableRow>
-//       <TableHead>110</TableHead>
-//       <TableHead>48</TableHead>
-//       <TableHead>48</TableHead>
-//       <TableHead>95</TableHead>
-//       <TableHead>95</TableHead>
-//       <TableHead>65</TableHead>
-//       <TableHead>32</TableHead>
-//       <TableHead>16/19/23</TableHead>
-//     </TableRow>
-//   </TableBody>
-// </Table>
-//   </div>
-// </div>;

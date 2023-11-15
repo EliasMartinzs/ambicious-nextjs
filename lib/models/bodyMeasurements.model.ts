@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const bodyMeasurements = new mongoose.Schema({
+const MeasurementsSchema = new mongoose.Schema({
   chest: {
     type: Number,
   },
@@ -30,8 +30,8 @@ const bodyMeasurements = new mongoose.Schema({
   },
 });
 
-const BodyMeasurements =
-  mongoose.models.BodyMeasurements ||
-  mongoose.model('BodyMeasurements', bodyMeasurements);
+const Measurements =
+  mongoose.models.Measurements ||
+  mongoose.model('Measurements', MeasurementsSchema);
 
-export default BodyMeasurements;
+export default Measurements;
