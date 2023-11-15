@@ -85,18 +85,47 @@ type FlashcardType = {
 };
 
 type TableType = {
+  _id?: string | undefined;
   exercise: string;
-  reps: string;
-  series: string;
+  reps: number;
+  series: number;
   cardio: string;
+  day?: string;
+  muscle: string;
+};
+
+type DietType = {
+  _id: string | undefined;
+  food: string;
+  quantity: string;
+  athlet: string;
+  obs: string;
+  time: string;
+  day: string;
+};
+
+type BodyMeasurementsType = {
+  _id: string | undefined;
+  chest: number;
+  bicepsLeft: number;
+  bicepsRight: number;
+  legLeft: number;
+  legRight: number;
+  waist: number;
+  calfLeft: number;
+  calfRight: number;
+  date: Date | undefined;
+  author: string | undefined;
 };
 
 export type {
   WeeksPaylodType,
   TaskType,
   UserType,
+  BodyMeasurementsType,
   WeatherType,
   Course,
   FlashcardType,
   TableType,
+  DietType,
 };

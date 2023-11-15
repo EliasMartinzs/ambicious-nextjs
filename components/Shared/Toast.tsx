@@ -29,7 +29,7 @@ export default function Toast({ dialog, textButton, classname }: Props) {
       onClick={notify}
       className={cn(
         'capitalize bg-primary-500 rounded-lg hover:bg-primary-500/70 transition-colors',
-        classname
+        classname,
       )}
     >
       {textButton}

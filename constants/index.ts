@@ -151,3 +151,29 @@ export const categoriesMeta = [
     icon: '/metas/promoted.svg',
   },
 ] as const;
+
+type BodyMeasurementsType = {
+  _id: string | undefined;
+  chest: number;
+  bicepsLeft: number;
+  bicepsRight: number;
+  legLeft: number;
+  legRight: number;
+  waist: number;
+  calfLeft: number;
+  calfRight: number;
+  date: Date | undefined;
+  author: string | undefined;
+};
+
+export const Muscle = [
+  'Bíceps',
+  'Tríceps',
+  'Peito',
+  'Ombro',
+  'Dorsal',
+  'Pernas',
+  'Abdõmen',
+  'Antebraço',
+  'Panturrilha',
+] as const;

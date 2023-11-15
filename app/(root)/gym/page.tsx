@@ -12,7 +12,7 @@ export default function Page() {
   return (
     <main>
       <h3 className="title font-bold paddings mt-5" id="gym">
-        Academia
+        Exercícios e Dieta
       </h3>
       <Separator pad />
       <Routine />

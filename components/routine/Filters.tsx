@@ -1,11 +1,11 @@
 'use client';
 
-import { FormEvent, Fragment, useState } from 'react';
+import { useState } from 'react';
 import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
 import WeekRoutine from './WeekRoutine';
 import CreateRoutine from './CreateRoutine';
-import { TableType } from '@/types/index';
+import { DietType, TableType } from '@/types/index';
 
 const daysRoutine = [
   'Segunda-Feira',
@@ -15,13 +15,18 @@ const daysRoutine = [
   'Sexta-Feira',
 ];
 
-export default function Filters() {
+type Props = {
+  author: string | undefined;
+  exercises: TableType[];
+  diets: DietType[];
+};
+
+export default function Filters({ author, exercises, diets }: Props) {
   const [filtered, setFiltered] = useState('Segunda-Feira');
-  const [table, setTable] = useState<TableType[]>([]);
 
   return (
     <>
-      <div className="flex-center">
+      <div className="flex-center max-sm:grid grid-cols-2 place-items-center">
         {daysRoutine.map(day => (
           <Button
             onClick={() => setFiltered(day)}
@@ -35,14 +40,12 @@ export default function Filters() {
             {day}
           </Button>
         ))}
-        <CreateRoutine day={filtered} table={table} setTable={setTable} />
+        <CreateRoutine day={filtered} author={author} />
       </div>
 
-      <h3 className="text-start paragraph font-bold my-5">
-        {filtered} / Peito
-      </h3>
-
-      {filtered && <WeekRoutine day={filtered} table={table} />}
+      {filtered && (
+        <WeekRoutine day={filtered} exercises={exercises} diets={diets} />
+      )}
     </>
   );
 }

@@ -25,10 +25,24 @@ export const fetchWeatherApi = async ({
 }) => {
   const response = await fetch(
     `https://weatherapi-com.p.rapidapi.com/current.json?q=${lat}%2C${lon}`,
-    { headers: headers }
+    { headers: headers },
   );
 
   const weather = await response.json();
 
   return weather;
+};
+
+export const calculateIMC = ({
+  weight,
+  height,
+}: {
+  weight: number;
+  height: number;
+}) => {
+  const divide = weight / Math.pow(height, 2);
+
+  const result = divide.toFixed(2);
+
+  return +result;
 };

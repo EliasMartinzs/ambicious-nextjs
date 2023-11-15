@@ -151,3 +151,10 @@
 .react-select-3-input {
   @apply text-sm text-start w-full h-10 border-none;
 }
+
+.add-x:hover::after {
+  content: '';
+  width: 50px;
+  height: 50px;
+  background-color: red;
+}
