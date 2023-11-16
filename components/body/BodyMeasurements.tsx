@@ -16,6 +16,7 @@ import { DatePicker } from './DatePicker';
 import { Button } from '../ui/button';
 import { createBodyMeasurements } from '@/lib/actions/bodyMeasurements.action';
 import { BodyMeasurementsType } from '@/types';
+import { formatDate } from '@/lib/utils';
 
 type Measurements = {
   chest: number;
@@ -64,22 +65,10 @@ export default function BodyMeasurements({ author, bodyData }: Props) {
     });
   };
 
-  function formatDate(dataString: string) {
-    const data = new Date(dataString);
-    const day = data.getDate();
-    const month = data.getMonth() + 1;
-    const year = data.getFullYear();
-
-    const dayFormatado = day < 10 ? `0${day}` : day;
-    const monthFormatado = month < 10 ? `0${month}` : month;
-
-    return `${dayFormatado}/${monthFormatado}/${year}`;
-  }
-
   return (
     <div className="flex-center flex-col gap-y-10">
-      <Table>
-        <TableHeader className="text-slate-700">
+      <Table className="text-foreground">
+        <TableHeader>
           <TableRow>
             <TableHead>Pei</TableHead>
             <TableHead>Bíc Esq</TableHead>
@@ -92,7 +81,7 @@ export default function BodyMeasurements({ author, bodyData }: Props) {
             <TableHead>Data</TableHead>
           </TableRow>
         </TableHeader>
-        <TableBody className="text-black">
+        <TableBody>
           {bodyData.map(body => (
             <TableRow key={body._id}>
               <TableHead>{body.chest}</TableHead>

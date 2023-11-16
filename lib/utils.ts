@@ -60,3 +60,15 @@ const imc = calculateIMC({
   height: 1.8,
   weight: 80,
 });
+
+export const formatDate = (dataString: string) => {
+  const data = new Date(dataString);
+  const day = data.getDate();
+  const month = data.getMonth() + 1;
+  const year = data.getFullYear();
+
+  const dayFormatado = day < 10 ? `0${day}` : day;
+  const monthFormatado = month < 10 ? `0${month}` : month;
+
+  return `${dayFormatado}/${monthFormatado}/${year}`;
+};

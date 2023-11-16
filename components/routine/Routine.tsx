@@ -3,17 +3,27 @@ import Filters from './Filters';
 import { auth } from '@clerk/nextjs';
 import { fetchUser } from '@/lib/actions/user.action';
 import { fetchExercises } from '@/lib/actions/exercise.action';
-import { BodyMeasurementsType, DietType, TableType } from '@/types';
+import {
+  BodyBasicsType,
+  BodyMeasurementsType,
+  DietType,
+  TableType,
+} from '@/types';
 import { fetchDiet } from '@/lib/actions/diet.actions';
 import Body from '../body/Body';
 import { fetchBodyMeasurements } from '@/lib/actions/bodyMeasurements.action';
+import { fetchBodyBasics } from '@/lib/actions/bodyBasics.action';
+import Separator from '../Shared/Separator';
+import Comparations from '../body/Comparations';
 
 export default async function Routine() {
   const { userId } = auth();
   const user = await fetchUser({ userId });
   const exercises: TableType[] = await fetchExercises();
   const diets: DietType[] = await fetchDiet();
-  const bodyData: BodyMeasurementsType[] = await fetchBodyMeasurements();
+  const bodyMeasurements: BodyMeasurementsType[] =
+    await fetchBodyMeasurements();
+  const bodyBasics: BodyBasicsType[] = await fetchBodyBasics();
 
   return (
     <div className="paddings">
@@ -23,7 +33,18 @@ export default async function Routine() {
         diets={diets}
       />
       <br />
-      <Body author={user?._id.toString()} bodyData={bodyData} />
+      <h3 className="title font-bold">Corpo</h3>
+      <Separator />
+      <div className="grid grid-cols-2">
+        <Body
+          author={user?._id.toString()}
+          bodyData={bodyMeasurements}
+          bodyBasics={bodyBasics}
+        />
+        <div>
+          <Comparations bodyMeasurements={bodyMeasurements} />
+        </div>
+      </div>
     </div>
   );
 }

@@ -118,11 +118,20 @@ type BodyMeasurementsType = {
   author: string | undefined;
 };
 
+type BodyBasicsType = {
+  imc: { imc: number; condition: string };
+  _id: string;
+  height: number;
+  weight: number;
+  age: number;
+};
+
 export type {
   WeeksPaylodType,
   TaskType,
   UserType,
   BodyMeasurementsType,
+  BodyBasicsType,
   WeatherType,
   Course,
   FlashcardType,

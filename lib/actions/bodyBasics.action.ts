@@ -44,3 +44,15 @@ export const createBodyBasics = async ({
     throw new Error(`failed to create BODY BASICS ${error}`);
   }
 };
+
+export const fetchBodyBasics = async () => {
+  try {
+    await connectToDB();
+
+    const basicsData = await Basics.find();
+
+    return JSON.parse(JSON.stringify(basicsData));
+  } catch (error: any) {
+    throw new Error(`failed to fetch BODY BASICS ${error}`);
+  }
+};

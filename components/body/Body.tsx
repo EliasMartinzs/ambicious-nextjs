@@ -12,46 +12,47 @@ import {
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import BodyMeasurements from './BodyMeasurements';
-import { BodyMeasurementsType } from '@/types';
+import { BodyBasicsType, BodyMeasurementsType } from '@/types';
 import BodyBasics from './bodyBasics';
 
 type Props = {
   author: string | undefined;
   bodyData: BodyMeasurementsType[];
+  bodyBasics: BodyBasicsType[];
 };
 
-export default function Body({ author, bodyData }: Props) {
+export default function Body({ author, bodyData, bodyBasics }: Props) {
   const [toggleBody, setToggleBody] = useState('medidas do corpo');
 
   return (
-    <section className="pb-20">
-      <h3 className="title font-bold">Corpo</h3>
-      <Separator />
-      <div className="grid grid-cols-2">
+    <section className="">
+      <div className="">
         <div className="flex-center flex-col gap-y-10">
           <Select value={toggleBody} onValueChange={setToggleBody}>
-            <SelectTrigger className="w-auto border-b-2 border-primary-500 flex-center font-semibold text-slate-900/80">
+            <SelectTrigger className="w-auto border-b-2 border-primary-500 flex-center font-medium title">
               <SelectValue
                 placeholder="Dados corporais"
-                className="placeholder:font-black"
+                className="placeholder:text-foreground"
               />
             </SelectTrigger>
-            <SelectContent className="border-none bg-white">
+            <SelectContent className="border-none bg-background text-foreground">
               <SelectGroup>
-                <SelectItem value="medidas do corpo">
+                <SelectItem className="paragraph" value="medidas do corpo">
                   Medidas do corpo
                 </SelectItem>
-                <SelectItem value="dados Básicos de corpo">
+                <SelectItem
+                  className="paragraph"
+                  value="dados Básicos de corpo"
+                >
                   Dados Básicos de corpo
                 </SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>
-
           {toggleBody === 'medidas do corpo' ? (
             <BodyMeasurements author={author} bodyData={bodyData} />
           ) : (
-            <BodyBasics author={author} bodyData={bodyData} />
+            <BodyBasics author={author} bodyBasics={bodyBasics} />
           )}
         </div>
       </div>

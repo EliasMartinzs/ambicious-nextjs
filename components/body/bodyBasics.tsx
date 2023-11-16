@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import { Label } from '../ui/label';
-import { BodyMeasurementsType } from '@/types';
+import { BodyBasicsType } from '@/types';
 
 import {
   Table,
@@ -21,7 +21,7 @@ import { createBodyBasics } from '@/lib/actions/bodyBasics.action';
 
 type Props = {
   author: string | undefined;
-  bodyData: BodyMeasurementsType[];
+  bodyBasics: BodyBasicsType[];
 };
 
 const BasicsSchema = z.object({
@@ -34,7 +34,7 @@ const BasicsSchema = z.object({
 
 type BasicsValidation = z.infer<typeof BasicsSchema>;
 
-export default function bodyBasics({ author, bodyData }: Props) {
+export default function bodyBasics({ author, bodyBasics }: Props) {
   const {
     control,
     handleSubmit,
@@ -61,24 +61,27 @@ export default function bodyBasics({ author, bodyData }: Props) {
       onSubmit={handleSubmit(onSubmit)}
       className="flex-center flex-col gap-y-10"
     >
-      <Table>
-        <TableHeader className="text-slate-700">
+      <Table className="text-foreground">
+        <TableHeader>
           <TableRow>
             <TableHead>Peso</TableHead>
             <TableHead>Altura</TableHead>
             <TableHead>Idade</TableHead>
-            <TableHead className="flex-center">
+            <TableHead className="flex-center gap-x-2">
               IMC
               <Interrogration />
             </TableHead>
+            <TableHead>Condição</TableHead>
           </TableRow>
         </TableHeader>
-        <TableBody className="text-black">
-          {bodyData.map(body => (
+        <TableBody>
+          {bodyBasics.map(body => (
             <TableRow key={body._id}>
-              <TableHead>{body.chest}</TableHead>
-              <TableHead>{body.bicepsLeft}</TableHead>
-              <TableHead>{body.bicepsRight}</TableHead>
+              <TableCell>{body.height}</TableCell>
+              <TableCell>{body.weight}</TableCell>
+              <TableCell>{body.age}</TableCell>
+              <TableCell>{body.imc.imc.toFixed(2)}</TableCell>
+              <TableCell>{body.imc.condition}</TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -146,7 +149,10 @@ export default function bodyBasics({ author, bodyData }: Props) {
         </div>
       </div>
 
-      <Button className="bg-primary-500 rounded-lg" type="submit">
+      <Button
+        className="bg-primary-500 w-full font-black text-white hover:bg-primary-700 hover:shadow-xl hover:rounded-xl transition-colors"
+        type="submit"
+      >
         Salvar
       </Button>
     </form>
