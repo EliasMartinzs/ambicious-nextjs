@@ -29,7 +29,7 @@ export default function Body({ author, bodyData, bodyBasics }: Props) {
       <div className="">
         <div className="flex-center flex-col gap-y-10">
           <Select value={toggleBody} onValueChange={setToggleBody}>
-            <SelectTrigger className="w-auto border-b-2 border-primary-500 flex-center font-medium title">
+            <SelectTrigger className="w-auto border-b-2 border-primary-500 flex-center font-medium paragraph">
               <SelectValue
                 placeholder="Dados corporais"
                 className="placeholder:text-foreground"
@@ -37,13 +37,10 @@ export default function Body({ author, bodyData, bodyBasics }: Props) {
             </SelectTrigger>
             <SelectContent className="border-none bg-background text-foreground">
               <SelectGroup>
-                <SelectItem className="paragraph" value="medidas do corpo">
+                <SelectItem className="" value="medidas do corpo">
                   Medidas do corpo
                 </SelectItem>
-                <SelectItem
-                  className="paragraph"
-                  value="dados Básicos de corpo"
-                >
+                <SelectItem className="" value="dados Básicos de corpo">
                   Dados Básicos de corpo
                 </SelectItem>
               </SelectGroup>

@@ -126,6 +126,25 @@ type BodyBasicsType = {
   age: number;
 };
 
+type DifferenceType = {
+  _id: {
+    before: string;
+    after: string;
+  };
+  chest: { before: number; after: number };
+  bicepsLeft: { before: number; after: number };
+  bicepsRight: { before: number; after: number };
+  legLeft: { before: number; after: number };
+  legRight: { before: number; after: number };
+  waist: { before: number; after: number };
+  calfLeft: { before: number; after: number };
+  calfRight: { before: number; after: number };
+  date: {
+    before: string;
+    after: string;
+  };
+};
+
 export type {
   WeeksPaylodType,
   TaskType,
@@ -134,6 +153,7 @@ export type {
   BodyBasicsType,
   WeatherType,
   Course,
+  DifferenceType,
   FlashcardType,
   TableType,
   DietType,
