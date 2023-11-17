@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import Select from 'react-select';
-import { string, z } from 'zod';
+import { z } from 'zod';
 import { Label } from '../ui/label';
 import { Plus } from 'lucide-react';
 import { Input } from '../ui/input';

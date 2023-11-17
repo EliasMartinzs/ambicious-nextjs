@@ -1,17 +1,14 @@
-import { Dispatch, SetStateAction, useEffect } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 import { MetaValidation } from '@/lib/validations/user';
 import * as z from 'zod';
 
-import { Button } from '../ui/button';
 import { Label } from '../ui/label';
 import { DatePickerWithRange } from '../config/DatePickerWithRange';
 import { MetaInfoProps } from './StepByStep';
 import { createMeta } from '@/lib/actions/meta.action';
-import { fetchUser } from '@/lib/actions/user.action';
-import { useAuth } from '@clerk/nextjs';
-import { DateRange } from 'react-day-picker';
+
 import Toast from '../Shared/Toast';
 
 type Props = {

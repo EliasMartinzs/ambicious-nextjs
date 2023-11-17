@@ -11,7 +11,6 @@ import ThemeSwitch from './ThemeSwitcher';
 
 import { SignOutButton, UserButton, auth } from '@clerk/nextjs';
 import { fetchUser } from '@/lib/actions/user.action';
-import Image from 'next/image';
 
 export default async function MenuOptions() {
   const { userId } = auth();

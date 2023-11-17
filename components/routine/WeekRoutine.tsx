@@ -69,7 +69,7 @@ export default function WeekRoutine({ day, exercises, diets }: Props) {
             </TableBody>
           </Table>
         </div>
-        <div className="max-sm:hidden md:w-1/4 flex-center">
+        <div className="max-xl:hidden md:w-1/4 flex-center">
           <Calendary />
         </div>
       </div>
@@ -96,11 +96,11 @@ export default function WeekRoutine({ day, exercises, diets }: Props) {
                 <TableCell>{diet.athlet}</TableCell>
                 <TableCell>{diet.obs}</TableCell>
                 <Button
-                  onClick={() => removeExercise(diet._id)}
+                  onClick={() => removeDiet(diet._id)}
                   className="absolute top-2 right-2"
                 >
                   <Toast
-                    dialog="Exercisio Removido"
+                    dialog="Dieta Removida"
                     textButton="x"
                     classname="hover:bg-transparent text-red-500 bg-transparent p-0"
                   />

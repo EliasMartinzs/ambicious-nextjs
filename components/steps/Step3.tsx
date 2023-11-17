@@ -1,11 +1,9 @@
-// components/Step1.tsx
 import { useForm } from 'react-hook-form';
 
 const Step3 = ({ onNext }: { onNext: any }) => {
-  const { register, handleSubmit } = useForm();
+  const { handleSubmit } = useForm();
 
   const onSubmit = (data: any) => {
-    // Faça algo com os dados do formulário
     onNext();
   };
 

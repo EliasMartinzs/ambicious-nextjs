@@ -1,8 +1,7 @@
 'use client';
 
 import { checkedTask } from '@/lib/actions/task.action';
-// import { Checkbox } from '../ui/checkbox';
-import { DividerHorizontalIcon, CheckIcon } from '@radix-ui/react-icons';
+import { CheckIcon } from '@radix-ui/react-icons';
 import * as Checkbox from '@radix-ui/react-checkbox';
 
 type Props = {

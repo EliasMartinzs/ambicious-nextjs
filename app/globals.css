@@ -158,3 +158,33 @@
   height: 50px;
   background-color: red;
 }
+
+thread {
+  @apply bg-red-500 text-foreground-50;
+}
+
+/* Table Styles */
+
+.fl-table {
+  border-radius: 5px;
+  font-weight: normal;
+  border: none;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+.fl-table td,
+.fl-table th {
+  text-align: start;
+  padding: 8px;
+}
+
+.fl-table td {
+  border-right: 1px solid #f8f8f8;
+}
+
+.fl-table thead th {
+  @apply text-foreground bg-background border-b;
+}

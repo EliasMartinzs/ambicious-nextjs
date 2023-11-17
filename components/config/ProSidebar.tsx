@@ -3,13 +3,7 @@
 import { useState } from 'react';
 import ThemeSwitch from './ThemeSwitcher';
 
-import {
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-  useAuth,
-} from '@clerk/nextjs';
+import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 import { Button } from '../ui/button';
 import { MenuIcon, X } from 'lucide-react';
 import { cn } from '@/lib/utils';

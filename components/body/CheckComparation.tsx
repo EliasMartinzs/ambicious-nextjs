@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, Fragment } from 'react';
-import { Listbox, Transition } from '@headlessui/react';
+import { useState } from 'react';
+import { Listbox } from '@headlessui/react';
 import { Check, ChevronDown } from 'lucide-react';
 import { BodyMeasurementsType } from '@/types';
 import { formatDate } from '@/lib/utils';
@@ -17,7 +17,9 @@ export default function CheckComparation({
   name,
   updateProgress,
 }: Props) {
-  const [selected, setSelected] = useState(bodyMeasurements[0]);
+  const [selected, setSelected] = useState<BodyMeasurementsType>(
+    bodyMeasurements[0],
+  );
 
   return (
     <>
@@ -26,7 +28,7 @@ export default function CheckComparation({
           <div className="relative mt-1">
             <Listbox.Button className="relative w-full cursor-default rounded-lg bg-transparent py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
               <span className="block truncate">
-                {formatDate(selected.date?.toString() ?? '')}
+                {formatDate(selected?.date?.toString() ?? '')}
               </span>
               <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                 <ChevronDown

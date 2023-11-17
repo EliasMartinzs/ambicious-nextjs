@@ -2,8 +2,6 @@ import { auth } from '@clerk/nextjs';
 import { fetchUser } from '@/lib/actions/user.action';
 import FlashcardMenu from './FlashcardMenu';
 import { fecthFlashcard } from '@/lib/actions/flashcard.action';
-import { FlashcardType } from '@/types';
-import Flashcard from './Flashcard';
 
 export default async function Flashcards() {
   const { userId } = auth();

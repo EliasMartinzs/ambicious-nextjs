@@ -3,8 +3,6 @@ import { Button } from '../ui/button';
 import { Plus, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-import { z } from 'zod';
-
 import { Tabs, TabsContent } from '../ui/tabs';
 import { TabsList, TabsTrigger } from '@radix-ui/react-tabs';
 import Exercise from './Exercise';
@@ -44,17 +42,20 @@ export default function CreateRoutine({ day, author }: Props) {
           <X />
         </Button>
 
-        <Tabs defaultValue="exercise" className="w-full flex-center flex-col">
+        <Tabs
+          defaultValue="exercise"
+          className="w-full flex-center flex-col text-black"
+        >
           <TabsList className="title flex-center gap-10">
             <TabsTrigger
               value="exercise"
-              className="data-[state=active]:border-b-2 border-primary-500 data-[state=active]:font-black"
+              className="data-[state=active]:border-b-2 border-primary-500"
             >
               Exercicios
             </TabsTrigger>
             <TabsTrigger
               value="diet"
-              className="data-[state=active]:border-b-2 border-primary-500 data-[state=active]:font-black"
+              className="data-[state=active]:border-b-2 border-primary-500"
             >
               Dieta
             </TabsTrigger>

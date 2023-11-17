@@ -1,8 +1,6 @@
 import {
   Table,
   TableBody,
-  TableCaption,
-  TableCell,
   TableHead,
   TableHeader,
   TableRow,
@@ -66,9 +64,9 @@ export default function BodyMeasurements({ author, bodyData }: Props) {
   };
 
   return (
-    <div className="flex-center flex-col gap-y-10">
+    <div className="w-full flex max-sm:justify-start items-center justify-center flex-col">
       <Table className="text-foreground">
-        <TableHeader>
+        <TableHeader className="overflow-auto max-sm:pl-5">
           <TableRow>
             <TableHead>Pei</TableHead>
             <TableHead>Bíc Esq</TableHead>
@@ -98,7 +96,10 @@ export default function BodyMeasurements({ author, bodyData }: Props) {
         </TableBody>
       </Table>
 
-      <form onSubmit={onSubmit} className="flex flex-col w-96">
+      <form
+        onSubmit={onSubmit}
+        className="flex flex-col max-sm:mt-5 md:w-96 md:mt-10"
+      >
         <div className="flex-between">
           <Label>Peito:</Label>
           <div className="flex-center">

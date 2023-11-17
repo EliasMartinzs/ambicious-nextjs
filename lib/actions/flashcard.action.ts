@@ -39,6 +39,16 @@ export async function createFlashcard({
   }
 }
 
+export async function deleteFlashcard(author: string) {
+  try {
+    connectToDB();
+
+    await Flashcard.deleteOne({ _id: author });
+
+    revalidatePath('/');
+  } catch (error) {}
+}
+
 export async function fecthFlashcard() {
   try {
     await connectToDB();

@@ -1,6 +1,5 @@
 'use client';
 import { useState } from 'react';
-import Separator from '../Shared/Separator';
 import {
   Select,
   SelectValue,
@@ -10,7 +9,6 @@ import {
   SelectTrigger,
 } from '../ui/select';
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import BodyMeasurements from './BodyMeasurements';
 import { BodyBasicsType, BodyMeasurementsType } from '@/types';
 import BodyBasics from './bodyBasics';

@@ -5,7 +5,6 @@ import Step1 from './Step1';
 import Step2 from './Step2';
 import { addDays } from 'date-fns';
 import { DateRange } from 'react-day-picker';
-import { createMeta } from '@/lib/actions/meta.action';
 
 export type MetaInfoProps = {
   category?: string;

@@ -1,4 +1,4 @@
-import React, { Dispatch, useState } from 'react';
+import React, { Dispatch } from 'react';
 import { Input } from '../ui/input';
 
 type Props = {

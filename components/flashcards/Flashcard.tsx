@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Dot, Settings, Settings2 } from 'lucide-react';
+import { Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { FlashcardType } from '@/types';
 import { cn } from '@/lib/utils';
+import { SettingsFlashcard } from './SettingsFlashcard';
 
 export default function Flashcard({
   flashcard,
@@ -11,7 +12,7 @@ export default function Flashcard({
   flashcard: FlashcardType;
   className?: string;
 }) {
-  const { category, color, description, title } = flashcard;
+  const { category, color, description, title, _id } = flashcard;
 
   return (
     <div
@@ -28,7 +29,7 @@ export default function Flashcard({
           }
         >
           <span>{title}</span>
-          <Settings className="w-4 h-4" />
+          <SettingsFlashcard id={_id.toString()} />
         </h3>
         <p className={'text-small font-extralight'}>{description}</p>
         <p
@@ -36,11 +37,6 @@ export default function Flashcard({
         >
           {category}
         </p>
-        <Button
-          className={`border rounded-full border-slate-500/40 hover:border-black font-black transition-colors`}
-        >
-          Revisao
-        </Button>
       </div>
     </div>
   );

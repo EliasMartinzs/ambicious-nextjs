@@ -26,7 +26,7 @@ export default async function Routine() {
   const bodyBasics: BodyBasicsType[] = await fetchBodyBasics();
 
   return (
-    <div className="paddings">
+    <div className="paddings pb-10">
       <Filters
         author={user?._id.toString()}
         exercises={exercises}
@@ -35,12 +35,13 @@ export default async function Routine() {
       <br />
       <h3 className="title font-bold">Corpo</h3>
       <Separator />
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 overflow-hidden gap-10">
         <Body
           author={user?._id.toString()}
           bodyData={bodyMeasurements}
           bodyBasics={bodyBasics}
         />
+
         <div>
           <Comparations bodyMeasurements={bodyMeasurements} />
         </div>

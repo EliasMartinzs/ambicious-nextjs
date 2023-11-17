@@ -1,4 +1,3 @@
-import { GraduationCap, FolderKanban, CalendarCheck } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Navigation() {
@@ -7,7 +6,7 @@ export default function Navigation() {
       <h3 className="text-lg font-bold">Navegação</h3>
       <ul className="mt-3 text-base font-medium">
         <li className="flex">
-          <Link href="#plan" className="hover:underline underline-offset-4">
+          <Link href="/" className="hover:underline underline-offset-4">
             Planejamento
           </Link>
         </li>

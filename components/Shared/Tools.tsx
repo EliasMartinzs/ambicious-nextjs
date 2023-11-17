@@ -18,25 +18,25 @@ export default async function Tools() {
           <div className="w-full flex flex-row max-sm:justify-center max-sm:items-center md:flex-col bg-primary-500 relative md:rounded-tr-2xl md:rounded-br-2xl md:pl-2">
             <TabsTrigger
               value="cursos"
-              className="md:rounded-bl-full py-2 font-bold"
+              className="md:rounded-bl-full py-2 font-bold text-white"
             >
               Cursos
             </TabsTrigger>
             <TabsTrigger
               value="livros"
-              className="md:rounded-tl-full md:rounded-bl-full py-2 font-bold"
+              className="md:rounded-tl-full md:rounded-bl-full py-2 font-bold text-white"
             >
               Livros
             </TabsTrigger>
             <TabsTrigger
               value="projetos"
-              className="md:rounded-tl-full md:rounded-bl-full py-2 font-bold"
+              className="md:rounded-tl-full md:rounded-bl-full py-2 font-bold text-white"
             >
               Leetcode
             </TabsTrigger>
             <TabsTrigger
               value="metas"
-              className="md:rounded-tl-full py-2 font-bold"
+              className="md:rounded-tl-full py-2 font-bold text-white"
             >
               Metas
             </TabsTrigger>
