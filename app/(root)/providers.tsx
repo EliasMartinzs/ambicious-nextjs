@@ -8,9 +8,19 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     <NextUIProvider>
       <ThemeProvider
         attribute="class"
-        defaultTheme="arcade"
+        defaultTheme="city"
         enableSystem
-        themes={['wanella', 'abyss', 'noturn', 'fortune', 'ancient', 'castily']}
+        themes={[
+          'wanella',
+          'abyss',
+          'noturn',
+          'fortune',
+          'ancient',
+          'castily',
+          'city',
+          'lightmontain',
+          'library',
+        ]}
       >
         {children}
       </ThemeProvider>
