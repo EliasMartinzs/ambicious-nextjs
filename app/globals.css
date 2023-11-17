@@ -60,10 +60,6 @@
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
 
-.cl-internal-11ewti4 {
-  @apply w-16 h-16;
-}
-
 @layer components {
   .tw-timer-container {
     @apply w-[20rem] h-[20rem] flex justify-center items-center rounded-full bg-gradient-to-t to-pmd-blue-600 from-pmd-blue-900  shadow-2xl shadow-pmd-blue-600;
