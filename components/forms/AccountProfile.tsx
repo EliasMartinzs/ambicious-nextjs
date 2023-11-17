@@ -22,6 +22,7 @@ import { Textarea } from '../ui/textarea';
 import { usePathname, useRouter } from 'next/navigation';
 import { updateUser } from '@/lib/actions/user.action';
 import { isBase64Image } from '@/lib/utils';
+import Link from 'next/link';
 
 interface Props {
   user: {
@@ -53,7 +54,7 @@ export default function AccountProfile({ user, btnTitle }: Props) {
 
   const handleImage = (
     e: ChangeEvent<HTMLInputElement>,
-    fieldChange: (value: string) => void
+    fieldChange: (value: string) => void,
   ) => {
     e.preventDefault();
 
@@ -120,8 +121,8 @@ export default function AccountProfile({ user, btnTitle }: Props) {
               <FormLabel className="text-base-semibold text-light-2">
                 Nome
               </FormLabel>
-              <FormControl className="flex-1 text-base-semibold text-gray-200">
-                <Input type="text" className="input" {...field} />
+              <FormControl className="flex-1 text-base-semibold text-foreground">
+                <Input type="text" className="input-3" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -136,8 +137,8 @@ export default function AccountProfile({ user, btnTitle }: Props) {
               <FormLabel className="text-base-semibold text-light-2">
                 Sobrenome
               </FormLabel>
-              <FormControl className="flex-1 text-base-semibold text-gray-200">
-                <Input type="text" className="input" {...field} />
+              <FormControl className="flex-1 text-base-semibold text-foreground">
+                <Input type="text" className="input-3" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -152,8 +153,8 @@ export default function AccountProfile({ user, btnTitle }: Props) {
               <FormLabel className="text-base-semibold text-light-2">
                 Bio
               </FormLabel>
-              <FormControl className="flex-1 text-base-semibold text-gray-200">
-                <Textarea rows={10} className="input" {...field} />
+              <FormControl className="flex-1 text-base-semibold text-foreground">
+                <Textarea rows={10} className="input-3" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -186,12 +187,12 @@ export default function AccountProfile({ user, btnTitle }: Props) {
                   />
                 )}
               </FormLabel>
-              <FormControl className="flex-1 text-base-semibold text-gray-200">
+              <FormControl className="flex-1 text-base-semibold text-foreground">
                 <Input
                   type="file"
                   accept="image/*"
                   placeholder="Upload a photo"
-                  className="input"
+                  className="input-3"
                   onChange={e => handleImage(e, field.onChange)}
                 />
               </FormControl>
@@ -202,9 +203,15 @@ export default function AccountProfile({ user, btnTitle }: Props) {
 
         <Button
           type="submit"
-          className="bg-primary-500 rounded-full shadow-sm font-medium hover:font-black hover:bg-primary-600 hover:shadow-inner transition-colors"
+          className="bg-primary-500 text-white hover:bg-foreground transition-colors hover:rounded-xl"
         >
-          Submit
+          Salvar
+        </Button>
+        <Button
+          type="submit"
+          className="bg-foreground text-white hover:bg-primary-500 transition-colors hover:rounded-none rounded-xl"
+        >
+          <Link href="/">Voltar</Link>
         </Button>
       </form>
     </Form>

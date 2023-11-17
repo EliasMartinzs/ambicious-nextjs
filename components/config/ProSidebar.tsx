@@ -8,6 +8,7 @@ import { Button } from '../ui/button';
 import { MenuIcon, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Navigation from '../Shared/Navigation';
+import Link from 'next/link';
 
 export default function ProSidebar() {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -27,13 +28,19 @@ export default function ProSidebar() {
           showSidebar ? 'translate-x-0' : 'translate-x-full',
         )}
       >
-        <div className="flex-center pb-5">
+        <div className="flex-center flex-col pb-5">
           <SignedIn>
             <UserButton showName={true} />
           </SignedIn>
           <SignedOut>
             <SignInButton />
           </SignedOut>
+          <Link
+            href="/onboarding"
+            className="bg-foreground text-background my-3 p-2 hover:bg-background hover:text-foreground transition-all font-medium paragraph hover:rounded-xl"
+          >
+            Editar meu perfil
+          </Link>
         </div>
 
         <ThemeSwitch />
