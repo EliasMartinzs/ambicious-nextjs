@@ -7,6 +7,10 @@ Existem melhorias a serem feitas, especialmente em termos de ajustes visuais que
 
 O objetivo dessa abordagem multifacetada foi entender qual método se adapta melhor a diferentes tipos de projetos. Consequentemente, ofereci diversos tipos de entradas para os usuários, ao invés de seguir um único padrão. Isso foi feito visando a flexibilidade e aprimorando a legibilidade do código, buscando identificar qual técnica seria mais vantajosa para a reutilização futura.
 
+Aqui esta o projeto updado na vercel se quiser ter um acesso de como funciona https://ambicious-nextjs.vercel.app/
+
+O Ambicious é um projeto 100% de código aberto, desenvolvido para melhorar meus conhecimentos. Fique a vontade para fazẽ-lo seu.
+
 # Funcionalidades
 
 # Planejamento
