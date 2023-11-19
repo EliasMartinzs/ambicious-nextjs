@@ -11,6 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '../ui/button';
 import Colors from './Colors';
 import { createFlashcard } from '@/lib/actions/flashcard.action';
+import Toast from '../Shared/Toast';
 
 const FlashcardSchema = z.object({
   title: z.string(),
@@ -204,14 +205,7 @@ export default function CreateFlashcard({
       </Label>
       <Colors color={color} setColor={setColor} />
       <br />
-      <Button
-        type={'submit'}
-        className={
-          'border rounded-full border-primary-500 text-slate-950 hover:bg-primary-500 hover:text-white hover:font-bold'
-        }
-      >
-        Salvar
-      </Button>
+      <Toast textButton="Salvar" dialog="Flashcard Adicionado." />
     </form>
   );
 }

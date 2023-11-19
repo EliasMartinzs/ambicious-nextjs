@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
   bodyBasics: [{ type: Array }],
   onboarded: {
     type: Boolean,
-    default: false,
+    default: true,
   },
 });
 

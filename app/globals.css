@@ -90,6 +90,10 @@
   @apply text-lg text-foreground;
 }
 
+.cl-card {
+  @apply w-auto rounded-none shadow-none;
+}
+
 .input {
   @apply border-b rounded-xl border-background text-foreground focus:border focus:border-primary-500;
 }

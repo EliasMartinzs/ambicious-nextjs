@@ -114,7 +114,7 @@ export default function Diet({ day, author }: Props) {
           )}
         />
       </Label>
-      <Toast dialog="Dieta Adicionada." textButton="Salvar" />
+      <Toast dialog="Dieta Adicionada." textButton="Gambiarra" />
     </form>
   );
 }

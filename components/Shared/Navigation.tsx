@@ -11,7 +11,7 @@ export default function Navigation() {
           </Link>
         </li>
         <li className="flex">
-          <Link href="/gym" className="hover:underline underline-offset-4">
+          <Link href="/home/gym" className="hover:underline underline-offset-4">
             Academia
           </Link>
         </li>

@@ -1,13 +1,25 @@
-import { SignIn } from '@clerk/nextjs';
+'use client';
+import { SignIn, useAuth } from '@clerk/nextjs';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 export default function Page() {
+  const router = useRouter();
+  const { isSignedIn } = useAuth();
+
+  useEffect(() => {
+    isSignedIn ? router.replace('/home') : null;
+  }, [router]);
+
   return (
-    <main className="w-full h-screen flex-center flex-col text-black">
-      <div className="flex-center flex-col py-10">
-        <h3 className="title font-black">Ambicious</h3>
-        <p>Faca login para ter acesso a plataforma</p>
-      </div>
-      <SignIn />
-    </main>
+    <>
+      <main className="w-full h-screen bg-[url('/themes/login-blur.jpg')] saturate-150 overflow-hidden flex-center">
+        <div className="w-[80%] h-[80%] bg-[url('/themes/login.jpg')]">
+          <div className="w-96 h-full flex-center bg-[#19191A] shadow-inner-2">
+            <SignIn />
+          </div>
+        </div>
+      </main>
+    </>
   );
 }

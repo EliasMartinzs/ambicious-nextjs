@@ -43,7 +43,7 @@ export default async function Leetcode({ user }: { user: any }) {
                         className="flex-start flex-col border-b border-primary-400 relative p-5"
                       >
                         <Link
-                          href={`/problems/${quest._id.toString()}`}
+                          href={`/home/problems/${quest._id.toString()}`}
                           className="font-black text-primary-300 cursor-pointer flex-between items-center"
                         >
                           {quest?.question}
@@ -69,7 +69,7 @@ export default async function Leetcode({ user }: { user: any }) {
                 className="flex-start flex-col border-b border-primary-400 relative p-5"
               >
                 <Link
-                  href={`/problems/${quest._id.toString()}`}
+                  href={`/home/problems/${quest._id.toString()}`}
                   className="font-black text-primary-300 cursor-pointer flex-between items-center"
                 >
                   {quest?.question}

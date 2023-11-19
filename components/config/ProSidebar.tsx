@@ -1,20 +1,43 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ThemeSwitch from './ThemeSwitcher';
 
-import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
+import { SignOutButton, auth, useAuth, useUser } from '@clerk/nextjs';
 import { Button } from '../ui/button';
 import { MenuIcon, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Navigation from '../Shared/Navigation';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { fetchUser } from '@/lib/actions/user.action';
+import { UserType } from '@/types';
+import Image from 'next/image';
 
 export default function ProSidebar() {
   const [showSidebar, setShowSidebar] = useState(false);
+  const [userData, setUserData] = useState<UserType | null>();
+  const router = useRouter();
+  const { userId } = useAuth();
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const user = await fetchUser({ userId });
+
+      setUserData(user);
+    };
+
+    fetchUserData();
+  }, [userId]);
+
+  const removeJWTFromLocalStorage = () => {
+    localStorage.removeItem('clerk-db-jwt');
+
+    router.push('/');
+  };
 
   return (
-    <aside className="">
+    <aside className="overflow-y-auto">
       <div
         className={cn(
           showSidebar
@@ -28,19 +51,23 @@ export default function ProSidebar() {
           showSidebar ? 'translate-x-0' : 'translate-x-full',
         )}
       >
-        <div className="flex-center flex-col pb-5">
-          <SignedIn>
-            <UserButton showName={true} />
-          </SignedIn>
-          <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          <Link
-            href="/onboarding"
-            className="bg-foreground text-background my-3 p-2 hover:bg-background hover:text-foreground transition-all font-medium paragraph hover:rounded-xl"
-          >
-            Editar meu perfil
-          </Link>
+        <div className="flex-center flex-col gap-y-2 text-foreground">
+          <div className="w-20 h-20 relative rounded-full shadow-inner shadow-inner-2">
+            <Image
+              src={userData?.image ?? ''}
+              alt="fsafas"
+              fill
+              className="rounded-full object-contain object-center shadow-inner shadow-inner-2"
+            />
+          </div>
+          <h3>
+            {userData?.name} {userData?.username}
+          </h3>
+          <SignOutButton signOutCallback={removeJWTFromLocalStorage}>
+            <Button className="text-lg hover:underline underline-offset-4 hover:text-red-500">
+              Sair
+            </Button>
+          </SignOutButton>
         </div>
 
         <ThemeSwitch />

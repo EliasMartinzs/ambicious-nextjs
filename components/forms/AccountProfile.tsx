@@ -23,32 +23,44 @@ import { usePathname, useRouter } from 'next/navigation';
 import { updateUser } from '@/lib/actions/user.action';
 import { isBase64Image } from '@/lib/utils';
 import Link from 'next/link';
+import { User } from '@clerk/nextjs/server';
+import { UserType } from '@/types';
 
 interface Props {
-  user: {
-    id: string;
-    objectId: string;
-    username: string;
-    name: string;
-    bio: string;
-    image: string;
-  };
-  btnTitle: string;
+  id: any;
+  username: string;
+  name: string;
+  bio: string;
+  image: string;
+  onboarded: boolean;
+  userDb: UserType | null;
 }
 
-export default function AccountProfile({ user, btnTitle }: Props) {
+export default function AccountProfile({
+  bio,
+  id,
+  image,
+  name,
+  username,
+  onboarded,
+  userDb,
+}: Props) {
   const pathname = usePathname();
   const router = useRouter();
   const [files, setFiles] = useState<File[]>([]);
   const { startUpload } = useUploadThing('media');
 
+  if (onboarded) {
+    router.replace('/home');
+  }
+
   const form = useForm({
     resolver: zodResolver(UserValidation),
     defaultValues: {
-      profile_photo: user?.image || '',
-      name: user?.name || '',
-      username: user?.username || '',
-      bio: user?.bio || '',
+      profile_photo: image || '',
+      name: userDb?.name.toString() || '',
+      username: userDb?.username || '',
+      bio: userDb?.bio || '',
     },
   });
 
@@ -92,19 +104,16 @@ export default function AccountProfile({ user, btnTitle }: Props) {
     }
 
     await updateUser({
-      userId: user.id,
+      userId: id,
       username: values.username,
       name: values.name,
       bio: values.bio,
       image: values.profile_photo,
       path: pathname,
+      onboarded: true,
     });
 
-    router.push('/');
-
-    if (pathname === '/') {
-      router.back();
-    }
+    router.push('/home');
   };
 
   return (
@@ -206,12 +215,6 @@ export default function AccountProfile({ user, btnTitle }: Props) {
           className="bg-primary-500 text-white hover:bg-foreground transition-colors hover:rounded-xl"
         >
           Salvar
-        </Button>
-        <Button
-          type="submit"
-          className="bg-foreground text-white hover:bg-primary-500 transition-colors hover:rounded-none rounded-xl"
-        >
-          <Link href="/">Voltar</Link>
         </Button>
       </form>
     </Form>

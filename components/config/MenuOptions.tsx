@@ -28,7 +28,7 @@ export default async function MenuOptions() {
           </SheetTitle>
           <SheetDescription className="w-full gap-y-5 flex-start flex-col">
             <div className="w-full flex-start gap-x-4">
-              <UserButton afterSignOutUrl="/" userProfileMode="navigation" />
+              {/* <UserButton afterSignOutUrl="/" userProfileMode="navigation" /> */}
               <div className="flex flex-col items-start justify-center">
                 <h3 className="capitalize font-bold text-lg my-1">
                   {user?.username}

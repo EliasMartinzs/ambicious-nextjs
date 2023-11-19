@@ -7,12 +7,13 @@ import Task from '../models/taks.models';
 import { UserType } from '@/types';
 
 interface Params {
-  userId: string;
-  username: string;
-  name: string;
-  bio: string;
-  image: string;
-  path: string;
+  userId?: string;
+  username?: string;
+  name?: string;
+  bio?: string;
+  image?: string;
+  path?: string;
+  onboarded?: boolean;
 }
 
 export async function updateUser({
@@ -22,6 +23,7 @@ export async function updateUser({
   path,
   username,
   image,
+  onboarded,
 }: Params): Promise<void> {
   try {
     connectToDB();
@@ -29,18 +31,16 @@ export async function updateUser({
     await User.findOneAndUpdate(
       { id: userId },
       {
-        username: username.toLowerCase(),
+        username,
         name,
         bio,
         image,
-        onboarded: true,
+        onboarded,
       },
-      { upsert: true }
+      { upsert: true },
     );
 
-    if (path === '/profile/edit') {
-      revalidatePath(path);
-    }
+    revalidatePath('/');
   } catch (error: any) {
     throw new Error(`Failed to create/update user: ${error.message}`);
   }
@@ -49,16 +49,12 @@ export async function updateUser({
 export async function fetchUser({
   userId,
 }: {
-  userId: string | null;
+  userId: string | null | undefined;
 }): Promise<UserType | null> {
   try {
     connectToDB();
 
     return await User.findOne({ id: userId });
-    //   .populate({
-    //   path: 'communities',
-    //   model: Community,
-    // });
   } catch (error: any) {
     throw new Error(`Failed to fetch user:${error.message}`);
   }
