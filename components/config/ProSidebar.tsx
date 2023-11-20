@@ -37,7 +37,7 @@ export default function ProSidebar() {
   };
 
   return (
-    <aside className="overflow-y-auto">
+    <aside className="overflow-y-auto h-auto">
       <div
         className={cn(
           showSidebar
@@ -51,7 +51,7 @@ export default function ProSidebar() {
           showSidebar ? 'translate-x-0' : 'translate-x-full',
         )}
       >
-        <div className="flex-center flex-col gap-y-2 text-foreground">
+        <div className="flex-center flex-col gap-y-2 text-foreground overflow-y-auto h-auto">
           <div className="w-20 h-20 relative rounded-full shadow-inner shadow-inner-2">
             <Image
               src={userData?.image ?? ''}

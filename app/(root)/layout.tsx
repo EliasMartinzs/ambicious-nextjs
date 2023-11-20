@@ -1,5 +1,6 @@
 import { ClerkProvider } from '@clerk/nextjs';
 import '../globals.css';
+import { ToastContainer } from 'react-toastify';
 
 export const metadata = {
   title: 'Next.js',
@@ -12,9 +13,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider afterSignInUrl="/onboarding" afterSignUpUrl="/onboarding">
       <html lang="en">
-        <body>{children}</body>
+        <body>
+          {children}
+          <ToastContainer />
+        </body>
       </html>
     </ClerkProvider>
   );

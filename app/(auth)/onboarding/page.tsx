@@ -10,9 +10,9 @@ export default async function page() {
   const userDB = JSON.parse(JSON.stringify(userDb));
 
   return (
-    <main className="mx-auto flex max-w-3xl flex-col justify-start px-10 py-20">
-      <h3 className="text-2xl font-black">Perfil</h3>
-      <section className="bg-dark-2 p-10">
+    <main className="w-full h-screen flex-center bg-[url('/themes/login.jpg')]">
+      <div className="mx-auto flex max-w-3xl flex-col justify-start px-10 py-20 bg-[#191a19] shadow-2xl">
+        <h3 className="text-2xl font-black text-white pb-5">Perfil</h3>
         <AccountProfile
           bio=""
           id={currentUserData?.id}
@@ -22,7 +22,7 @@ export default async function page() {
           onboarded={userDb?.onboarded ?? false}
           userDb={userDB}
         />
-      </section>
+      </div>
     </main>
   );
 }

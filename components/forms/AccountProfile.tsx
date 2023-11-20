@@ -25,6 +25,7 @@ import { isBase64Image } from '@/lib/utils';
 import Link from 'next/link';
 import { User } from '@clerk/nextjs/server';
 import { UserType } from '@/types';
+import Toast from '../Shared/Toast';
 
 interface Props {
   id: any;
@@ -49,10 +50,6 @@ export default function AccountProfile({
   const router = useRouter();
   const [files, setFiles] = useState<File[]>([]);
   const { startUpload } = useUploadThing('media');
-
-  if (onboarded) {
-    router.replace('/home');
-  }
 
   const form = useForm({
     resolver: zodResolver(UserValidation),
@@ -110,17 +107,14 @@ export default function AccountProfile({
       bio: values.bio,
       image: values.profile_photo,
       path: pathname,
-      onboarded: true,
     });
-
-    router.push('/home');
   };
 
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col justify-start gap-5"
+        className="flex flex-col justify-start gap-5 text-white"
       >
         <FormField
           control={form.control}
@@ -131,7 +125,12 @@ export default function AccountProfile({
                 Nome
               </FormLabel>
               <FormControl className="flex-1 text-base-semibold text-foreground">
-                <Input type="text" className="input-3" {...field} />
+                <Input
+                  type="text"
+                  className="input-3 placeholder:text-white text-white"
+                  placeholder="Jonh"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -147,7 +146,12 @@ export default function AccountProfile({
                 Sobrenome
               </FormLabel>
               <FormControl className="flex-1 text-base-semibold text-foreground">
-                <Input type="text" className="input-3" {...field} />
+                <Input
+                  type="text"
+                  className="input-3 placeholder:text-white text-white"
+                  placeholder="Doe"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -209,13 +213,21 @@ export default function AccountProfile({
             </FormItem>
           )}
         />
-
-        <Button
-          type="submit"
-          className="bg-primary-500 text-white hover:bg-foreground transition-colors hover:rounded-xl"
-        >
-          Salvar
-        </Button>
+        <Toast
+          dialog="Salvo com sucesso"
+          textButton="Salvar"
+          classname="text-white font-bold hover:bg-primary-700 transition-colors"
+        />
+        <Link href="/home" className="w-full flex-center">
+          <Button className="w-full bg-transparent hover:bg-primary-700 transition-colors font-bold hover:text-white">
+            Planejamento
+          </Button>
+        </Link>
+        <Link href="/home/gym" className="w-full flex-center">
+          <Button className="w-full text-white bg-primary-500 hover:bg-primary-700 transition-colors font-bold">
+            Academia
+          </Button>
+        </Link>
       </form>
     </Form>
   );

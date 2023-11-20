@@ -6,7 +6,7 @@ export default function Navigation() {
       <h3 className="text-lg font-bold">Navegação</h3>
       <ul className="mt-3 text-base font-medium">
         <li className="flex">
-          <Link href="/" className="hover:underline underline-offset-4">
+          <Link href="/home" className="hover:underline underline-offset-4">
             Planejamento
           </Link>
         </li>
