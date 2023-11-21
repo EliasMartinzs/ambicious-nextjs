@@ -5,6 +5,8 @@ import Exercise from '../models/exercise.model';
 import User from '../models/user.model';
 import { connectToDB } from '../mongodb';
 
+connectToDB();
+
 type CreateExerciseProps = {
   exercise: string;
   reps: number;
@@ -25,8 +27,6 @@ export async function CreateExercise({
   day,
 }: CreateExerciseProps) {
   try {
-    await connectToDB();
-
     const create = await Exercise.create({
       exercise,
       day,
@@ -48,8 +48,6 @@ export async function CreateExercise({
 
 export async function fetchExercises() {
   try {
-    await connectToDB();
-
     const exercisesData = await Exercise.find();
 
     revalidatePath('/gym');
@@ -62,8 +60,6 @@ export async function fetchExercises() {
 
 export async function deleteExercise(author: string | undefined) {
   try {
-    await connectToDB();
-
     await Exercise.deleteOne({ _id: author });
 
     revalidatePath('/gym');

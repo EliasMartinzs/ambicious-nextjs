@@ -5,6 +5,8 @@ import User from '../models/user.model';
 import { connectToDB } from '../mongodb';
 import Diet from '../models/diet.model';
 
+connectToDB();
+
 type CreateDietProps = {
   food: string;
   quantity: string;
@@ -25,8 +27,6 @@ export async function CreateDiet({
   time,
 }: CreateDietProps) {
   try {
-    await connectToDB();
-
     const create = await Diet.create({
       athlet,
       food,
@@ -48,8 +48,6 @@ export async function CreateDiet({
 
 export async function fetchDiet() {
   try {
-    await connectToDB();
-
     const dietData = await Diet.find();
 
     revalidatePath('/gym');
@@ -62,8 +60,6 @@ export async function fetchDiet() {
 
 export async function deleteDiet(author: string | undefined) {
   try {
-    await connectToDB();
-
     await Diet.deleteOne({ _id: author });
 
     revalidatePath('/gym');

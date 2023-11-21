@@ -1,10 +1,11 @@
 'use server';
 
-import { DateRange } from 'react-day-picker';
 import Meta from '../models/meta.models';
 import User from '../models/user.model';
 import { connectToDB } from '../mongodb';
 import { revalidatePath } from 'next/cache';
+
+connectToDB();
 
 type MetaProps = {
   meta: string;
@@ -24,8 +25,6 @@ export async function createMeta({
   meta,
 }: MetaProps) {
   try {
-    await connectToDB();
-
     const create = await Meta.create({
       category,
       dateFrom,
@@ -45,8 +44,6 @@ export async function createMeta({
 
 export const fetchMeta = async () => {
   try {
-    await connectToDB();
-
     const meta = await Meta.find();
 
     return meta;
@@ -57,8 +54,6 @@ export const fetchMeta = async () => {
 
 export async function deleteMeta({ author }: { author: string }) {
   try {
-    await connectToDB();
-
     await Meta.deleteOne({ _id: author });
 
     if ('/' === '/') {

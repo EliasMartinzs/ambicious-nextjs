@@ -5,6 +5,8 @@ import Course from '../models/couse.models';
 import User from '../models/user.model';
 import { connectToDB } from '../mongodb';
 
+connectToDB();
+
 interface CreateCourseProps {
   title: string;
   review?: string;
@@ -21,8 +23,6 @@ export const createCourse = async ({
   path,
 }: CreateCourseProps) => {
   try {
-    connectToDB();
-
     const course = await Course.create({
       title,
       review,
@@ -41,8 +41,6 @@ export const createCourse = async ({
 
 export const getCourses = async () => {
   try {
-    connectToDB();
-
     const course = await Course.find();
 
     return course;
@@ -59,8 +57,6 @@ export const deleteCourse = async ({
   path: string;
 }) => {
   try {
-    connectToDB();
-
     await Course.deleteOne({ _id: author });
 
     revalidatePath(path);

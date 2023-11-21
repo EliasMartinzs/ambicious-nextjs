@@ -5,6 +5,8 @@ import Question from '../models/question.models';
 import User from '../models/user.model';
 import { connectToDB } from '../mongodb';
 
+connectToDB();
+
 type QuestionType = {
   author: string;
   question: string;
@@ -31,8 +33,6 @@ export const createQuestion = async ({
   path,
 }: QuestionType) => {
   try {
-    connectToDB();
-
     const createdQuestion = await Question.create({
       category,
       author,
@@ -57,8 +57,6 @@ export const createQuestion = async ({
 
 export const getQuestions = async () => {
   try {
-    connectToDB();
-
     const getQuestion = await Question.find();
 
     return getQuestion;
@@ -69,8 +67,6 @@ export const getQuestions = async () => {
 
 export const getQuestionsById = async (id: string) => {
   try {
-    connectToDB();
-
     const getQuestionByID = await Question.findById(id);
 
     return getQuestionByID;
@@ -87,8 +83,6 @@ export const deleteQuestion = async ({
   path: string;
 }) => {
   try {
-    connectToDB();
-
     await Question.deleteOne({ _id: author });
 
     revalidatePath(path);

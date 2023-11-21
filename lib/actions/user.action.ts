@@ -6,6 +6,8 @@ import { connectToDB } from '../mongodb';
 import Task from '../models/taks.models';
 import { UserType } from '@/types';
 
+connectToDB();
+
 interface Params {
   userId?: string;
   username?: string;
@@ -26,8 +28,6 @@ export async function updateUser({
   onboarded,
 }: Params): Promise<void> {
   try {
-    connectToDB();
-
     await User.findOneAndUpdate(
       { id: userId },
       {
@@ -52,8 +52,6 @@ export async function fetchUser({
   userId: string | null | undefined;
 }): Promise<UserType | null> {
   try {
-    connectToDB();
-
     return await User.findOne({ id: userId });
   } catch (error: any) {
     throw new Error(`Failed to fetch user:${error.message}`);
@@ -62,8 +60,6 @@ export async function fetchUser({
 
 export async function fetchUserPost(userId: string) {
   try {
-    connectToDB();
-
     const tasks = await User.findOne({ id: userId }).populate({
       path: 'tasks',
       model: Task,

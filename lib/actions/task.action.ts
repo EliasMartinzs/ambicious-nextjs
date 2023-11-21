@@ -5,6 +5,8 @@ import Task from '../models/taks.models';
 import User from '../models/user.model';
 import { connectToDB } from '../mongodb';
 
+connectToDB();
+
 interface ParamsCreateTasks {
   text: string;
   author: string | undefined;
@@ -30,8 +32,6 @@ export async function createTasks({
   day,
 }: ParamsCreateTasks) {
   try {
-    connectToDB();
-
     const createdThread = await Task.create({
       text,
       author,
@@ -51,7 +51,6 @@ export async function createTasks({
 
 export async function getTask() {
   try {
-    connectToDB();
     const task = await Task.find();
 
     return task;
@@ -64,8 +63,6 @@ export async function checkedTask({
   path,
 }: ParamsChecked): Promise<void> {
   try {
-    connectToDB();
-
     await Task.updateOne({ _id: author }, { $set: { isSelected: isSelected } });
 
     if (path === '/') {
@@ -78,8 +75,6 @@ export async function checkedTask({
 
 export async function deleteTask({ author, path }: ParamsDeleteTask) {
   try {
-    connectToDB();
-
     await Task.deleteOne({ _id: author });
 
     if (path === '/') {

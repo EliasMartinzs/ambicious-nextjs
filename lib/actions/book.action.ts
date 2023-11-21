@@ -5,6 +5,8 @@ import Book from '../models/book.models';
 import User from '../models/user.model';
 import { connectToDB } from '../mongodb';
 
+connectToDB();
+
 interface IBook {
   title: string;
   avaliation?: number;
@@ -21,8 +23,6 @@ export const createBook = async ({
   path,
 }: IBook) => {
   try {
-    connectToDB();
-
     const createdBook = Book.create({
       title,
       avaliation,
@@ -41,8 +41,6 @@ export const createBook = async ({
 
 export const getBooks = async () => {
   try {
-    connectToDB();
-
     const books = await Book.find();
 
     return books;
@@ -59,8 +57,6 @@ export const deleteBook = async ({
   path: string;
 }) => {
   try {
-    connectToDB();
-
     await Book.deleteOne({ _id: author });
 
     revalidatePath(path);

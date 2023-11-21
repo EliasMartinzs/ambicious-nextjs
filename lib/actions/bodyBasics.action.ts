@@ -5,6 +5,8 @@ import Basics from '../models/bodyBasics';
 import User from '../models/user.model';
 import { connectToDB } from '../mongodb';
 
+connectToDB();
+
 type CreateBodyBasicsProps = {
   height: number;
   weight: number;
@@ -26,8 +28,6 @@ export const createBodyBasics = async ({
   author,
 }: CreateBodyBasicsProps) => {
   try {
-    await connectToDB();
-
     const create = await Basics.create({
       height,
       weight,
@@ -47,8 +47,6 @@ export const createBodyBasics = async ({
 
 export const fetchBodyBasics = async () => {
   try {
-    await connectToDB();
-
     const basicsData = await Basics.find();
 
     return JSON.parse(JSON.stringify(basicsData));

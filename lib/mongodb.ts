@@ -15,3 +15,5 @@ export const connectToDB = async () => {
     isConnected = true;
   } catch (error) {}
 };
+
+connectToDB();

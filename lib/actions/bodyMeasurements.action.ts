@@ -5,6 +5,8 @@ import BodyMeasurements from '../models/bodyMeasurements.model';
 import User from '../models/user.model';
 import { connectToDB } from '../mongodb';
 
+connectToDB();
+
 type CreateBodyMeasurementsProps = {
   chest: number;
   bicepsLeft: number;
@@ -31,8 +33,6 @@ export async function createBodyMeasurements({
   author,
 }: CreateBodyMeasurementsProps) {
   try {
-    connectToDB();
-
     const create = await BodyMeasurements.create({
       chest,
       bicepsLeft,
@@ -57,8 +57,6 @@ export async function createBodyMeasurements({
 
 export async function fetchBodyMeasurements() {
   try {
-    await connectToDB();
-
     const bodyMeasurements = await BodyMeasurements.find();
 
     return JSON.parse(JSON.stringify(bodyMeasurements));

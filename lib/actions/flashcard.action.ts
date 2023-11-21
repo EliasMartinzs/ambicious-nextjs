@@ -4,6 +4,8 @@ import { connectToDB } from '@/lib/mongodb';
 import Flashcard from '@/lib/models/flashcard.model';
 import { revalidatePath } from 'next/cache';
 
+connectToDB();
+
 interface CreateFlashcardProps {
   title: string;
   description: string;
@@ -20,8 +22,6 @@ export async function createFlashcard({
   author,
 }: CreateFlashcardProps) {
   try {
-    await connectToDB();
-
     const create = Flashcard.create({
       title,
       description,
@@ -41,8 +41,6 @@ export async function createFlashcard({
 
 export async function deleteFlashcard(author: string) {
   try {
-    connectToDB();
-
     await Flashcard.deleteOne({ _id: author });
 
     revalidatePath('/');
@@ -51,8 +49,6 @@ export async function deleteFlashcard(author: string) {
 
 export async function fecthFlashcard() {
   try {
-    await connectToDB();
-
     const flashcard = await Flashcard.find();
 
     return JSON.parse(JSON.stringify(flashcard));
