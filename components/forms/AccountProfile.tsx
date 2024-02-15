@@ -213,6 +213,9 @@ export default function AccountProfile({
             </FormItem>
           )}
         />
+             <Button type='submit' className="w-full bg-transparent hover:bg-primary-700 transition-colors font-bold hover:text-white">
+            Salvar
+          </Button>
         <Link href="/home" className="w-full flex-center">
           <Button className="w-full bg-transparent hover:bg-primary-700 transition-colors font-bold hover:text-white">
             Planejamento
