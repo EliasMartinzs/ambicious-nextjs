@@ -27,6 +27,7 @@ import { User } from '@clerk/nextjs/server';
 import { UserType } from '@/types';
 import Toast from '../Shared/Toast';
 
+
 interface Props {
   id: any;
   username: string;
@@ -108,6 +109,8 @@ export default function AccountProfile({
       image: values.profile_photo,
       path: pathname,
     });
+
+    router.push('/home')
   };
 
   return (
@@ -213,19 +216,10 @@ export default function AccountProfile({
             </FormItem>
           )}
         />
-             <Button type='submit' className="w-full bg-transparent hover:bg-primary-700 transition-colors font-bold hover:text-white">
+          <Button type='submit' className="w-full bg-transparent hover:bg-primary-700 transition-colors font-bold hover:text-white">
             Salvar
           </Button>
-        <Link href="/home" className="w-full flex-center">
-          <Button className="w-full bg-transparent hover:bg-primary-700 transition-colors font-bold hover:text-white">
-            Planejamento
-          </Button>
-        </Link>
-        <Link href="/home/gym" className="w-full flex-center">
-          <Button className="w-full text-white bg-primary-500 hover:bg-primary-700 transition-colors font-bold">
-            Academia
-          </Button>
-        </Link>
+       
       </form>
     </Form>
   );
