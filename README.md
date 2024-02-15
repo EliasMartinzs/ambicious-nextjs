@@ -22,6 +22,7 @@ O Ambicious é um projeto 100% de código aberto, desenvolvido para melhorar meu
 ![7](https://github.com/EliasMartinzs/ambicious-nextjs/assets/97196276/b37c8802-d853-4474-8683-fa3008daaa09)
 ![8](https://github.com/EliasMartinzs/ambicious-nextjs/assets/97196276/1cd22f37-45e1-4719-9383-f03a81ed2202)
 ![9](https://github.com/EliasMartinzs/ambicious-nextjs/assets/97196276/64d174b1-a114-4247-88fc-e5170f937f2e)
+![10](https://github.com/EliasMartinzs/ambicious-nextjs/assets/97196276/023fdb3f-046b-4e86-ad8b-a1a6136a95f8)
 
 # Funcionalidades
 
