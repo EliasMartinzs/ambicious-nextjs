@@ -46,7 +46,7 @@ Análise de Mudanças: Permite comparar medidas registradas em momentos distinto
 
 # Temas 
 
-9 Temas diferntes, contendo dark e light mode
+9 Temas diferentes, contendo dark e light mode
 ## Referência
 
  - [Tailwind CSS](https://tailwindcss.com/)
