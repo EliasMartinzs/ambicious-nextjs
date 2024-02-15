@@ -213,11 +213,6 @@ export default function AccountProfile({
             </FormItem>
           )}
         />
-        <Toast
-          dialog="Salvo com sucesso"
-          textButton="Salvar"
-          classname="text-white font-bold hover:bg-primary-700 transition-colors"
-        />
         <Link href="/home" className="w-full flex-center">
           <Button className="w-full bg-transparent hover:bg-primary-700 transition-colors font-bold hover:text-white">
             Planejamento
